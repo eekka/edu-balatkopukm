@@ -7,6 +7,42 @@
         <flux:sidebar sticky stashable class="w-[18rem] sm:w-80 border-r border-blue-950/20 bg-gradient-to-b from-blue-950 via-blue-900 to-sky-900 text-white">
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
+            @php
+                $role = auth()->user()->role;
+
+                $roleMeta = [
+                    'admin' => [
+                        'subtitle' => 'Admin Control Center',
+                        'panel' => 'Akses Aktif Admin',
+                        'description' => 'Admin memegang kendali penuh untuk mengelola akun, program, kelas, pengumuman, dan laporan sistem.',
+                        'chips' => ['Kelola Akun', 'Kelola Kelas', 'Laporan'],
+                    ],
+                    'mentor' => [
+                        'subtitle' => 'Mentor Teaching Panel',
+                        'panel' => 'Akses Aktif Mentor',
+                        'description' => 'Mentor fokus pada pengelolaan kelas, materi, tugas, dan pemantauan perkembangan peserta belajar.',
+                        'chips' => ['Kelas Saya', 'Materi', 'Penilaian'],
+                    ],
+                    'peserta' => [
+                        'subtitle' => 'Peserta Learning Panel',
+                        'panel' => 'Akses Aktif Peserta',
+                        'description' => 'Peserta fokus mengikuti kelas, memantau progres belajar, melihat nilai, dan menerima pengumuman.',
+                        'chips' => ['Kelas Saya', 'Progress', 'Pengumuman'],
+                    ],
+                ][$role] ?? [
+                    'subtitle' => 'Learning Panel',
+                    'panel' => 'Akses Aktif',
+                    'description' => 'Akses fitur disesuaikan dengan peran akun Anda.',
+                    'chips' => ['Dashboard'],
+                ];
+
+                $roleLabels = [
+                    'admin' => 'Admin',
+                    'mentor' => 'Mentor',
+                    'peserta' => 'Peserta',
+                ];
+            @endphp
+
             <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-5 py-4" wire:navigate>
                 <span class="flex size-12 items-center justify-center rounded-2xl bg-white/15 text-lg font-black tracking-tight ring-1 ring-white/15">
                     L3
@@ -14,21 +50,21 @@
 
                 <span class="grid min-w-0 leading-tight">
                     <span class="text-xl font-black tracking-tight sm:text-2xl">Learnify<sup class="text-sky-200">3</sup></span>
-                    <span class="text-[0.62rem] uppercase tracking-[0.18em] text-blue-200/80 sm:text-[0.7rem] sm:tracking-[0.24em]">Admin Control Center</span>
+                    <span class="text-[0.62rem] uppercase tracking-[0.18em] text-blue-200/80 sm:text-[0.7rem] sm:tracking-[0.24em]">{{ $roleMeta['subtitle'] }}</span>
                 </span>
             </a>
 
             <div class="px-4 pt-2">
                 <div class="rounded-3xl bg-white/10 p-4 ring-1 ring-white/10 backdrop-blur">
-                    <p class="text-xs font-semibold uppercase tracking-[0.24em] text-blue-200/80">Akses Aktif</p>
+                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-blue-200/80">{{ $roleMeta['panel'] }}</p>
                     <p class="mt-2 text-sm leading-7 text-blue-50/95">
-                        Admin memegang kendali penuh untuk menambah, mengubah, dan menghapus data sistem.
+                        {{ $roleMeta['description'] }}
                     </p>
 
                     <div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
-                        <span class="rounded-full bg-white/15 px-3 py-1 text-white">Admin</span>
-                        <span class="rounded-full bg-white/15 px-3 py-1 text-white/90">Mentor</span>
-                        <span class="rounded-full bg-white/15 px-3 py-1 text-white/90">Peserta</span>
+                        @foreach ($roleMeta['chips'] as $chip)
+                            <span class="rounded-full bg-white/15 px-3 py-1 text-white/95">{{ $chip }}</span>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -58,6 +94,24 @@
                             Laporan
                         </flux:navlist.item>
                     </flux:navlist.group>
+                @elseif (auth()->user()->role === 'mentor')
+                    <flux:navlist.group heading="Fitur Mentor" class="mt-4 grid">
+                        <flux:navlist.item :href="route('mentor.dashboard').'#kelas-saya'" :current="request()->routeIs('mentor.dashboard')" class="text-sm" wire:navigate>
+                            Kelas Saya
+                        </flux:navlist.item>
+                        <flux:navlist.item :href="route('mentor.dashboard').'#akses-cepat'" :current="request()->routeIs('mentor.dashboard')" class="text-sm" wire:navigate>
+                            Materi, Tugas, Nilai
+                        </flux:navlist.item>
+                    </flux:navlist.group>
+                @elseif (auth()->user()->role === 'peserta')
+                    <flux:navlist.group heading="Fitur Peserta" class="mt-4 grid">
+                        <flux:navlist.item :href="route('peserta.dashboard').'#kelas-saya'" :current="request()->routeIs('peserta.dashboard')" class="text-sm" wire:navigate>
+                            Kelas Saya
+                        </flux:navlist.item>
+                        <flux:navlist.item :href="route('peserta.dashboard').'#pengumuman'" :current="request()->routeIs('peserta.dashboard')" class="text-sm" wire:navigate>
+                            Pengumuman
+                        </flux:navlist.item>
+                    </flux:navlist.group>
                 @endif
 
                 <flux:navlist.group heading="Akun" class="mt-4 grid">
@@ -83,9 +137,11 @@
                     </div>
 
                     <div class="mt-4 grid grid-cols-3 gap-2 text-center text-[0.72rem] font-semibold text-blue-100">
-                        <span class="rounded-2xl bg-white/10 px-2 py-2">Admin</span>
-                        <span class="rounded-2xl bg-white/10 px-2 py-2">Mentor</span>
-                        <span class="rounded-2xl bg-white/10 px-2 py-2">Peserta</span>
+                        @foreach ($roleLabels as $roleKey => $roleLabel)
+                            <span class="rounded-2xl px-2 py-2 {{ $role === $roleKey ? 'bg-white/25 text-white' : 'bg-white/10 text-blue-100/90' }}">
+                                {{ $roleLabel }}
+                            </span>
+                        @endforeach
                     </div>
 
                     <form method="POST" action="{{ route('logout') }}" class="mt-4">
@@ -106,7 +162,7 @@
 
             <div class="ml-3 flex min-w-0 flex-col">
                 <span class="truncate text-sm font-semibold text-slate-900 dark:text-white">Learnify 3</span>
-                <span class="truncate text-xs text-slate-500 dark:text-slate-400">Admin Control Center</span>
+                <span class="truncate text-xs text-slate-500 dark:text-slate-400">{{ $roleMeta['subtitle'] }}</span>
             </div>
 
             <flux:spacer />
