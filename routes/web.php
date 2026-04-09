@@ -66,3 +66,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Peserta routes
+Route::middleware(['auth', 'verified', 'role:peserta'])->prefix('peserta')->name('peserta.')->group(function () {
+    Route::get('dashboard', PesertaDashboardController::class)->name('dashboard');
+    Route::get('kelas', [PesertaDashboardController::class, 'indexKelas'])->name('kelas.index');
+    Route::get('kelas/{kelas}', [PesertaDashboardController::class, 'showKelas'])->name('kelas.show');
+    Route::get('jadwal', [PesertaDashboardController::class, 'jadwal'])->name('jadwal');
+    Route::get('sertifikat', [PesertaDashboardController::class, 'sertifikat'])->name('sertifikat');
+    Route::get('progress', [PesertaDashboardController::class, 'progress'])->name('progress');
+
+});

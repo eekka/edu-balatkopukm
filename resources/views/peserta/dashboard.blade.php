@@ -1,10 +1,10 @@
 <x-layouts.app>
     <div class="min-h-full bg-slate-100">
         <div class="space-y-6 p-4 sm:p-6 lg:p-8">
-            <section class="overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-[0_24px_60px_-30px_rgba(37,99,235,0.45)]">
+            <section class="overflow-hidden rounded-[2rem] border theme-border-primary-soft bg-white shadow-[0_24px_60px_-30px_rgba(37,99,235,0.45)]">
                 <div class="grid lg:grid-cols-[1.15fr_0.85fr]">
-                    <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 px-6 py-7 text-white sm:px-8 sm:py-8">
-                        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-50">
+                    <div class="px-6 py-7 text-white sm:px-8 sm:py-8" style="background-image: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));">
+                        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white/90">
                             Learning Control Center
                         </div>
 
@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="flex flex-wrap gap-3">
-                                <a href="#kelas-saya" class="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-blue-700 shadow-sm transition hover:bg-blue-50">
+                                <a href="#kelas-saya" class="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold theme-text-primary shadow-sm transition hover:bg-[rgba(var(--primary-light-rgb),0.12)]">
                                     Kelas Saya
                                 </a>
                                 <a href="#pengumuman" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/15">
@@ -41,10 +41,10 @@
                                 <p class="mt-2 text-sm text-slate-500">Sedang Anda jalani</p>
                             </div>
 
-                            <div class="rounded-3xl border border-blue-100 bg-blue-50 p-4 shadow-sm">
-                                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-blue-600">Selesai</p>
-                                <p class="mt-2 text-3xl font-black tracking-tight text-blue-900">{{ $completedClasses }}</p>
-                                <p class="mt-2 text-sm text-blue-700/80">Kelas yang sudah dituntaskan</p>
+                            <div class="rounded-3xl border theme-border-primary-soft theme-card-primary p-4 shadow-sm">
+                                <p class="text-xs font-semibold uppercase tracking-[0.22em] theme-text-primary">Selesai</p>
+                                <p class="mt-2 text-3xl font-black tracking-tight theme-text-primary">{{ $completedClasses }}</p>
+                                <p class="mt-2 text-sm text-slate-600">Kelas yang sudah dituntaskan</p>
                             </div>
 
                             <div class="rounded-3xl border border-blue-100 bg-sky-50 p-4 shadow-sm">
@@ -54,9 +54,9 @@
                             </div>
                         </div>
 
-                        <div class="mt-4 rounded-3xl bg-blue-950 px-5 py-5 text-white shadow-[0_20px_40px_-24px_rgba(15,23,42,0.9)]">
-                            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-blue-200">Fokus Belajar</p>
-                            <p class="mt-2 text-sm leading-6 text-blue-100">
+                        <div class="mt-4 rounded-3xl theme-bg-primary-dark px-5 py-5 text-white shadow-[0_20px_40px_-24px_rgba(15,23,42,0.9)]">
+                            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/80">Fokus Belajar</p>
+                            <p class="mt-2 text-sm leading-6 text-white/80">
                                 Gunakan kelas yang tersedia, ikuti arahan mentor, dan pantau pencapaian Anda secara berkala.
                             </p>
                         </div>
@@ -179,19 +179,19 @@
                     <div class="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
                         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Akses Cepat</p>
                         <div class="mt-4 grid gap-3">
-                            <a href="#" class="flex items-center justify-between rounded-2xl bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-100">
+                            <a href="{{ route('peserta.kelas.index') }}" class="flex items-center justify-between rounded-2xl bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-100">
                                 <span>Cari Kelas Baru</span>
                                 <span>→</span>
                             </a>
-                            <a href="#" class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100">
+                            <a href="{{ route('peserta.jadwal') }}" class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100">
                                 <span>Jadwal Kelas</span>
                                 <span>→</span>
                             </a>
-                            <a href="#" class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100">
+                            <a href="{{ route('peserta.sertifikat') }}" class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100">
                                 <span>Sertifikat</span>
                                 <span>→</span>
                             </a>
-                            <a href="#" class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100">
+                            <a href="{{ route('peserta.progress') }}" class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100">
                                 <span>Progress</span>
                                 <span>→</span>
                             </a>

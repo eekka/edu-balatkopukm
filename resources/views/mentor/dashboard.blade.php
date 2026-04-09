@@ -1,10 +1,10 @@
 <x-layouts.app>
     <div class="min-h-full bg-slate-100">
         <div class="space-y-6 p-4 sm:p-6 lg:p-8">
-            <section class="overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-[0_24px_60px_-30px_rgba(37,99,235,0.45)]">
+            <section class="overflow-hidden rounded-[2rem] border theme-border-primary-soft bg-white shadow-[0_24px_60px_-30px_rgba(37,99,235,0.45)]">
                 <div class="grid lg:grid-cols-[1.15fr_0.85fr]">
-                    <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 px-6 py-7 text-white sm:px-8 sm:py-8">
-                        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-50">
+                    <div class="px-6 py-7 text-white sm:px-8 sm:py-8" style="background-image: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));">
+                        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white/90">
                             Mentor Control Panel
                         </div>
 
@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="flex flex-wrap gap-3">
-                                <a href="#kelas-saya" class="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-blue-700 shadow-sm transition hover:bg-blue-50">
+                                <a href="#kelas-saya" class="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold theme-text-primary shadow-sm transition hover:bg-[rgba(var(--primary-light-rgb),0.12)]">
                                     Lihat Kelas
                                 </a>
                                 <a href="#akses-cepat" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/15">
@@ -41,10 +41,10 @@
                                 <p class="mt-2 text-sm text-slate-500">Total peserta aktif di kelas</p>
                             </div>
 
-                            <div class="rounded-3xl border border-blue-100 bg-blue-50 p-4 shadow-sm">
-                                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-blue-600">Kelas Aktif</p>
-                                <p class="mt-2 text-3xl font-black tracking-tight text-blue-900">{{ $activeClasses }}</p>
-                                <p class="mt-2 text-sm text-blue-700/80">Sedang berjalan sekarang</p>
+                            <div class="rounded-3xl border theme-border-primary-soft theme-card-primary p-4 shadow-sm">
+                                <p class="text-xs font-semibold uppercase tracking-[0.22em] theme-text-primary">Kelas Aktif</p>
+                                <p class="mt-2 text-3xl font-black tracking-tight theme-text-primary">{{ $activeClasses }}</p>
+                                <p class="mt-2 text-sm text-slate-600">Sedang berjalan sekarang</p>
                             </div>
 
                             <div class="rounded-3xl border border-blue-100 bg-sky-50 p-4 shadow-sm">

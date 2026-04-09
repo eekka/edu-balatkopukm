@@ -24,13 +24,13 @@
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <i class="fas fa-graduation-cap text-2xl text-purple-600"></i>
-                <span class="text-2xl font-bold text-gray-800">Akademi Balatkop</span>
+                <i class="fas fa-graduation-cap text-2xl theme-text-primary"></i>
+                <span class="text-2xl font-bold theme-text-primary">Akademi Balatkop</span>
             </div>
             <div class="hidden md:flex space-x-8">
-                <a href="#programs" class="text-gray-700 hover:text-purple-600 transition">Program</a>
-                <a href="#stats" class="text-gray-700 hover:text-purple-600 transition">Statistik</a>
-                <a href="#testimonials" class="text-gray-700 hover:text-purple-600 transition">Testimoni</a>
+                <a href="#programs" class="text-slate-700 hover:text-[var(--primary)] transition">Program</a>
+                <a href="#stats" class="text-slate-700 hover:text-[var(--primary)] transition">Statistik</a>
+                <a href="#testimonials" class="text-slate-700 hover:text-[var(--primary)] transition">Testimoni</a>
             </div>
             <div class="flex space-x-4">
                 @auth
@@ -40,32 +40,32 @@
                         <button type="submit" class="px-4 py-2 text-red-600 hover:text-red-700">Logout</button>
                     </form>
                 @else
-                    <a href="{{ route('login') }}" class="px-4 py-2 text-gray-700 hover:text-purple-600">Masuk</a>
-                    <a href="{{ route('register') }}" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">Daftar</a>
+                    <a href="{{ route('login') }}" class="px-4 py-2 text-slate-700 hover:text-[var(--primary)] transition">Masuk</a>
+                    <a href="{{ route('register') }}" class="px-4 py-2 theme-btn-accent rounded-lg hover:bg-[#fff5a4] transition">Daftar</a>
                 @endauth
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-gradient text-white py-20 md:py-32">
+    <section class="text-white py-20 md:py-32" style="background-image: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));">
         <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">Transformasi Pendidikan Digital</h1>
-                <p class="text-xl mb-8 text-purple-100">Platform e-learning profesional untuk pengembangan keterampilan jangka panjang. Belajar kapan saja, di mana saja dengan metode pembelajaran yang terstruktur.</p>
+                <p class="text-xl mb-8 text-white/80">Platform e-learning profesional untuk pengembangan keterampilan jangka panjang. Belajar kapan saja, di mana saja dengan metode pembelajaran yang terstruktur.</p>
                 <div class="flex space-x-4">
                     @auth
-                        <a href="{{ route('dashboard') }}" class="px-8 py-3 bg-white text-purple-600 font-semibold rounded-lg hover:bg-gray-100 transition">Buka Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="px-8 py-3 bg-white theme-text-primary font-semibold rounded-lg hover:bg-[rgba(var(--primary-light-rgb),0.12)] transition">Buka Dashboard</a>
                     @else
-                        <a href="{{ route('register') }}" class="px-8 py-3 bg-white text-purple-600 font-semibold rounded-lg hover:bg-gray-100 transition">Daftar Sekarang</a>
-                        <a href="{{ route('login') }}" class="px-8 py-3 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-400 transition">Masuk</a>
+                        <a href="{{ route('register') }}" class="px-8 py-3 bg-white theme-text-primary font-semibold rounded-lg hover:bg-[rgba(var(--primary-light-rgb),0.12)] transition">Daftar Sekarang</a>
+                        <a href="{{ route('login') }}" class="px-8 py-3 theme-btn-accent font-semibold rounded-lg hover:bg-[#ffd657] transition">Masuk</a>
                     @endauth
                 </div>
             </div>
             <div class="hidden md:block">
                 <div class="bg-white bg-opacity-10 rounded-lg p-8 backdrop-blur-lg">
-                    <i class="fas fa-laptop text-6xl text-center block mb-4"></i>
-                    <p class="text-center text-purple-100">Pembelajaran interaktif dan engaging</p>
+                    <i class="fas fa-laptop text-6xl text-center block mb-4 theme-text-accent"></i>
+                    <p class="text-center text-white/90">Pembelajaran interaktif dan engaging</p>
                 </div>
             </div>
         </div>
@@ -76,10 +76,10 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Statistik Platform</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="text-center card-hover p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
-                    <i class="fas fa-book text-3xl text-blue-600 mb-4"></i>
-                    <h3 class="text-4xl font-bold text-blue-600 mb-2">{{ $stats['programs'] }}</h3>
-                    <p class="text-gray-700">Program Tersedia</p>
+                <div class="text-center card-hover p-6 bg-gradient-to-br from-primary-light to-primary rounded-lg">
+                    <i class="fas fa-book text-3xl theme-text-primary mb-4"></i>
+                    <h3 class="text-4xl font-bold theme-text-primary mb-2">{{ $stats['programs'] }}</h3>
+                    <p class="text-slate-700">Program Tersedia</p>
                 </div>
                 <div class="text-center card-hover p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-lg">
                     <i class="fas fa-chalkboard-user text-3xl text-green-600 mb-4"></i>

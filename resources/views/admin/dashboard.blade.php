@@ -1,10 +1,10 @@
 ﻿<x-layouts.app>
     <div class="min-h-full bg-slate-100">
         <div class="space-y-6 p-4 sm:p-6 lg:p-8">
-            <section class="overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-[0_24px_60px_-30px_rgba(37,99,235,0.45)]">
+            <section class="overflow-hidden rounded-[2rem] border theme-border-primary-soft bg-white shadow-[0_24px_60px_-30px_rgba(37,99,235,0.45)]">
                 <div class="grid lg:grid-cols-[1.15fr_0.85fr]">
-                    <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 px-6 py-7 text-white sm:px-8 sm:py-8">
-                        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-50">
+                    <div class="px-6 py-7 text-white sm:px-8 sm:py-8" style="background-image: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));">
+                        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white/90">
                             Admin Control Center
                         </div>
 
@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="flex flex-wrap gap-3">
-                                <a href="{{ route('admin.users.index') }}" class="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-blue-700 shadow-sm transition hover:bg-blue-50">
+                                <a href="{{ route('admin.users.index') }}" class="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold theme-text-primary shadow-sm transition hover:bg-[rgba(var(--primary-light-rgb),0.12)]">
                                     Kelola Akun
                                 </a>
                                 <a href="{{ route('admin.programs.index') }}" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/15">
@@ -50,16 +50,16 @@
                                 <p class="mt-2 text-sm text-slate-500">Akun pembelajaran aktif</p>
                             </div>
 
-                            <div class="rounded-3xl border border-blue-100 bg-blue-50 p-4 shadow-sm">
-                                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-blue-600">Total Akun</p>
-                                <p class="mt-2 text-3xl font-black tracking-tight text-blue-900">{{ $totalUsers }}</p>
-                                <p class="mt-2 text-sm text-blue-700/80">Semua user di platform</p>
+                            <div class="rounded-3xl border theme-border-primary-soft theme-card-primary p-4 shadow-sm">
+                                <p class="text-xs font-semibold uppercase tracking-[0.22em] theme-text-primary">Total Akun</p>
+                                <p class="mt-2 text-3xl font-black tracking-tight theme-text-primary">{{ $totalUsers }}</p>
+                                <p class="mt-2 text-sm text-slate-600">Semua user di platform</p>
                             </div>
                         </div>
 
-                        <div class="mt-4 rounded-3xl bg-blue-950 px-5 py-5 text-white shadow-[0_20px_40px_-24px_rgba(15,23,42,0.9)]">
-                            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-blue-200">Kendali Penuh</p>
-                            <p class="mt-2 text-sm leading-6 text-blue-100">
+                        <div class="mt-4 rounded-3xl theme-bg-primary-dark px-5 py-5 text-white shadow-[0_20px_40px_-24px_rgba(15,23,42,0.9)]">
+                            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/80">Kendali Penuh</p>
+                            <p class="mt-2 text-sm leading-6 text-white/80">
                                 Gunakan menu di sisi kiri untuk mengelola akun mentor dan peserta, menata program dan kelas, serta menyebarkan pengumuman global.
                             </p>
                         </div>

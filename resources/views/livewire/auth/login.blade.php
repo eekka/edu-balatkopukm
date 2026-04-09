@@ -115,7 +115,6 @@ new #[Layout('components.layouts.auth.split')] class extends Component {
 
         <div class="flex items-center justify-between gap-3">
             <flux:checkbox wire:model="remember" label="{{ __('Ingat saya') }}" />
-            <span class="rounded-full bg-sky-50 px-2.5 py-1 text-xs font-medium text-sky-700">Aman & Terenkripsi</span>
         </div>
 
         <flux:button variant="primary" type="submit" class="w-full rounded-xl bg-sky-600 hover:bg-sky-700">
