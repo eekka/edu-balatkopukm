@@ -3,40 +3,43 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-white antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
-        <div class="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
-            <div class="bg-muted relative hidden h-full flex-col p-10 text-white lg:flex dark:border-r dark:border-neutral-800">
-                <div class="absolute inset-0 bg-neutral-900"></div>
-                <a href="{{ route('home') }}" class="relative z-20 flex items-center text-lg font-medium" wire:navigate>
-                    <span class="flex h-10 w-10 items-center justify-center rounded-md">
-                        <x-app-logo-icon class="mr-2 h-7 fill-current text-white" />
+    <body class="min-h-screen bg-slate-50 antialiased">
+        <div class="grid min-h-dvh lg:grid-cols-2">
+            <aside class="relative hidden overflow-hidden border-r border-sky-100 bg-gradient-to-br from-sky-600 via-blue-700 to-slate-800 px-12 py-14 text-white lg:flex lg:flex-col">
+                <div class="absolute -left-12 top-8 h-56 w-56 rounded-full bg-white/15 blur-2xl"></div>
+                <div class="absolute bottom-10 right-6 h-44 w-44 rounded-full bg-cyan-300/20 blur-2xl"></div>
+
+                <a href="{{ route('home') }}" class="relative z-10 inline-flex items-center gap-3 text-base font-semibold" wire:navigate>
+                    <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20">
+                        <x-app-logo-icon class="h-6 fill-current text-white" />
                     </span>
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Akademi Balatkop') }}
                 </a>
 
-                @php
-                    [$message, $author] = str(Illuminate\Foundation\Inspiring::quotes()->random())->explode('-');
-                @endphp
-
-                <div class="relative z-20 mt-auto">
-                    <blockquote class="space-y-2">
-                        <p class="text-lg">&ldquo;{{ trim($message) }}&rdquo;</p>
-                        <footer class="text-sm">{{ trim($author) }}</footer>
-                    </blockquote>
+                <div class="relative z-10 mt-14 max-w-md space-y-6">
+                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-sky-100">Learning Management Platform</p>
+                    <h2 class="text-4xl font-semibold leading-tight">Bangun kapasitas tim lewat pelatihan yang terstruktur.</h2>
+                    <p class="text-sm leading-7 text-sky-100/90">
+                        Pantau progres belajar, kelola kelas, dan sampaikan materi dari satu dashboard yang rapi dan profesional.
+                    </p>
                 </div>
-            </div>
-            <div class="w-full lg:p-8">
-                <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-                    <a href="{{ route('home') }}" class="z-20 flex flex-col items-center gap-2 font-medium lg:hidden" wire:navigate>
-                        <span class="flex h-9 w-9 items-center justify-center rounded-md">
-                            <x-app-logo-icon class="size-9 fill-current text-black dark:text-white" />
-                        </span>
 
-                        <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
+                <div class="relative z-10 mt-auto rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur">
+                    <p class="text-sm font-semibold">Satu akun, semua akses penting.</p>
+                    <p class="mt-2 text-sm leading-6 text-sky-100/90">Admin, mentor, dan peserta dapat masuk dengan alur yang aman dan cepat.</p>
+                </div>
+            </aside>
+
+            <main class="flex items-center justify-center px-6 py-12 sm:px-10">
+                <div class="w-full max-w-md">
+                    <a href="{{ route('home') }}" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 lg:hidden" wire:navigate>
+                        <x-app-logo-icon class="h-5 fill-current text-sky-700" />
+                        {{ config('app.name', 'Akademi Balatkop') }}
                     </a>
+
                     {{ $slot }}
                 </div>
-            </div>
+            </main>
         </div>
         @fluxScripts
     </body>
