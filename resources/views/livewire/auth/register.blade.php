@@ -8,7 +8,7 @@ use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('components.layouts.auth')] class extends Component {
+new #[Layout('components.layouts.auth.split')] class extends Component {
     public string $name = '';
     public string $email = '';
     public string $password = '';
@@ -35,60 +35,66 @@ new #[Layout('components.layouts.auth')] class extends Component {
     }
 }; ?>
 
-<div class="flex flex-col gap-6">
-    <x-auth-header title="Create an account" description="Enter your details below to create your account" />
+<div class="rounded-3xl border border-slate-200 bg-white/95 p-6 shadow-[0_16px_40px_-24px_rgba(15,23,42,0.35)] backdrop-blur sm:p-8">
+    <div class="mb-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Portal Akademi</p>
+        <h1 class="mt-3 text-2xl font-semibold tracking-tight text-slate-900">Daftar akun baru</h1>
+        <p class="mt-2 text-sm leading-6 text-slate-600">
+            Buat akun untuk mengakses dashboard, ikut kelas, dan lihat progress belajar Anda.
+        </p>
+    </div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
+    <x-auth-session-status class="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700" :status="session('status')" />
 
-    <form wire:submit="register" class="flex flex-col gap-6">
-        <!-- Name -->
-        <div class="grid gap-2">
-            <flux:input wire:model="name" id="name" label="{{ __('Name') }}" type="text" name="name" required autofocus autocomplete="name" placeholder="Full name" />
-        </div>
+    <form wire:submit="register" class="space-y-5">
+        <flux:input
+            wire:model="name"
+            label="{{ __('Nama Lengkap') }}"
+            type="text"
+            name="name"
+            required
+            autofocus
+            autocomplete="name"
+            placeholder="Nama lengkap"
+        />
 
-        <!-- Email Address -->
-        <div class="grid gap-2">
-            <flux:input wire:model="email" id="email" label="{{ __('Email address') }}" type="email" name="email" required autocomplete="email" placeholder="email@example.com" />
-        </div>
+        <flux:input
+            wire:model="email"
+            label="{{ __('Alamat Email') }}"
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
+            placeholder="nama@email.com"
+        />
 
-        <!-- Password -->
-        <div class="grid gap-2">
-            <flux:input
-                wire:model="password"
-                id="password"
-                label="{{ __('Password') }}"
-                type="password"
-                name="password"
-                required
-                autocomplete="new-password"
-                placeholder="Password"
-            />
-        </div>
+        <flux:input
+            wire:model="password"
+            label="{{ __('Password') }}"
+            type="password"
+            name="password"
+            required
+            autocomplete="new-password"
+            placeholder="Buat password"
+        />
 
-        <!-- Confirm Password -->
-        <div class="grid gap-2">
-            <flux:input
-                wire:model="password_confirmation"
-                id="password_confirmation"
-                label="{{ __('Confirm password') }}"
-                type="password"
-                name="password_confirmation"
-                required
-                autocomplete="new-password"
-                placeholder="Confirm password"
-            />
-        </div>
+        <flux:input
+            wire:model="password_confirmation"
+            label="{{ __('Konfirmasi Password') }}"
+            type="password"
+            name="password_confirmation"
+            required
+            autocomplete="new-password"
+            placeholder="Ulangi password"
+        />
 
-        <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
-                {{ __('Create account') }}
-            </flux:button>
-        </div>
+        <flux:button variant="primary" type="submit" class="w-full rounded-xl bg-sky-600 hover:bg-sky-700">
+            {{ __('Daftar') }}
+        </flux:button>
     </form>
 
-    <div class="space-x-1 text-center text-sm text-zinc-600 dark:text-zinc-400">
-        Already have an account?
-        <x-text-link href="{{ route('login') }}">Log in</x-text-link>
+    <div class="mt-6 border-t border-slate-200 pt-4 text-center text-sm text-slate-600">
+        Sudah punya akun?
+        <x-text-link href="{{ route('login') }}" class="font-semibold text-sky-700 hover:text-sky-800">Masuk sekarang</x-text-link>
     </div>
 </div>
