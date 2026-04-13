@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Announcement;
 use App\Models\Kelas;
 use App\Models\KelasEnrollment;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
@@ -83,5 +86,44 @@ class DashboardController extends Controller
             ->get();
 
         return view('peserta.jadwal', compact('enrolledClasses'));
+    }
+
+    public function joinByCode(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'kode_kelas' => ['required', 'string', 'max:20'],
+        ]);
+
+        $kodeKelas = Str::upper(trim($validated['kode_kelas']));
+        $kelas = Kelas::where('kode_kelas', $kodeKelas)->first();
+
+        if (! $kelas) {
+            return back()->withErrors([
+                'kode_kelas' => 'Kode kelas tidak ditemukan.',
+            ])->withInput();
+        }
+
+        if ($kelas->status !== 'aktif') {
+            return back()->withErrors([
+                'kode_kelas' => 'Kelas belum dibuka untuk pendaftaran.',
+            ])->withInput();
+        }
+
+        $enrollment = KelasEnrollment::firstOrCreate(
+            [
+                'peserta_id' => auth()->id(),
+                'kelas_id' => $kelas->id,
+            ],
+            [
+                'terdaftar_pada' => now(),
+                'status' => 'aktif',
+            ],
+        );
+
+        if (! $enrollment->wasRecentlyCreated) {
+            return back()->with('status', 'Anda sudah terdaftar di kelas ini.');
+        }
+
+        return back()->with('status', 'Berhasil bergabung ke kelas '.$kelas->nama.'.');
     }
 }
