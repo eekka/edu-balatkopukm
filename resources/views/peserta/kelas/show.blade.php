@@ -47,5 +47,40 @@
                 </div>
             </div>
         </div>
+        <!-- materi -->
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-10">
+            <div class="rounded-[32px] border border-slate-200 bg-white p-6 shadow-lg shadow-slate-300/20">
+                <div class="mb-6 flex flex-col gap-2">
+                    <p class="text-xs font-semibold uppercase tracking-[0.28em] text-sky-700">Materi Kelas</p>
+                    <h3 class="text-2xl font-bold text-slate-900">Daftar Materi</h3>
+                    <p class="max-w-2xl text-sm text-slate-600">Klik judul materi untuk menampilkan detail dan lanjut ke halaman materi.</p>
+                </div>
+
+                @if($kelas->materis->count() > 0)
+                    <div class="space-y-4">
+                        @foreach($kelas->materis as $materi)
+                            <details class="group overflow-hidden rounded-[28px] border border-slate-200 bg-slate-50 p-4 transition hover:border-sky-300">
+                                <summary class="flex cursor-pointer items-center justify-between gap-4 text-left text-lg font-semibold text-slate-900">
+                                    <span>{{ $materi->judul }}</span>
+                                    <span class="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-semibold text-slate-700 transition group-open:border-sky-300 group-open:bg-sky-600 group-open:text-white">Detail</span>
+                                </summary>
+                                <div class="mt-4 border-t border-slate-200 pt-4 text-sm text-slate-600">
+                                    <p>{{ \Illuminate\Support\Str::limit($materi->deskripsi, 200) }}</p>
+                                    <div class="mt-4 flex flex-wrap gap-3">
+                                        <span class="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Materi</span>
+                                        <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">{{ $materi->created_at?->format('d M Y') ?? 'Tanggal belum tersedia' }}</span>
+                                    </div>
+                                    <a href="#" class="mt-4 inline-flex items-center justify-center rounded-2xl bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-700">
+                                        Lihat Materi
+                                    </a>
+                                </div>
+                            </details>
+                        @endforeach
+                    </div>
+                @else
+                    <p class="text-slate-600">Belum ada materi yang tersedia untuk kelas ini.</p>
+                @endif
+            </div>
+        </div>
     </div>
 </x-layouts.app>

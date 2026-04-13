@@ -7,19 +7,25 @@
 
     <div class="py-12 bg-slate-50 h-full">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden rounded-[32px] bg-gradient-to-r from-sky-700 to-sky-600 p-8 shadow-xl shadow-sky-400/20">
+            <div class="flex justify-between items-center overflow-hidden rounded-[32px] bg-gradient-to-r from-sky-700 to-sky-600 p-8 shadow-xl shadow-sky-400/20">
                 <div class="space-y-3 text-white">
                     <p class="text-xs font-semibold uppercase tracking-[0.32em] text-sky-200/80">Kelas Saya</p>
                     <h3 class="text-3xl font-bold">Daftar Kelas yang Diikuti</h3>
                     <p class="max-w-2xl text-sm text-sky-100/90">Lihat semua kelas aktif Anda, cek mentor, status keikutsertaan, dan lanjutkan materi dengan nyaman.</p>
+                </div>
+                <div>
+                    <a href="" class="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-sky-700 transition hover:bg-slate-100">
+                        <flux:icon.plus />
+                    
+                    </a>
                 </div>
             </div>
 
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @if($enrolledClasses->count() > 0)
                     @foreach($enrolledClasses as $enrollment)
-                        <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-lg shadow-slate-300/20">
-                            <div class="flex items-start justify-between gap-4">
+                        <div class="flex flex-col h-full rounded-[28px] border border-slate-200 bg-white p-6 shadow-lg shadow-slate-300/20">
+                            <div class="flex flex-col h-full items-start justify-between gap-4">
                                 <div>
                                     <h4 class="text-xl font-semibold text-slate-900">{{ $enrollment->kelas->nama }}</h4>
                                     <p class="mt-2 text-sm text-slate-500">{{ $enrollment->kelas->deskripsi }}</p>
