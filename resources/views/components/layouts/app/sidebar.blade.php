@@ -13,21 +13,12 @@
                 $roleMeta = [
                     'admin' => [
                         'subtitle' => 'Admin Control Center',
-                        'panel' => 'Akses Aktif Admin',
-                        'description' => 'Admin memegang kendali penuh untuk mengelola akun, program, kelas, pengumuman, dan laporan sistem.',
-                        'chips' => ['Kelola Akun', 'Kelola Kelas', 'Laporan'],
                     ],
                     'mentor' => [
                         'subtitle' => 'Mentor Teaching Panel',
-                        'panel' => 'Akses Aktif Mentor',
-                        'description' => 'Mentor fokus pada pengelolaan kelas, materi, tugas, dan pemantauan perkembangan peserta belajar.',
-                        'chips' => ['Kelas Saya', 'Materi', 'Penilaian'],
                     ],
                     'peserta' => [
                         'subtitle' => 'Peserta Learning Panel',
-                        'panel' => 'Akses Aktif Peserta',
-                        'description' => 'Peserta fokus mengikuti kelas, memantau progres belajar, melihat nilai, dan menerima pengumuman.',
-                        'chips' => ['Kelas Saya', 'Progress', 'Pengumuman'],
                     ],
                 ][$role] ?? [
                     'subtitle' => 'Learning Panel',
@@ -53,21 +44,6 @@
                     <span class="text-[0.62rem] uppercase tracking-[0.18em] text-blue-200/80 sm:text-[0.7rem] sm:tracking-[0.24em]">{{ $roleMeta['subtitle'] }}</span>
                 </span>
             </a>
-
-            <div class="px-4 pt-2">
-                <div class="rounded-3xl bg-white/10 p-4 ring-1 ring-white/10 backdrop-blur">
-                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-blue-200/80">{{ $roleMeta['panel'] }}</p>
-                    <p class="mt-2 text-sm leading-7 text-blue-50/95">
-                        {{ $roleMeta['description'] }}
-                    </p>
-
-                    <div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
-                        @foreach ($roleMeta['chips'] as $chip)
-                            <span class="rounded-full bg-white/15 px-3 py-1 text-white/95">{{ $chip }}</span>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
 
             <flux:navlist variant="outline" class="mt-4 px-3">
                 <flux:navlist.group heading="Platform" class="grid">
@@ -108,13 +84,13 @@
                     </flux:navlist.group>
                 @elseif (auth()->user()->role === 'peserta')
                     <flux:navlist.group heading="Fitur Peserta" class="mt-4 grid">
-                        <flux:navlist.item :href="route('peserta.dashboard').'#kelas-saya'" :current="request()->routeIs('peserta.dashboard')" class="text-sm" wire:navigate>
+                        <flux:navlist.item icon="book-open" :href="route('peserta.kelas.index').'#kelas-saya'" :current="request()->routeIs('peserta.kelas.index')" class="text-sm" wire:navigate>
                             Kelas Saya
                         </flux:navlist.item>
-                        <flux:navlist.item :href="route('peserta.dashboard').'#pengumuman'" :current="request()->routeIs('peserta.dashboard')" class="text-sm" wire:navigate>
+                        <flux:navlist.item icon="megaphone" :href="route('peserta.dashboard').'#pengumuman'" :current="request()->routeIs('peserta.dashboard')" class="text-sm" wire:navigate>
                             Pengumuman
                         </flux:navlist.item>
-                        <flux:navlist.item :href="route('peserta.testimonials.index')" :current="request()->routeIs('peserta.testimonials.*')" class="text-sm" wire:navigate>
+                        <flux:navlist.item icon="chat-bubble-bottom-center-text" :href="route('peserta.testimonials.index')" :current="request()->routeIs('peserta.testimonials.*')" class="text-sm" wire:navigate>
                             Testimoni
                         </flux:navlist.item>
                     </flux:navlist.group>
@@ -140,14 +116,6 @@
                             <p class="truncate text-sm font-semibold text-white">{{ auth()->user()->name }}</p>
                             <p class="truncate text-xs text-blue-200/80">{{ ucfirst(auth()->user()->role) }}</p>
                         </div>
-                    </div>
-
-                    <div class="mt-4 grid grid-cols-3 gap-2 text-center text-[0.72rem] font-semibold text-blue-100">
-                        @foreach ($roleLabels as $roleKey => $roleLabel)
-                            <span class="rounded-2xl px-2 py-2 {{ $role === $roleKey ? 'bg-white/25 text-white' : 'bg-white/10 text-blue-100/90' }}">
-                                {{ $roleLabel }}
-                            </span>
-                        @endforeach
                     </div>
 
                     <form method="POST" action="{{ route('logout') }}" class="mt-4">
