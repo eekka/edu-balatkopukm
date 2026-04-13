@@ -23,6 +23,9 @@
                                 <a href="#akses-cepat" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/15">
                                     Akses Cepat
                                 </a>
+                                <a href="{{ route('mentor.kelas.index') }}" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/15">
+                                    Buat Kelas
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -159,8 +162,8 @@
                         </div>
 
                         <div class="space-y-3 p-5 sm:p-6">
-                            <a href="#" class="flex items-center justify-between rounded-2xl bg-white/10 px-4 py-3 text-sm font-semibold transition hover:bg-white/15">
-                                <span>Materi Pembelajaran</span>
+                            <a href="{{ route('mentor.kelas.index') }}" class="flex items-center justify-between rounded-2xl bg-white/10 px-4 py-3 text-sm font-semibold transition hover:bg-white/15">
+                                <span>Manajemen Kelas</span>
                                 <span>→</span>
                             </a>
                             <a href="#" class="flex items-center justify-between rounded-2xl bg-white/10 px-4 py-3 text-sm font-semibold transition hover:bg-white/15">

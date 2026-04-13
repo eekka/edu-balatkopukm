@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Mentor;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreKelasRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return auth()->user()?->role === 'admin';
+        return auth()->user()?->role === 'mentor';
     }
 
     public function rules(): array
@@ -18,14 +17,10 @@ class StoreKelasRequest extends FormRequest
             'program_id' => ['required', 'exists:programs,id'],
             'nama' => ['required', 'string', 'max:255'],
             'deskripsi' => ['nullable', 'string'],
-            'mentor_id' => ['required', Rule::exists('users', 'id')->where(fn ($query) => $query->where('role', 'mentor'))],
             'mulai' => ['nullable', 'date'],
             'selesai' => ['nullable', 'date', 'after_or_equal:mulai'],
             'kapasitas' => ['required', 'integer', 'min:1'],
-            'peserta_terdaftar' => ['nullable', 'integer', 'min:0'],
-            'status' => ['required', 'in:aktif,draft,selesai'],
-            'peserta_ids' => ['array'],
-            'peserta_ids.*' => [Rule::exists('users', 'id')->where(fn ($query) => $query->where('role', 'peserta'))],
+            'status' => ['required', 'in:aktif,draft'],
         ];
     }
 }

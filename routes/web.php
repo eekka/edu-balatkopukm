@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Mentor\DashboardController as MentorDashboardController;
+use App\Http\Controllers\Mentor\KelasController as MentorKelasController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Peserta\DashboardController as PesertaDashboardController;
 use App\Http\Controllers\Peserta\TestimonialController as PesertaTestimonialController;
@@ -73,10 +74,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::middleware(['auth', 'verified', 'role:mentor'])->prefix('mentor')->name('mentor.')->group(function () {
+    Route::get('kelas', [MentorKelasController::class, 'index'])->name('kelas.index');
+    Route::post('kelas', [MentorKelasController::class, 'store'])->name('kelas.store');
+});
+
 // Peserta routes
 Route::middleware(['auth', 'verified', 'role:peserta'])->prefix('peserta')->name('peserta.')->group(function () {
     Route::get('dashboard', PesertaDashboardController::class)->name('dashboard');
     Route::get('kelas', [PesertaDashboardController::class, 'indexKelas'])->name('kelas.index');
+    Route::post('kelas/join', [PesertaDashboardController::class, 'joinByCode'])->name('kelas.join');
     Route::get('kelas/{kelas}', [PesertaDashboardController::class, 'showKelas'])->name('kelas.show');
     Route::get('jadwal', [PesertaDashboardController::class, 'jadwal'])->name('jadwal');
     Route::get('sertifikat', [PesertaDashboardController::class, 'sertifikat'])->name('sertifikat');

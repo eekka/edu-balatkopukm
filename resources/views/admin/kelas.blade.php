@@ -46,6 +46,13 @@
                     <input name="nama" value="{{ old('nama', $editingKelas?->nama) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>
                 </label>
 
+                @if ($editingKelas)
+                    <label class="block md:col-span-2">
+                        <span class="text-sm font-medium text-slate-700">Kode Kelas</span>
+                        <input value="{{ $editingKelas->kode_kelas }}" class="mt-1 w-full rounded-xl border-slate-300 bg-slate-100 text-slate-900" readonly>
+                    </label>
+                @endif
+
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Deskripsi</span>
                     <textarea name="deskripsi" rows="3" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500">{{ old('deskripsi', $editingKelas?->deskripsi) }}</textarea>
@@ -116,7 +123,7 @@
                         <div>
                             <h3 class="text-lg font-semibold text-slate-900">{{ $kelas->nama }}</h3>
                             <p class="text-sm text-slate-600">{{ $kelas->program?->nama }} · Mentor: {{ $kelas->mentor?->name }}</p>
-                            <p class="mt-1 text-xs text-slate-500">{{ $kelas->enrollments->count() }} peserta / kapasitas {{ $kelas->kapasitas }} · Status {{ ucfirst($kelas->status) }}</p>
+                            <p class="mt-1 text-xs text-slate-500">Kode: <span class="font-semibold text-slate-700">{{ $kelas->kode_kelas }}</span> · {{ $kelas->enrollments->count() }} peserta / kapasitas {{ $kelas->kapasitas }} · Status {{ ucfirst($kelas->status) }}</p>
                         </div>
                         <div class="flex gap-2">
                             <a href="{{ route('admin.kelas.index', ['edit' => $kelas->id]) }}" class="rounded-lg border border-blue-200 px-3 py-1.5 text-sm font-semibold text-blue-700 hover:bg-blue-50">Edit</a>
