@@ -5,10 +5,12 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\KelasController as AdminKelasController;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Admin\ReportController as AdminReportController;
+use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Mentor\DashboardController as MentorDashboardController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Peserta\DashboardController as PesertaDashboardController;
+use App\Http\Controllers\Peserta\TestimonialController as PesertaTestimonialController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -53,6 +55,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('announcements/{announcement}', [AdminAnnouncementController::class, 'update'])->name('announcements.update');
         Route::delete('announcements/{announcement}', [AdminAnnouncementController::class, 'destroy'])->name('announcements.destroy');
 
+        Route::get('testimonials', [AdminTestimonialController::class, 'index'])->name('testimonials.index');
+        Route::put('testimonials/{testimonial}', [AdminTestimonialController::class, 'update'])->name('testimonials.update');
+        Route::delete('testimonials/{testimonial}', [AdminTestimonialController::class, 'destroy'])->name('testimonials.destroy');
+
         Route::get('reports', [AdminReportController::class, 'index'])->name('reports.index');
         Route::get('reports/export/users', [AdminReportController::class, 'exportUsers'])->name('reports.export-users');
         Route::get('reports/export/classes', [AdminReportController::class, 'exportClasses'])->name('reports.export-classes');
@@ -75,5 +81,7 @@ Route::middleware(['auth', 'verified', 'role:peserta'])->prefix('peserta')->name
     Route::get('jadwal', [PesertaDashboardController::class, 'jadwal'])->name('jadwal');
     Route::get('sertifikat', [PesertaDashboardController::class, 'sertifikat'])->name('sertifikat');
     Route::get('progress', [PesertaDashboardController::class, 'progress'])->name('progress');
+    Route::get('testimonials', [PesertaTestimonialController::class, 'index'])->name('testimonials.index');
+    Route::post('testimonials', [PesertaTestimonialController::class, 'store'])->name('testimonials.store');
 
 });

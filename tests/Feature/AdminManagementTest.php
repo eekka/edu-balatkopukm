@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Testimonial;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +33,10 @@ class AdminManagementTest extends TestCase
 
         $this->actingAs($admin)
             ->get(route('admin.announcements.index'))
+            ->assertOk();
+
+        $this->actingAs($admin)
+            ->get(route('admin.testimonials.index'))
             ->assertOk();
 
         $this->actingAs($admin)
@@ -68,6 +73,70 @@ class AdminManagementTest extends TestCase
 
         $this->assertDatabaseHas('announcements', [
             'judul' => 'Jadwal Pelatihan Baru',
+        ]);
+    }
+
+    public function test_peserta_can_create_testimonial(): void
+    {
+        $peserta = User::factory()->create([
+            'role' => 'peserta',
+            'email_verified_at' => now(),
+        ]);
+
+        $this->actingAs($peserta)
+            ->post(route('peserta.testimonials.store'), [
+                'rating' => 5,
+                'isi' => 'Programnya sangat membantu untuk pengembangan skill saya.',
+            ])
+            ->assertSessionHas('status');
+
+        $this->assertDatabaseHas('testimonials', [
+            'user_id' => $peserta->id,
+            'rating' => 5,
+            'isi' => 'Programnya sangat membantu untuk pengembangan skill saya.',
+        ]);
+
+        $this->get(route('home'))
+            ->assertOk()
+            ->assertSee('Programnya sangat membantu untuk pengembangan skill saya.');
+    }
+
+    public function test_admin_can_update_and_delete_testimonial(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin',
+            'email_verified_at' => now(),
+        ]);
+
+        $peserta = User::factory()->create([
+            'role' => 'peserta',
+            'email_verified_at' => now(),
+        ]);
+
+        $testimonial = Testimonial::factory()->for($peserta)->create([
+            'rating' => 4,
+            'isi' => 'Awalnya cukup membantu.',
+        ]);
+
+        $this->actingAs($admin)
+            ->put(route('admin.testimonials.update', $testimonial), [
+                'rating' => 5,
+                'isi' => 'Testimoni sudah diperbarui oleh admin.',
+            ])
+            ->assertSessionHas('status');
+
+        $this->assertDatabaseHas('testimonials', [
+            'id' => $testimonial->id,
+            'rating' => 5,
+            'isi' => 'Testimoni sudah diperbarui oleh admin.',
+        ]);
+
+        $this->actingAs($admin)
+            ->delete(route('admin.testimonials.destroy', $testimonial))
+            ->assertSessionHas('status');
+
+        $this->assertDatabaseMissing('testimonials', [
+            'id' => $testimonial->id,
         ]);
     }
 
@@ -110,6 +179,18 @@ class AdminManagementTest extends TestCase
 
         $this->actingAs($mentor)
             ->get(route('admin.users.index'))
+            ->assertStatus(403);
+    }
+
+    public function test_non_admin_cannot_access_admin_testimonials_page(): void
+    {
+        $mentor = User::factory()->create([
+            'role' => 'mentor',
+            'email_verified_at' => now(),
+        ]);
+
+        $this->actingAs($mentor)
+            ->get(route('admin.testimonials.index'))
             ->assertStatus(403);
     }
 }

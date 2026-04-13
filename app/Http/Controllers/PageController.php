@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas;
 use App\Models\Program;
+use App\Models\Testimonial;
 use App\Models\User;
 use Illuminate\View\View;
 
@@ -18,7 +19,10 @@ class PageController extends Controller
             'participants' => User::where('role', 'peserta')->count(),
         ];
 
-        return view('landing', compact('stats'));
+        return view('landing', [
+            'stats' => $stats,
+            'testimonials' => Testimonial::with('user')->latest()->limit(3)->get(),
+        ]);
     }
 
     public function home(): View

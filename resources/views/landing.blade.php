@@ -220,48 +220,32 @@
     <section id="testimonials" class="soft-blue py-16">
         <div class="container mx-auto px-4">
             <h2 class="mb-12 text-center text-3xl font-bold text-blue-900">Testimoni Peserta</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card-hover rounded-2xl border border-blue-100 bg-white p-6 shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 font-bold text-white">AB</div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Ahmad Budi</h4>
-                            <p class="text-sm text-slate-600">Manager PT XYZ</p>
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                @forelse ($testimonials as $testimonial)
+                    @php
+                        $palette = ['from-indigo-500 to-indigo-700', 'from-cyan-500 to-cyan-700', 'from-emerald-500 to-emerald-700'];
+                        $gradient = $palette[$loop->index % count($palette)];
+                    @endphp
+                    <div class="card-hover rounded-2xl border border-blue-100 bg-white p-6 shadow-md">
+                        <div class="mb-4 flex items-center">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br {{ $gradient }} font-bold text-white">{{ $testimonial->user?->initials() }}</div>
+                            <div class="ml-4 min-w-0">
+                                <h4 class="truncate font-bold text-slate-900">{{ $testimonial->user?->name }}</h4>
+                                <p class="truncate text-sm text-slate-600">{{ $testimonial->user?->instansi ?? ucfirst($testimonial->user?->role ?? 'Peserta') }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 flex text-amber-400">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-slate-700">Program ini benar-benar mengubah cara saya memimpin tim. Materi sangat praktis dan dapat langsung diterapkan di tempat kerja.</p>
-                </div>
-
-                <div class="card-hover rounded-2xl border border-blue-100 bg-white p-6 shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-cyan-700 font-bold text-white">SR</div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Siti Rahma</h4>
-                            <p class="text-sm text-slate-600">Entrepreneur</p>
+                        <div class="mb-3 flex text-amber-400">
+                            @for ($i = 0; $i < $testimonial->rating; $i++)
+                                <i class="fas fa-star"></i>
+                            @endfor
                         </div>
+                        <p class="text-slate-700">{{ $testimonial->isi }}</p>
                     </div>
-                    <div class="mb-3 flex text-amber-400">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                @empty
+                    <div class="rounded-2xl border border-dashed border-blue-200 bg-white p-8 text-center text-slate-600 md:col-span-3">
+                        Belum ada testimoni yang ditambahkan peserta.
                     </div>
-                    <p class="text-slate-700">Kelas Excel & Data Analysis sangat membantu dalam menganalisis data penjualan bisnis saya. Instruktur sangat responsif dan supportif.</p>
-                </div>
-
-                <div class="card-hover rounded-2xl border border-blue-100 bg-white p-6 shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 font-bold text-white">DW</div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Dwi Wicaksono</h4>
-                            <p class="text-sm text-slate-600">Staf Development</p>
-                        </div>
-                    </div>
-                    <div class="mb-3 flex text-amber-400">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-slate-700">Platformnya user-friendly dan sangat mudah digunakan. Saya bisa belajar sesuai kecepatan saya sendiri dengan fleksibilitas penuh.</p>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>

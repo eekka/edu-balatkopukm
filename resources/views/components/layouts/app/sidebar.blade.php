@@ -90,6 +90,9 @@
                         <flux:navlist.item :href="route('admin.announcements.index')" :current="request()->routeIs('admin.announcements.*')" class="text-sm" wire:navigate>
                             Pengumuman
                         </flux:navlist.item>
+                        <flux:navlist.item :href="route('admin.testimonials.index')" :current="request()->routeIs('admin.testimonials.*')" class="text-sm" wire:navigate>
+                            Testimoni
+                        </flux:navlist.item>
                         <flux:navlist.item :href="route('admin.reports.index')" :current="request()->routeIs('admin.reports.*')" class="text-sm" wire:navigate>
                             Laporan
                         </flux:navlist.item>
@@ -110,6 +113,9 @@
                         </flux:navlist.item>
                         <flux:navlist.item :href="route('peserta.dashboard').'#pengumuman'" :current="request()->routeIs('peserta.dashboard')" class="text-sm" wire:navigate>
                             Pengumuman
+                        </flux:navlist.item>
+                        <flux:navlist.item :href="route('peserta.testimonials.index')" :current="request()->routeIs('peserta.testimonials.*')" class="text-sm" wire:navigate>
+                            Testimoni
                         </flux:navlist.item>
                     </flux:navlist.group>
                 @endif
