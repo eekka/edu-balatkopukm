@@ -76,6 +76,8 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'verified', 'role:mentor'])->prefix('mentor')->name('mentor.')->group(function () {
     Route::get('kelas', [MentorKelasController::class, 'index'])->name('kelas.index');
+    Route::get('kelas/create', [MentorKelasController::class, 'create'])->name('kelas.create');
+    Route::get('kelas/{kelas}', [MentorKelasController::class, 'show'])->name('kelas.show');
     Route::post('kelas', [MentorKelasController::class, 'store'])->name('kelas.store');
 });
 

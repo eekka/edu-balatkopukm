@@ -72,6 +72,59 @@ class KelasManagementTest extends TestCase
         ]);
     }
 
+    public function test_mentor_can_view_kelas_index_page(): void
+    {
+        $mentor = User::factory()->create([
+            'role' => 'mentor',
+            'email_verified_at' => now(),
+        ]);
+
+        $this->actingAs($mentor)
+            ->get(route('mentor.kelas.index'))
+            ->assertStatus(200)
+            ->assertSee('Kelas Saya');
+    }
+
+    public function test_mentor_can_view_create_kelas_page(): void
+    {
+        $mentor = User::factory()->create([
+            'role' => 'mentor',
+            'email_verified_at' => now(),
+        ]);
+
+        $this->actingAs($mentor)
+            ->get(route('mentor.kelas.create'))
+            ->assertStatus(200)
+            ->assertSee('Buat Kelas Baru');
+    }
+
+    public function test_mentor_can_view_kelas_show_page(): void
+    {
+        $mentor = User::factory()->create([
+            'role' => 'mentor',
+            'email_verified_at' => now(),
+        ]);
+        $program = Program::create([
+            'nama' => 'Program Public Speaking',
+            'deskripsi' => 'Pelatihan berbicara di depan umum.',
+        ]);
+        $kelas = Kelas::create([
+            'program_id' => $program->id,
+            'nama' => 'Kelas Public Speaking',
+            'deskripsi' => 'Kelas untuk peserta baru.',
+            'mentor_id' => $mentor->id,
+            'kapasitas' => 20,
+            'peserta_terdaftar' => 0,
+            'status' => 'aktif',
+        ]);
+
+        $this->actingAs($mentor)
+            ->get(route('mentor.kelas.show', $kelas))
+            ->assertStatus(200)
+            ->assertSee('Detail Kelas')
+            ->assertSee('Kelas Public Speaking');
+    }
+
     public function test_peserta_can_join_kelas_using_valid_code(): void
     {
         $mentor = User::factory()->create([

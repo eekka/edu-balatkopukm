@@ -75,7 +75,7 @@
                     </flux:navlist.group>
                 @elseif (auth()->user()->role === 'mentor')
                     <flux:navlist.group heading="Fitur Mentor" class="mt-4 grid">
-                        <flux:navlist.item :href="route('mentor.dashboard').'#kelas-saya'" :current="request()->routeIs('mentor.dashboard')" class="text-sm" wire:navigate>
+                        <flux:navlist.item :href="route('mentor.kelas.index')" :current="request()->routeIs('mentor.kelas.index')" class="text-sm" wire:navigate>
                             Kelas Saya
                         </flux:navlist.item>
                         <flux:navlist.item :href="route('mentor.dashboard').'#akses-cepat'" :current="request()->routeIs('mentor.dashboard')" class="text-sm" wire:navigate>

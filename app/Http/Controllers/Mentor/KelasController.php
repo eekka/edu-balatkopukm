@@ -18,7 +18,26 @@ class KelasController extends Controller
                 ->with(['program', 'enrollments'])
                 ->latest()
                 ->get(),
+        ]);
+    }
+
+    public function create(): View
+    {
+        return view('mentor.kelas.create-kelas', [
+            'myClasses' => Kelas::where('mentor_id', auth()->id())
+                ->with(['program', 'enrollments'])
+                ->latest()
+                ->get(),
             'programs' => Program::orderBy('nama')->get(),
+        ]);
+    }
+
+    public function show(Kelas $kelas): View
+    {
+        abort_unless(auth()->id() === $kelas->mentor_id, 403);
+
+        return view('mentor.kelas.show', [
+            'kelas' => $kelas->load(['program', 'enrollments.peserta', 'materis']),
         ]);
     }
 
