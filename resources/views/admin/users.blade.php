@@ -30,7 +30,7 @@
                     @endif
                 </div>
 
-                <form method="POST" action="{{ $editingUser ? route('admin.users.update', $editingUser) : route('admin.users.store') }}" class="grid gap-4 md:grid-cols-2">
+                <form method="POST" action="{{ $editingUser ? route('admin.users.update', $editingUser) : route('admin.users.store') }}" enctype="multipart/form-data" class="grid gap-4 md:grid-cols-2">
                     @csrf
                     @if ($editingUser)
                         @method('PUT')
@@ -38,46 +38,77 @@
 
                     <label class="block">
                         <span class="text-sm font-medium text-slate-700">Nama</span>
-                        <input name="name" value="{{ old('name', $editingUser?->name) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>
+                        <input name="name" value="{{ old('name', $editingUser?->name) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                     </label>
 
                     <label class="block">
                         <span class="text-sm font-medium text-slate-700">Email</span>
-                        <input type="email" name="email" value="{{ old('email', $editingUser?->email) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>
+                        <input type="email" name="email" value="{{ old('email', $editingUser?->email) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                     </label>
 
                     <label class="block">
                         <span class="text-sm font-medium text-slate-700">Username</span>
-                        <input name="username" value="{{ old('username', $editingUser?->username) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>
+                        <input name="username" value="{{ old('username', $editingUser?->username) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                     </label>
 
                     <label class="block">
                         <span class="text-sm font-medium text-slate-700">Role</span>
-                        <select name="role" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 focus:border-blue-500 focus:ring-blue-500" required>
+                        <select name="role" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                             @foreach (['admin' => 'Admin', 'mentor' => 'Mentor', 'peserta' => 'Peserta'] as $value => $label)
                                 <option value="{{ $value }}" @selected(old('role', $editingUser?->role) === $value)>{{ $label }}</option>
                             @endforeach
                         </select>
                     </label>
 
-                    <label class="block md:col-span-2">
+                    <label class="block md:col-span-2" x-data="{ showPassword: false }">
                         <span class="text-sm font-medium text-slate-700">Password {{ $editingUser ? '(kosongkan jika tidak diubah)' : '' }}</span>
-                        <input type="password" name="password" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" {{ $editingUser ? '' : 'required' }}>
+                        <div class="relative mt-1">
+                            <input x-bind:type="showPassword ? 'text' : 'password'" name="password" class="w-full rounded-none border border-slate-300 bg-white px-3 py-2 pr-24 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" {{ $editingUser ? '' : 'required' }}>
+                            <button
+                                type="button"
+                                x-on:click="showPassword = !showPassword"
+                                class="absolute right-2 top-1/2 -translate-y-1/2 rounded-md border border-slate-200 bg-slate-50 p-1.5 text-slate-700 hover:bg-slate-100"
+                                x-bind:aria-label="showPassword ? 'Sembunyikan password' : 'Lihat password'"
+                                x-bind:title="showPassword ? 'Sembunyikan password' : 'Lihat password'"
+                            >
+                                <svg x-show="!showPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12 18 18.75 12 18.75 2.25 12 2.25 12Z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg x-show="showPassword" x-cloak xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3l18 18" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.58 10.58A3 3 0 0 0 12 15a3 3 0 0 0 2.42-4.42" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.88 5.09A11.77 11.77 0 0 1 12 4.88c6 0 9.75 7.12 9.75 7.12a16.78 16.78 0 0 1-3.06 3.81" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.24 6.24A16.78 16.78 0 0 0 2.25 12s3.75 7.12 9.75 7.12a11.83 11.83 0 0 0 3.47-.5" />
+                                </svg>
+                            </button>
+                        </div>
                     </label>
 
                     <label class="block">
                         <span class="text-sm font-medium text-slate-700">Instansi</span>
-                        <input name="instansi" value="{{ old('instansi', $editingUser?->instansi) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500">
+                        <input name="instansi" value="{{ old('instansi', $editingUser?->instansi) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
                     </label>
 
                     <label class="block">
                         <span class="text-sm font-medium text-slate-700">No HP</span>
-                        <input name="no_hp" value="{{ old('no_hp', $editingUser?->no_hp) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500">
+                        <input name="no_hp" value="{{ old('no_hp', $editingUser?->no_hp) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
                     </label>
 
                     <label class="block md:col-span-2">
                         <span class="text-sm font-medium text-slate-700">Foto Profil</span>
-                        <input name="foto_profil" value="{{ old('foto_profil', $editingUser?->foto_profil) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" placeholder="URL foto atau path file">
+                        <div class="relative mt-1">
+                            <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 16V7m0 0-3 3m3-3 3 3" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 15.5v1A2.5 2.5 0 0 0 6.5 19h11a2.5 2.5 0 0 0 2.5-2.5v-1" />
+                                </svg>
+                            </span>
+                            <input type="file" name="foto_profil" accept="image/*" class="w-full rounded-none border border-slate-300 bg-white pl-9 pr-3 py-2 text-slate-700 file:mr-3 file:border-0 file:bg-slate-100 file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-slate-700 hover:file:bg-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
+                        </div>
+                        @if ($editingUser?->foto_profil)
+                            <p class="mt-1 text-xs text-slate-500">File saat ini: {{ basename($editingUser->foto_profil) }}</p>
+                        @endif
                     </label>
 
                     <div class="md:col-span-2 flex justify-end gap-3 pt-2">

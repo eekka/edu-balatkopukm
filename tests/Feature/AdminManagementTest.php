@@ -5,7 +5,9 @@ namespace Tests\Feature;
 use App\Models\Testimonial;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class AdminManagementTest extends TestCase
@@ -147,6 +149,9 @@ class AdminManagementTest extends TestCase
             'email_verified_at' => now(),
         ]);
 
+        Storage::fake('public');
+        $fotoProfil = UploadedFile::fake()->create('mentor-baru.jpg', 120, 'image/jpeg');
+
         $this->actingAs($admin)
             ->post(route('admin.users.store'), [
                 'name' => 'Mentor Baru',
@@ -154,12 +159,15 @@ class AdminManagementTest extends TestCase
                 'username' => 'mentor_baru',
                 'password' => 'password123',
                 'role' => 'mentor',
+                'foto_profil' => $fotoProfil,
             ])
             ->assertSessionHas('status');
 
         $user = User::where('email', 'mentor.baru@example.com')->firstOrFail();
 
         $this->assertTrue(Hash::check('password123', $user->password));
+        $this->assertNotNull($user->foto_profil);
+        Storage::disk('public')->assertExists($user->foto_profil);
 
         $this->actingAs($admin)
             ->post(route('admin.users.reset-password', $user))

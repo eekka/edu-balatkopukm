@@ -33,17 +33,17 @@
 
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Judul</span>
-                    <input name="judul" value="{{ old('judul', $editingAnnouncement?->judul) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>
+                    <input name="judul" value="{{ old('judul', $editingAnnouncement?->judul) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                 </label>
 
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Isi</span>
-                    <textarea name="isi" rows="5" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>{{ old('isi', $editingAnnouncement?->isi) }}</textarea>
+                    <textarea name="isi" rows="5" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>{{ old('isi', $editingAnnouncement?->isi) }}</textarea>
                 </label>
 
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Target</span>
-                    <select name="target" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 focus:border-blue-500 focus:ring-blue-500" required>
+                    <select name="target" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                         @foreach (['all' => 'Semua User', 'admin' => 'Admin', 'mentor' => 'Mentor', 'peserta' => 'Peserta'] as $value => $label)
                             <option value="{{ $value }}" @selected(old('target', $editingAnnouncement?->target ?? 'all') === $value)>{{ $label }}</option>
                         @endforeach

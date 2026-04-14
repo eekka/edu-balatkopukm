@@ -23,7 +23,7 @@ class UpdateUserRequest extends FormRequest
             'role' => ['required', 'in:admin,mentor,peserta'],
             'instansi' => ['nullable', 'string', 'max:255'],
             'no_hp' => ['nullable', 'string', 'max:30'],
-            'foto_profil' => ['nullable', 'string', 'max:255'],
+            'foto_profil' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ];
     }
 }

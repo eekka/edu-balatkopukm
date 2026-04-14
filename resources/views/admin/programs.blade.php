@@ -33,17 +33,17 @@
 
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Nama Program</span>
-                    <input name="nama" value="{{ old('nama', $editingProgram?->nama) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>
+                    <input name="nama" value="{{ old('nama', $editingProgram?->nama) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                 </label>
 
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Deskripsi</span>
-                    <textarea name="deskripsi" rows="4" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500">{{ old('deskripsi', $editingProgram?->deskripsi) }}</textarea>
+                    <textarea name="deskripsi" rows="4" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">{{ old('deskripsi', $editingProgram?->deskripsi) }}</textarea>
                 </label>
 
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Icon</span>
-                    <input name="icon" value="{{ old('icon', $editingProgram?->icon) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" placeholder="briefcase, computer, chart-line">
+                    <input name="icon" value="{{ old('icon', $editingProgram?->icon) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" placeholder="briefcase, computer, chart-line">
                 </label>
 
                 <div class="md:col-span-2 flex justify-end">

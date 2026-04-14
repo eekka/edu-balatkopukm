@@ -33,7 +33,7 @@
 
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Program</span>
-                    <select name="program_id" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 focus:border-blue-500 focus:ring-blue-500" required>
+                    <select name="program_id" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                         <option value="">Pilih program</option>
                         @foreach ($programs as $program)
                             <option value="{{ $program->id }}" @selected(old('program_id', $editingKelas?->program_id) == $program->id)>{{ $program->nama }}</option>
@@ -43,24 +43,24 @@
 
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Nama Kelas</span>
-                    <input name="nama" value="{{ old('nama', $editingKelas?->nama) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>
+                    <input name="nama" value="{{ old('nama', $editingKelas?->nama) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                 </label>
 
                 @if ($editingKelas)
                     <label class="block md:col-span-2">
                         <span class="text-sm font-medium text-slate-700">Kode Kelas</span>
-                        <input value="{{ $editingKelas->kode_kelas }}" class="mt-1 w-full rounded-xl border-slate-300 bg-slate-100 text-slate-900" readonly>
+                        <input value="{{ $editingKelas->kode_kelas }}" class="mt-1 w-full rounded-none border border-slate-300 bg-slate-100 px-3 py-2 text-slate-900" readonly>
                     </label>
                 @endif
 
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Deskripsi</span>
-                    <textarea name="deskripsi" rows="3" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500">{{ old('deskripsi', $editingKelas?->deskripsi) }}</textarea>
+                    <textarea name="deskripsi" rows="3" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">{{ old('deskripsi', $editingKelas?->deskripsi) }}</textarea>
                 </label>
 
                 <label class="block">
                     <span class="text-sm font-medium text-slate-700">Mentor</span>
-                    <select name="mentor_id" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 focus:border-blue-500 focus:ring-blue-500" required>
+                    <select name="mentor_id" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                         <option value="">Pilih mentor</option>
                         @foreach ($mentors as $mentor)
                             <option value="{{ $mentor->id }}" @selected(old('mentor_id', $editingKelas?->mentor_id) == $mentor->id)>{{ $mentor->name }}</option>
@@ -70,7 +70,7 @@
 
                 <label class="block">
                     <span class="text-sm font-medium text-slate-700">Status</span>
-                    <select name="status" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 focus:border-blue-500 focus:ring-blue-500" required>
+                    <select name="status" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                         @foreach (['draft' => 'Draft', 'aktif' => 'Aktif', 'selesai' => 'Selesai'] as $value => $label)
                             <option value="{{ $value }}" @selected(old('status', $editingKelas?->status) === $value)>{{ $label }}</option>
                         @endforeach
@@ -79,27 +79,27 @@
 
                 <label class="block">
                     <span class="text-sm font-medium text-slate-700">Mulai</span>
-                    <input type="datetime-local" name="mulai" value="{{ old('mulai', optional($editingKelas?->mulai)->format('Y-m-d\TH:i')) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 focus:border-blue-500 focus:ring-blue-500">
+                    <input type="datetime-local" name="mulai" value="{{ old('mulai', optional($editingKelas?->mulai)->format('Y-m-d\TH:i')) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
                 </label>
 
                 <label class="block">
                     <span class="text-sm font-medium text-slate-700">Selesai</span>
-                    <input type="datetime-local" name="selesai" value="{{ old('selesai', optional($editingKelas?->selesai)->format('Y-m-d\TH:i')) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 focus:border-blue-500 focus:ring-blue-500">
+                    <input type="datetime-local" name="selesai" value="{{ old('selesai', optional($editingKelas?->selesai)->format('Y-m-d\TH:i')) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
                 </label>
 
                 <label class="block">
                     <span class="text-sm font-medium text-slate-700">Kapasitas</span>
-                    <input type="number" name="kapasitas" value="{{ old('kapasitas', $editingKelas?->kapasitas ?? 30) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>
+                    <input type="number" name="kapasitas" value="{{ old('kapasitas', $editingKelas?->kapasitas ?? 30) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                 </label>
 
                 <label class="block">
                     <span class="text-sm font-medium text-slate-700">Peserta Terdaftar</span>
-                    <input type="number" name="peserta_terdaftar" value="{{ old('peserta_terdaftar', $editingKelas?->peserta_terdaftar ?? 0) }}" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500">
+                    <input type="number" name="peserta_terdaftar" value="{{ old('peserta_terdaftar', $editingKelas?->peserta_terdaftar ?? 0) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
                 </label>
 
                 <label class="block md:col-span-2">
                     <span class="text-sm font-medium text-slate-700">Tambah Peserta ke Kelas</span>
-                    <select name="peserta_ids[]" multiple class="mt-1 h-48 w-full rounded-xl border-slate-300 bg-white text-slate-900 focus:border-blue-500 focus:ring-blue-500">
+                    <select name="peserta_ids[]" multiple class="mt-1 h-48 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
                         @foreach ($pesertas as $peserta)
                             <option value="{{ $peserta->id }}" @selected(collect(old('peserta_ids', $editingKelas?->enrollments?->pluck('peserta_id')->all() ?? []))->contains($peserta->id))>{{ $peserta->name }} - {{ $peserta->email }}</option>
                         @endforeach

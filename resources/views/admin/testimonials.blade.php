@@ -30,12 +30,12 @@
 
                     <label class="block md:col-span-2">
                         <span class="text-sm font-medium text-slate-700">Peserta</span>
-                        <input value="{{ $editingTestimonial?->user?->name ?? '-' }}" class="mt-1 w-full rounded-xl border-slate-300 bg-slate-100 text-slate-700" disabled>
+                        <input value="{{ $editingTestimonial?->user?->name ?? '-' }}" class="mt-1 w-full rounded-none border border-slate-300 bg-slate-100 px-3 py-2 text-slate-700" disabled>
                     </label>
 
                     <label class="block">
                         <span class="text-sm font-medium text-slate-700">Rating</span>
-                        <select name="rating" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 focus:border-blue-500 focus:ring-blue-500" required>
+                        <select name="rating" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                             @for ($rating = 1; $rating <= 5; $rating++)
                                 <option value="{{ $rating }}" @selected(old('rating', $editingTestimonial?->rating ?? 5) == $rating)>{{ $rating }} Bintang</option>
                             @endfor
@@ -44,7 +44,7 @@
 
                     <label class="block md:col-span-2">
                         <span class="text-sm font-medium text-slate-700">Isi Testimoni</span>
-                        <textarea name="isi" rows="5" class="mt-1 w-full rounded-xl border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>{{ old('isi', $editingTestimonial?->isi) }}</textarea>
+                        <textarea name="isi" rows="5" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>{{ old('isi', $editingTestimonial?->isi) }}</textarea>
                     </label>
 
                     <div class="md:col-span-2 flex justify-end">
