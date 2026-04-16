@@ -27,18 +27,17 @@
                     {{ config('app.name', 'Akademi Balatkop') }}
                 </a>
 
-                <div class="relative z-10 mt-14 max-w-md space-y-6">
+                <div class="relative flex h-[22rem] flex-col items-center justify-center md:h-[36rem] md:gap-8 md:px-8">
+                    <img src="/asset/aball.png" alt="Karakter Belajar" class="w-auto h-auto max-w-sm md:max-w-md">
+                </div>
+                <div>
+                    <h2 class="text-4xl font-semibold text-center">Bangun kapasitas tim lewat pelatihan yang terstruktur.</h2>
+                </div>
+                <!-- <div class="relative z-10 max-w-md space-y-6">
                     <p class="text-xs font-semibold uppercase tracking-[0.22em] text-sky-100">Learning Management Platform</p>
-                    <h2 class="text-4xl font-semibold leading-tight">Bangun kapasitas tim lewat pelatihan yang terstruktur.</h2>
-                    <p class="text-sm leading-7 text-sky-100/90">
-                        Pantau progres belajar, kelola kelas, dan sampaikan materi dari satu dashboard yang rapi dan profesional.
-                    </p>
-                </div>
+                    <h2 class="text-4xl font-semibold ">Bangun kapasitas tim lewat pelatihan yang terstruktur.</h2>
+                </div> -->
 
-                <div class="relative z-10 mt-auto rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur">
-                    <p class="text-sm font-semibold">Satu akun, semua akses penting.</p>
-                    <p class="mt-2 text-sm leading-6 text-sky-100/90">Admin, mentor, dan peserta dapat masuk dengan alur yang aman dan cepat.</p>
-                </div>
             </aside>
         </div>
         @fluxScripts

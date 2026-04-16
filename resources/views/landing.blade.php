@@ -87,39 +87,7 @@
                 <div class="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/6 blur-2xl md:h-96 md:w-96"></div>
 
                 <div class="relative flex h-[22rem] flex-col items-center justify-center gap-5 px-4 md:h-[36rem] md:gap-8 md:px-8">
-                    <div class="grid w-full max-w-md grid-cols-3 items-center">
-                        <div class="justify-self-start flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-cyan-100 backdrop-blur-md md:h-14 md:w-14 md:text-xl">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <div></div>
-                        <div class="justify-self-end flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-sky-100 backdrop-blur-md md:h-14 md:w-14 md:text-xl">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                    </div>
-
-                    <div class="relative flex flex-col items-center justify-center text-center">
-                        <div class="absolute -top-8 h-36 w-36 rounded-full bg-cyan-300/12 blur-3xl md:h-52 md:w-52"></div>
-                        <div class="relative flex h-28 w-28 items-center justify-center rounded-full bg-white/10 text-4xl text-blue-50 shadow-[0_14px_35px_-24px_rgba(15,23,42,0.75)] backdrop-blur-md md:h-32 md:w-32 md:text-5xl">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                    </div>
-
-                    <div class="grid w-full max-w-md grid-cols-3 items-center">
-                        <div class="justify-self-start flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-emerald-100 backdrop-blur-md md:h-13 md:w-13 md:text-lg">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div class="justify-self-center text-center">
-                            <i class="fas fa-graduation-cap text-2xl text-cyan-100 md:text-3xl"></i>
-                        </div>
-                        <div class="justify-self-end flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-indigo-100 backdrop-blur-md md:h-13 md:w-13 md:text-lg">
-                            <i class="fas fa-users"></i>
-                        </div>
-                    </div>
-
-                    <div class="max-w-sm px-4 text-center">
-                        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-blue-100/80">Karakter Belajar</p>
-                        <p class="mt-2 text-base leading-7 text-blue-50/90 md:text-lg">Komposisi yang lebih natural, tanpa kotak keras, supaya ikon utama dan elemen kecil punya ruang yang rapi.</p>
-                    </div>
+                    <img src="/asset/aball.png" alt="Karakter Belajar" class="w-auto h-auto max-w-md md:max-w-lg">
                 </div>
             </div>
         </div>
