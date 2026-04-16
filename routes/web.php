@@ -7,9 +7,11 @@ use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Mentor\AnnouncementController as MentorAnnouncementController;
 use App\Http\Controllers\Mentor\DashboardController as MentorDashboardController;
 use App\Http\Controllers\Mentor\KelasController as MentorKelasController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Peserta\AnnouncementController as PesertaAnnouncementController;
 use App\Http\Controllers\Peserta\DashboardController as PesertaDashboardController;
 use App\Http\Controllers\Peserta\TestimonialController as PesertaTestimonialController;
 use Illuminate\Support\Facades\Route;
@@ -79,6 +81,11 @@ Route::middleware(['auth', 'verified', 'role:mentor'])->prefix('mentor')->name('
     Route::get('kelas/create', [MentorKelasController::class, 'create'])->name('kelas.create');
     Route::get('kelas/{kelas}', [MentorKelasController::class, 'show'])->name('kelas.show');
     Route::post('kelas', [MentorKelasController::class, 'store'])->name('kelas.store');
+
+    Route::get('announcements', [MentorAnnouncementController::class, 'index'])->name('announcements.index');
+    Route::post('announcements', [MentorAnnouncementController::class, 'store'])->name('announcements.store');
+    Route::put('announcements/{announcement}', [MentorAnnouncementController::class, 'update'])->name('announcements.update');
+    Route::delete('announcements/{announcement}', [MentorAnnouncementController::class, 'destroy'])->name('announcements.destroy');
 });
 
 // Peserta routes
@@ -92,5 +99,6 @@ Route::middleware(['auth', 'verified', 'role:peserta'])->prefix('peserta')->name
     Route::get('progress', [PesertaDashboardController::class, 'progress'])->name('progress');
     Route::get('testimonials', [PesertaTestimonialController::class, 'index'])->name('testimonials.index');
     Route::post('testimonials', [PesertaTestimonialController::class, 'store'])->name('testimonials.store');
+    Route::get('announcements', [PesertaAnnouncementController::class, 'index'])->name('announcements.index');
 
 });

@@ -46,6 +46,32 @@ class AdminManagementTest extends TestCase
             ->assertOk();
     }
 
+    public function test_mentor_can_open_announcement_page_and_create_announcement(): void
+    {
+        $mentor = User::factory()->create([
+            'role' => 'mentor',
+            'email_verified_at' => now(),
+        ]);
+
+        $this->actingAs($mentor)
+            ->get(route('mentor.announcements.index'))
+            ->assertOk()
+            ->assertSee('Pengumuman Global');
+
+        $this->actingAs($mentor)
+            ->post(route('mentor.announcements.store'), [
+                'judul' => 'Info Mentor',
+                'isi' => 'Pengumuman untuk peserta dari mentor.',
+                'target' => 'peserta',
+            ])
+            ->assertSessionHas('status');
+
+        $this->assertDatabaseHas('announcements', [
+            'judul' => 'Info Mentor',
+            'target' => 'peserta',
+        ]);
+    }
+
     public function test_admin_can_create_program_and_announcement(): void
     {
         $admin = User::factory()->create([

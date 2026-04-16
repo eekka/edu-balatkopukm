@@ -40,7 +40,8 @@
                 </span>
 
                 <span class="grid min-w-0 leading-tight">
-                    <span class="text-xl font-black tracking-tight sm:text-2xl">Learnify<sup class="text-sky-200">3</sup></span>
+                    <span class="text-xl font-black tracking-tight sm:text-2xl">Akademi <br>
+                        <sup class="text-sky-200">Balatkop</sup></span>
                     <span class="text-[0.62rem] uppercase tracking-[0.18em] text-blue-200/80 sm:text-[0.7rem] sm:tracking-[0.24em]">{{ $roleMeta['subtitle'] }}</span>
                 </span>
             </a>
@@ -60,34 +61,37 @@
                         <flux:navlist.item :href="route('admin.programs.index')" :current="request()->routeIs('admin.programs.*')" class="text-sm" wire:navigate>
                             Program
                         </flux:navlist.item>
-                        <flux:navlist.item :href="route('admin.kelas.index')" :current="request()->routeIs('admin.kelas.*')" class="text-sm" wire:navigate>
+                        <flux:navlist.item icon="book-open" :href="route('admin.kelas.index')" :current="request()->routeIs('admin.kelas.*')" class="text-sm" wire:navigate>
                             Kelas
                         </flux:navlist.item>
-                        <flux:navlist.item :href="route('admin.announcements.index')" :current="request()->routeIs('admin.announcements.*')" class="text-sm" wire:navigate>
+                        <flux:navlist.item icon="megaphone" :href="route('admin.announcements.index')" :current="request()->routeIs('admin.announcements.*')" class="text-sm" wire:navigate>
                             Pengumuman
                         </flux:navlist.item>
-                        <flux:navlist.item :href="route('admin.testimonials.index')" :current="request()->routeIs('admin.testimonials.*')" class="text-sm" wire:navigate>
+                        <flux:navlist.item icon="chat-bubble-bottom-center-text" :href="route('admin.testimonials.index')" :current="request()->routeIs('admin.testimonials.*')" class="text-sm" wire:navigate>
                             Testimoni
                         </flux:navlist.item>
-                        <flux:navlist.item :href="route('admin.reports.index')" :current="request()->routeIs('admin.reports.*')" class="text-sm" wire:navigate>
+                        <flux:navlist.item icon="chart-bar" :href="route('admin.reports.index')" :current="request()->routeIs('admin.reports.*')" class="text-sm" wire:navigate>
                             Laporan
                         </flux:navlist.item>
                     </flux:navlist.group>
                 @elseif (auth()->user()->role === 'mentor')
                     <flux:navlist.group heading="Fitur Mentor" class="mt-4 grid">
-                        <flux:navlist.item :href="route('mentor.kelas.index')" :current="request()->routeIs('mentor.kelas.index')" class="text-sm" wire:navigate>
-                            Kelas Saya
+                        <flux:navlist.item icon="book-open" :href="route('mentor.kelas.index')" :current="request()->routeIs('mentor.kelas.index')" class="text-sm" wire:navigate>
+                            Kelas
                         </flux:navlist.item>
-                        <flux:navlist.item :href="route('mentor.dashboard').'#akses-cepat'" :current="request()->routeIs('mentor.dashboard')" class="text-sm" wire:navigate>
+                        <flux:navlist.item icon="clipboard-document-list" :href="route('mentor.dashboard').'#akses-cepat'" :current="request()->routeIs('mentor.dashboard')" class="text-sm" wire:navigate>
                             Materi, Tugas, Nilai
+                        </flux:navlist.item>
+                        <flux:navlist.item icon="megaphone" :href="route('mentor.announcements.index').'#pengumuman'" :current="request()->routeIs('mentor.announcements.index')" class="text-sm" wire:navigate>
+                            Pengumuman
                         </flux:navlist.item>
                     </flux:navlist.group>
                 @elseif (auth()->user()->role === 'peserta')
                     <flux:navlist.group heading="Fitur Peserta" class="mt-4 grid">
                         <flux:navlist.item icon="book-open" :href="route('peserta.kelas.index').'#kelas-saya'" :current="request()->routeIs('peserta.kelas.index')" class="text-sm" wire:navigate>
-                            Kelas Saya
+                            Kelas
                         </flux:navlist.item>
-                        <flux:navlist.item icon="megaphone" :href="route('peserta.dashboard').'#pengumuman'" :current="request()->routeIs('peserta.dashboard')" class="text-sm" wire:navigate>
+                        <flux:navlist.item icon="megaphone" :href="route('peserta.announcements.index').'#pengumuman'" :current="request()->routeIs('peserta.announcements.index')" class="text-sm" wire:navigate>
                             Pengumuman
                         </flux:navlist.item>
                         <flux:navlist.item icon="chat-bubble-bottom-center-text" :href="route('peserta.testimonials.index')" :current="request()->routeIs('peserta.testimonials.*')" class="text-sm" wire:navigate>
@@ -135,7 +139,7 @@
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
             <div class="ml-3 flex min-w-0 flex-col">
-                <span class="truncate text-sm font-semibold text-slate-900 dark:text-white">Learnify 3</span>
+                <span class="truncate text-sm font-semibold text-slate-900 dark:text-white">Akademi Balatkop</span>
                 <span class="truncate text-xs text-slate-500 dark:text-slate-400">{{ $roleMeta['subtitle'] }}</span>
             </div>
 
