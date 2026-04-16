@@ -6,7 +6,7 @@
     <body class="min-h-screen bg-slate-50 antialiased">
         <div class="grid min-h-dvh lg:grid-cols-2">
             
-            <main class="flex items-center justify-center px-6 py-12 sm:px-10">
+            <main class="flex items-center justify-center px-6 sm:px-10">
                 <div class="w-full max-w-md">
                     <a href="{{ route('home') }}" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 lg:hidden" wire:navigate>
                         <x-app-logo-icon class="h-5 fill-current text-sky-700" />
@@ -27,16 +27,15 @@
                     {{ config('app.name', 'Akademi Balatkop') }}
                 </a>
 
-                <div class="relative flex h-[22rem] flex-col items-center justify-center md:h-[36rem] md:gap-8 md:px-8">
+                <div class="relative z-10 mt-4  max-w-md space-y-6">
+                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-sky-100">Learning Management Platform</p>
+                </div>
+                <div class="relative mt-16 flex h-[22rem] flex-col items-center justify-center md:gap-2 md:px-4">
                     <img src="/asset/aball.png" alt="Karakter Belajar" class="w-auto h-auto max-w-sm md:max-w-md">
                 </div>
-                <div>
+                <div class="relative z-10 mt-6 items-center">
                     <h2 class="text-4xl font-semibold text-center">Bangun kapasitas tim lewat pelatihan yang terstruktur.</h2>
                 </div>
-                <!-- <div class="relative z-10 max-w-md space-y-6">
-                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-sky-100">Learning Management Platform</p>
-                    <h2 class="text-4xl font-semibold ">Bangun kapasitas tim lewat pelatihan yang terstruktur.</h2>
-                </div> -->
 
             </aside>
         </div>
