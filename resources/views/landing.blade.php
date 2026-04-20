@@ -74,6 +74,12 @@
                 filter: blur(14px);
             }
         }
+
+        @media (min-width: 768px) {
+            .hero-image-wrap {
+                max-width: 32rem;
+            }
+        }
     </style>
 </head>
 <body class="overflow-x-hidden bg-slate-50 text-slate-800">

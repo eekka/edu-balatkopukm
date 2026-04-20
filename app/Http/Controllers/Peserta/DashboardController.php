@@ -31,7 +31,7 @@ class DashboardController extends Controller
                 ->with('kelas')
                 ->count(),
             'recentAnnouncements' => Announcement::with('creator')
-                ->whereIn('target', ['all', 'peserta'])
+                ->visibleTo(auth()->user())
                 ->latest()
                 ->limit(4)
                 ->get(),

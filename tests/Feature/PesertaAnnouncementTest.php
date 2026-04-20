@@ -50,4 +50,40 @@ class PesertaAnnouncementTest extends TestCase
             ->assertSee('Info Umum')
             ->assertDontSee('Info Mentor');
     }
+
+    public function test_only_selected_peserta_can_access_targeted_announcement(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin',
+            'email_verified_at' => now(),
+        ]);
+        $selectedPeserta = User::factory()->create([
+            'role' => 'peserta',
+            'email_verified_at' => now(),
+        ]);
+        $nonSelectedPeserta = User::factory()->create([
+            'role' => 'peserta',
+            'email_verified_at' => now(),
+        ]);
+
+        $announcement = Announcement::create([
+            'created_by' => $admin->id,
+            'judul' => 'Info Khusus',
+            'isi' => 'Hanya peserta yang dipilih admin yang bisa lihat.',
+            'target' => 'all',
+            'published_at' => now(),
+        ]);
+
+        $announcement->targetedUsers()->attach($selectedPeserta->id);
+
+        $this->actingAs($selectedPeserta)
+            ->get(route('peserta.announcements.index'))
+            ->assertOk()
+            ->assertSee('Info Khusus');
+
+        $this->actingAs($nonSelectedPeserta)
+            ->get(route('peserta.announcements.index'))
+            ->assertOk()
+            ->assertDontSee('Info Khusus');
+    }
 }
