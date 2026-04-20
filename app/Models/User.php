@@ -84,4 +84,8 @@ class User extends Authenticatable // implements MustVerifyEmail
     {
         return $this->hasMany(Testimonial::class);
     }
+    public function absensis(): HasMany
+    {
+        return $this->hasMany(Absensi::class, 'peserta_id');
+    }
 }

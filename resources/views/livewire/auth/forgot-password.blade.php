@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Password;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('components.layouts.auth')] class extends Component {
+new #[Layout('components.layouts.auth.split')] class extends Component
+{
     public string $email = '';
 
     /**
@@ -18,27 +19,40 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         Password::sendResetLink($this->only('email'));
 
-        session()->flash('status', __('A reset link will be sent if the account exists.'));
+        session()->flash('status', __('Tautan reset password akan dikirim jika akun ditemukan.'));
     }
 }; ?>
 
-<div class="flex flex-col gap-6">
-    <x-auth-header title="Forgot password" description="Enter your email to receive a password reset link" />
+<div class="rounded-3xl border border-slate-200 bg-white/95 p-6 shadow-[0_16px_40px_-24px_rgba(15,23,42,0.35)] backdrop-blur sm:p-8">
+    <img src="{asset('')}" alt="">
+    <div class="mb-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Portal Akademi</p>
+        <h1 class="mt-3 text-2xl font-semibold tracking-tight text-slate-900">Lupa Password</h1>
+        <p class="mt-2 text-sm leading-6 text-slate-600">Masukkan email Anda untuk menerima tautan reset password.</p>
+    </div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
+    <x-auth-session-status class="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700" :status="session('status')" />
 
-    <form wire:submit="sendPasswordResetLink" class="flex flex-col gap-6">
-        <!-- Email Address -->
-        <div class="grid gap-2">
-            <flux:input wire:model="email" label="{{ __('Email Address') }}" type="email" name="email" required autofocus placeholder="email@example.com" />
-        </div>
+    <form wire:submit="sendPasswordResetLink" class="space-y-5">
+        <flux:input
+            class="text-slate-900"
+            input:class="border! border-slate-200! text-slate-900 placeholder:text-slate-400"
+            wire:model="email"
+            label="{{ __('Email Address') }}"
+            type="email"
+            name="email"
+            required
+            autofocus
+            placeholder="Alamat Email"
+        />
 
-        <flux:button variant="primary" type="submit" class="w-full">{{ __('Email password reset link') }}</flux:button>
+        <flux:button variant="primary" type="submit" class="w-full rounded-xl bg-sky-600 hover:bg-sky-700 text-white">
+            {{ __('Kirim tautan reset password') }}
+        </flux:button>
     </form>
 
-    <div class="space-x-1 text-center text-sm text-zinc-400">
-        Or, return to
-        <x-text-link href="{{ route('login') }}">log in</x-text-link>
+    <div class="mt-6 border-t border-slate-200 pt-4 text-center text-sm text-slate-600">
+        Kembali ke
+        <x-text-link href="{{ route('login') }}" class="font-semibold text-sky-700! hover:text-sky-800 no-underline!">Masuk</x-text-link>
     </div>
 </div>
