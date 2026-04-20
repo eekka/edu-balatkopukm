@@ -32,32 +32,32 @@
 
                     <div class="bg-slate-50 px-6 py-7 sm:px-8 sm:py-8">
                         <div class="grid gap-3 sm:grid-cols-2">
-                            <div class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+                            <div class="rounded-none border border-slate-200 bg-white p-4 shadow-sm">
                                 <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Admin</p>
                                 <p class="mt-2 text-3xl font-black tracking-tight text-slate-900">{{ $totalAdmins }}</p>
                                 <p class="mt-2 text-sm text-slate-500">Akun pemegang kendali sistem</p>
                             </div>
 
-                            <div class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+                            <div class="rounded-none border border-slate-200 bg-white p-4 shadow-sm">
                                 <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Mentor</p>
                                 <p class="mt-2 text-3xl font-black tracking-tight text-slate-900">{{ $totalMentors }}</p>
                                 <p class="mt-2 text-sm text-slate-500">Pengajar dan pengelola kelas</p>
                             </div>
 
-                            <div class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+                            <div class="rounded-none border border-slate-200 bg-white p-4 shadow-sm">
                                 <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Peserta</p>
                                 <p class="mt-2 text-3xl font-black tracking-tight text-slate-900">{{ $totalPeserta }}</p>
                                 <p class="mt-2 text-sm text-slate-500">Akun pembelajaran aktif</p>
                             </div>
 
-                            <div class="rounded-3xl border theme-border-primary-soft theme-card-primary p-4 shadow-sm">
+                            <div class="rounded-none border theme-border-primary-soft theme-card-primary p-4 shadow-sm">
                                 <p class="text-xs font-semibold uppercase tracking-[0.22em] theme-text-primary">Total Akun</p>
                                 <p class="mt-2 text-3xl font-black tracking-tight theme-text-primary">{{ $totalUsers }}</p>
                                 <p class="mt-2 text-sm text-slate-600">Semua user di platform</p>
                             </div>
                         </div>
 
-                        <div class="mt-4 rounded-3xl theme-bg-primary-dark px-5 py-5 text-white shadow-[0_20px_40px_-24px_rgba(15,23,42,0.9)]">
+                        <div class="mt-4 rounded-none theme-bg-primary-dark px-5 py-5 text-white shadow-[0_20px_40px_-24px_rgba(15,23,42,0.9)]">
                             <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/80">Kendali Penuh</p>
                             <p class="mt-2 text-sm leading-6 text-white/80">
                                 Gunakan menu di sisi kiri untuk mengelola akun mentor dan peserta, menata program dan kelas, serta menyebarkan pengumuman global.
@@ -68,60 +68,19 @@
             </section>
 
             <section class="grid gap-4 md:grid-cols-3">
-                <article class="rounded-3xl border border-blue-100 bg-white p-5 shadow-sm">
-                    <div class="flex items-center justify-between gap-4">
-                        <div>
-                            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Akun Admin</p>
-                            <p class="mt-2 text-3xl font-black tracking-tight text-slate-900">{{ $totalAdmins }}</p>
-                            <p class="mt-2 text-sm text-slate-500">Mengatur seluruh sistem</p>
-                        </div>
-                        <div class="flex size-14 items-center justify-center rounded-2xl bg-blue-600 text-2xl text-white shadow-sm">
-                            A
-                        </div>
-                    </div>
-                </article>
-
-                <article class="rounded-3xl border border-blue-100 bg-white p-5 shadow-sm">
-                    <div class="flex items-center justify-between gap-4">
-                        <div>
-                            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Akun Mentor</p>
-                            <p class="mt-2 text-3xl font-black tracking-tight text-slate-900">{{ $totalMentors }}</p>
-                            <p class="mt-2 text-sm text-slate-500">Pengelola kelas dan materi</p>
-                        </div>
-                        <div class="flex size-14 items-center justify-center rounded-2xl bg-sky-500 text-2xl text-white shadow-sm">
-                            M
-                        </div>
-                    </div>
-                </article>
-
-                <article class="rounded-3xl border border-blue-100 bg-white p-5 shadow-sm">
-                    <div class="flex items-center justify-between gap-4">
-                        <div>
-                            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Akun Peserta</p>
-                            <p class="mt-2 text-3xl font-black tracking-tight text-slate-900">{{ $totalPeserta }}</p>
-                            <p class="mt-2 text-sm text-slate-500">Pengguna pembelajaran aktif</p>
-                        </div>
-                        <div class="flex size-14 items-center justify-center rounded-2xl bg-blue-400 text-2xl text-white shadow-sm">
-                            P
-                        </div>
-                    </div>
-                </article>
-            </section>
-
-            <section class="grid gap-4 md:grid-cols-3">
-                <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+                <article class="rounded-none border border-slate-200 bg-white p-5 shadow-sm">
                     <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Program</p>
                     <p class="mt-2 text-3xl font-black tracking-tight text-slate-900">{{ $totalPrograms }}</p>
                     <p class="mt-2 text-sm text-slate-500">Semua program pelatihan</p>
                 </article>
 
-                <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+                <article class="rounded-none border border-slate-200 bg-white p-5 shadow-sm">
                     <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Kelas</p>
                     <p class="mt-2 text-3xl font-black tracking-tight text-slate-900">{{ $totalClasses }}</p>
                     <p class="mt-2 text-sm text-slate-500">Termasuk kelas aktif dan draft</p>
                 </article>
 
-                <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+                <article class="rounded-none border border-slate-200 bg-white p-5 shadow-sm">
                     <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Pengumuman</p>
                     <p class="mt-2 text-3xl font-black tracking-tight text-slate-900">{{ $totalAnnouncements }}</p>
                     <p class="mt-2 text-sm text-slate-500">Broadcast global ke pengguna</p>

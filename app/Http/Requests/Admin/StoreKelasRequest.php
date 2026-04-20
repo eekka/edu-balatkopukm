@@ -24,8 +24,8 @@ class StoreKelasRequest extends FormRequest
             'kapasitas' => ['required', 'integer', 'min:1'],
             'peserta_terdaftar' => ['nullable', 'integer', 'min:0'],
             'status' => ['required', 'in:aktif,draft,selesai'],
-            'peserta_ids' => ['array'],
-            'peserta_ids.*' => [Rule::exists('users', 'id')->where(fn ($query) => $query->where('role', 'peserta'))],
+            'peserta_ids' => ['nullable', 'array'],
+            'peserta_ids.*' => ['distinct', Rule::exists('users', 'id')->where(fn ($query) => $query->where('role', 'peserta'))],
         ];
     }
 }

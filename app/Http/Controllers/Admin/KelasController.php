@@ -30,7 +30,7 @@ class KelasController extends Controller
     public function store(StoreKelasRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $kelas = Kelas::create(collect($data)->except('peserta_ids')->all());
+        $kelas = Kelas::create(collect($data)->except(['peserta_ids', 'peserta_terdaftar'])->all());
 
         $this->syncPeserta($kelas, $data['peserta_ids'] ?? []);
 
@@ -40,7 +40,7 @@ class KelasController extends Controller
     public function update(UpdateKelasRequest $request, Kelas $kelas): RedirectResponse
     {
         $data = $request->validated();
-        $kelas->update(collect($data)->except('peserta_ids')->all());
+        $kelas->update(collect($data)->except(['peserta_ids', 'peserta_terdaftar'])->all());
 
         $this->syncPeserta($kelas, $data['peserta_ids'] ?? []);
 
@@ -56,6 +56,12 @@ class KelasController extends Controller
 
     protected function syncPeserta(Kelas $kelas, array $pesertaIds): void
     {
+        $pesertaIds = collect($pesertaIds)
+            ->map(fn (mixed $pesertaId): int => (int) $pesertaId)
+            ->unique()
+            ->values()
+            ->all();
+
         $kelas->enrollments()->delete();
 
         foreach ($pesertaIds as $pesertaId) {
@@ -65,5 +71,9 @@ class KelasController extends Controller
                 'status' => 'aktif',
             ]);
         }
+
+        $kelas->update([
+            'peserta_terdaftar' => count($pesertaIds),
+        ]);
     }
 }

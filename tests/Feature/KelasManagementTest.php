@@ -72,6 +72,97 @@ class KelasManagementTest extends TestCase
         ]);
     }
 
+    public function test_admin_can_manually_replace_mentor_and_participants_when_editing_kelas(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin',
+            'email_verified_at' => now(),
+        ]);
+        $mentorAwal = User::factory()->create([
+            'role' => 'mentor',
+            'email_verified_at' => now(),
+        ]);
+        $mentorBaru = User::factory()->create([
+            'role' => 'mentor',
+            'email_verified_at' => now(),
+        ]);
+        $pesertaA = User::factory()->create([
+            'role' => 'peserta',
+            'email_verified_at' => now(),
+        ]);
+        $pesertaB = User::factory()->create([
+            'role' => 'peserta',
+            'email_verified_at' => now(),
+        ]);
+        $pesertaC = User::factory()->create([
+            'role' => 'peserta',
+            'email_verified_at' => now(),
+        ]);
+
+        $program = Program::create([
+            'nama' => 'Program Operasional',
+            'deskripsi' => 'Program untuk pengujian admin.',
+        ]);
+
+        $kelas = Kelas::create([
+            'program_id' => $program->id,
+            'nama' => 'Kelas Uji Admin',
+            'deskripsi' => 'Kelas awal sebelum diedit.',
+            'mentor_id' => $mentorAwal->id,
+            'kapasitas' => 30,
+            'peserta_terdaftar' => 2,
+            'status' => 'aktif',
+        ]);
+
+        $kelas->enrollments()->createMany([
+            [
+                'peserta_id' => $pesertaA->id,
+                'terdaftar_pada' => now(),
+                'status' => 'aktif',
+            ],
+            [
+                'peserta_id' => $pesertaB->id,
+                'terdaftar_pada' => now(),
+                'status' => 'aktif',
+            ],
+        ]);
+
+        $this->actingAs($admin)
+            ->put(route('admin.kelas.update', $kelas), [
+                'program_id' => $program->id,
+                'nama' => 'Kelas Uji Admin',
+                'deskripsi' => 'Kelas setelah diubah admin.',
+                'mentor_id' => $mentorBaru->id,
+                'kapasitas' => 30,
+                'status' => 'aktif',
+                'peserta_ids' => [$pesertaB->id, $pesertaC->id],
+            ])
+            ->assertSessionHas('status');
+
+        $this->assertDatabaseHas('kelas', [
+            'id' => $kelas->id,
+            'mentor_id' => $mentorBaru->id,
+            'peserta_terdaftar' => 2,
+        ]);
+
+        $this->assertDatabaseMissing('kelas_enrollments', [
+            'kelas_id' => $kelas->id,
+            'peserta_id' => $pesertaA->id,
+        ]);
+
+        $this->assertDatabaseHas('kelas_enrollments', [
+            'kelas_id' => $kelas->id,
+            'peserta_id' => $pesertaB->id,
+            'status' => 'aktif',
+        ]);
+
+        $this->assertDatabaseHas('kelas_enrollments', [
+            'kelas_id' => $kelas->id,
+            'peserta_id' => $pesertaC->id,
+            'status' => 'aktif',
+        ]);
+    }
+
     public function test_mentor_can_view_kelas_index_page(): void
     {
         $mentor = User::factory()->create([
