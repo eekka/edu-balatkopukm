@@ -37,6 +37,9 @@
                         <div class="mt-6 space-y-5">
                             @forelse ($announcements as $announcement)
                                 <article class="rounded-[28px] border border-slate-200 bg-slate-50 p-5 shadow-sm transition hover:border-sky-300">
+                                    @if ($announcement->image_path)
+                                        <img src="{{ asset('storage/'.$announcement->image_path) }}" alt="Gambar {{ $announcement->judul }}" class="mb-4 h-44 w-full rounded-2xl border border-slate-200 object-cover">
+                                    @endif
                                     <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                                         <div class="min-w-0">
                                             <h4 class="text-lg font-semibold text-slate-900">{{ $announcement->judul }}</h4>

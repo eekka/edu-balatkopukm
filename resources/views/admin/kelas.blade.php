@@ -25,6 +25,23 @@
                 @endif
             </div>
 
+            @if ($errors->any())
+                <div class="mb-4 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
+                    <p class="font-semibold">Periksa kembali form berikut:</p>
+                    <ul class="mt-2 list-disc space-y-1 pl-5">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @php
+                $selectedPesertaIds = collect(old('peserta_ids', $editingKelas?->enrollments?->pluck('peserta_id')->all() ?? []))
+                    ->map(fn ($id) => (int) $id)
+                    ->all();
+            @endphp
+
             <form method="POST" action="{{ $editingKelas ? route('admin.kelas.update', $editingKelas) : route('admin.kelas.store') }}" class="grid gap-4 md:grid-cols-2">
                 @csrf
                 @if ($editingKelas)
@@ -66,6 +83,9 @@
                             <option value="{{ $mentor->id }}" @selected(old('mentor_id', $editingKelas?->mentor_id) == $mentor->id)>{{ $mentor->name }}</option>
                         @endforeach
                     </select>
+                    @if ($editingKelas?->mentor)
+                        <p class="mt-2 text-xs text-slate-500">Mentor saat ini: <span class="font-semibold text-slate-700">{{ $editingKelas->mentor->name }}</span>. Pilih mentor lain jika ingin mengganti.</p>
+                    @endif
                 </label>
 
                 <label class="block">
@@ -79,12 +99,12 @@
 
                 <label class="block">
                     <span class="text-sm font-medium text-slate-700">Mulai</span>
-                    <input type="datetime-local" name="mulai" value="{{ old('mulai', optional($editingKelas?->mulai)->format('Y-m-d\TH:i')) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
+                    <input type="date" name="mulai" value="{{ old('mulai', optional($editingKelas?->mulai)->format('Y-m-d')) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
                 </label>
 
                 <label class="block">
                     <span class="text-sm font-medium text-slate-700">Selesai</span>
-                    <input type="datetime-local" name="selesai" value="{{ old('selesai', optional($editingKelas?->selesai)->format('Y-m-d\TH:i')) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
+                    <input type="date" name="selesai" value="{{ old('selesai', optional($editingKelas?->selesai)->format('Y-m-d')) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
                 </label>
 
                 <label class="block">
@@ -92,19 +112,48 @@
                     <input type="number" name="kapasitas" value="{{ old('kapasitas', $editingKelas?->kapasitas ?? 30) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                 </label>
 
-                <label class="block">
-                    <span class="text-sm font-medium text-slate-700">Peserta Terdaftar</span>
-                    <input type="number" name="peserta_terdaftar" value="{{ old('peserta_terdaftar', $editingKelas?->peserta_terdaftar ?? 0) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
-                </label>
+                <div class="block md:col-span-2">
+                    <span class="text-sm font-medium text-slate-700">Kelola Peserta Kelas (Tambah / Hapus Manual)</span>
+                    <p class="mt-1 text-xs text-slate-500">Centang peserta yang harus terdaftar pada kelas ini. Hilangkan centang untuk menghapus dari kelas.</p>
 
-                <label class="block md:col-span-2">
-                    <span class="text-sm font-medium text-slate-700">Tambah Peserta ke Kelas</span>
-                    <select name="peserta_ids[]" multiple class="mt-1 h-48 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
+                    <div class="mt-3">
+                        <input
+                            type="search"
+                            data-peserta-search
+                            placeholder="Cari nama atau email peserta..."
+                            class="w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                        >
+                    </div>
+
+                    <div class="mt-2 max-h-64 space-y-2 overflow-y-auto rounded-none border border-slate-300 bg-white p-3">
                         @foreach ($pesertas as $peserta)
-                            <option value="{{ $peserta->id }}" @selected(collect(old('peserta_ids', $editingKelas?->enrollments?->pluck('peserta_id')->all() ?? []))->contains($peserta->id))>{{ $peserta->name }} - {{ $peserta->email }}</option>
+                            <label
+                                data-peserta-item
+                                data-search="{{ strtolower($peserta->name.' '.$peserta->email) }}"
+                                class="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3 border px-3 py-3 transition-colors"
+                            >
+                                <input
+                                    type="checkbox"
+                                    name="peserta_ids[]"
+                                    value="{{ $peserta->id }}"
+                                    @checked(in_array($peserta->id, $selectedPesertaIds, true))
+                                    class="peer sr-only"
+                                >
+                                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-none border border-rose-500 bg-white text-transparent transition-colors peer-checked:border-emerald-600 peer-checked:bg-white peer-checked:text-emerald-600 peer-focus-visible:ring-2 peer-focus-visible:ring-emerald-400 peer-focus-visible:ring-offset-2">
+                                    <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.25 7.25a1 1 0 01-1.42 0l-3.25-3.25a1 1 0 111.414-1.42l2.543 2.544 6.543-6.544a1 1 0 011.42 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <span>
+                                    <span class="block text-sm font-medium text-slate-800">{{ $peserta->name }}</span>
+                                    <span class="block text-xs text-slate-500">{{ $peserta->email }}</span>
+                                </span>
+                            </label>
                         @endforeach
-                    </select>
-                </label>
+
+                        <p data-peserta-empty class="hidden py-2 text-sm text-slate-500">Peserta tidak ditemukan untuk kata kunci tersebut.</p>
+                    </div>
+                </div>
 
                 <div class="md:col-span-2 flex justify-end">
                     <button type="submit" class="rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-800">{{ $editingKelas ? 'Update Kelas' : 'Simpan Kelas' }}</button>
@@ -139,4 +188,58 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.querySelector('[data-peserta-search]');
+        const pesertaItems = Array.from(document.querySelectorAll('[data-peserta-item]'));
+        const emptyState = document.querySelector('[data-peserta-empty]');
+
+        const toggleCheckedStyle = function (item, checkbox) {
+            if (checkbox.checked) {
+                item.classList.remove('border-rose-300');
+                item.classList.add('border-emerald-400');
+            } else {
+                item.classList.remove('border-emerald-400');
+                item.classList.add('border-rose-300');
+            }
+        };
+
+        const applySearch = function () {
+            const keyword = (searchInput?.value ?? '').toLowerCase().trim();
+            let visibleCount = 0;
+
+            pesertaItems.forEach(function (item) {
+                const haystack = item.getAttribute('data-search') ?? '';
+                const isVisible = keyword === '' || haystack.includes(keyword);
+
+                item.classList.toggle('hidden', !isVisible);
+                if (isVisible) {
+                    visibleCount++;
+                }
+            });
+
+            if (emptyState) {
+                emptyState.classList.toggle('hidden', visibleCount > 0);
+            }
+        };
+
+        pesertaItems.forEach(function (item) {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            if (!checkbox) {
+                return;
+            }
+
+            toggleCheckedStyle(item, checkbox);
+            checkbox.addEventListener('change', function () {
+                toggleCheckedStyle(item, checkbox);
+            });
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', applySearch);
+            applySearch();
+        }
+    });
+</script>
 </x-layouts.app>

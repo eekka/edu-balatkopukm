@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Announcement;
 use App\Models\Testimonial;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -101,6 +102,40 @@ class AdminManagementTest extends TestCase
 
         $this->assertDatabaseHas('announcements', [
             'judul' => 'Jadwal Pelatihan Baru',
+        ]);
+    }
+
+    public function test_admin_can_create_announcement_with_image_and_specific_target_users(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin',
+            'email_verified_at' => now(),
+        ]);
+        $targetedPeserta = User::factory()->create([
+            'role' => 'peserta',
+            'email_verified_at' => now(),
+        ]);
+
+        Storage::fake('public');
+        $announcementImage = UploadedFile::fake()->create('pengumuman.png', 200, 'image/png');
+
+        $this->actingAs($admin)
+            ->post(route('admin.announcements.store'), [
+                'judul' => 'Info Khusus Peserta Terpilih',
+                'isi' => 'Pengumuman ini hanya untuk user tertentu.',
+                'target' => 'all',
+                'user_ids' => [$targetedPeserta->id],
+                'image' => $announcementImage,
+            ])
+            ->assertSessionHas('status');
+
+        $announcement = Announcement::firstOrFail();
+
+        $this->assertNotNull($announcement->image_path);
+        Storage::disk('public')->assertExists($announcement->image_path);
+        $this->assertDatabaseHas('announcement_user', [
+            'announcement_id' => $announcement->id,
+            'user_id' => $targetedPeserta->id,
         ]);
     }
 

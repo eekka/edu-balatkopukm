@@ -175,6 +175,9 @@
                         <div class="space-y-3 p-5 sm:p-6">
                             @forelse ($recentAnnouncements as $announcement)
                                 <div class="rounded-2xl bg-white/10 px-4 py-3">
+                                    @if ($announcement->image_path)
+                                        <img src="{{ asset('storage/'.$announcement->image_path) }}" alt="Gambar {{ $announcement->judul }}" class="mb-3 h-28 w-full rounded-xl object-cover">
+                                    @endif
                                     <div class="flex items-start justify-between gap-3">
                                         <div class="min-w-0">
                                             <p class="truncate text-sm font-semibold text-white">{{ $announcement->judul }}</p>

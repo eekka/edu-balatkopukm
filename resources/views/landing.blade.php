@@ -41,6 +41,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
+            max-width: 18.5rem;
         }
 
         .hero-image-wrap::before {
@@ -60,22 +62,41 @@
             z-index: 1;
             filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.24));
         }
+
+        @media (max-width: 640px) {
+            .hero-image-wrap {
+                max-width: 15.5rem;
+            }
+
+            .hero-image-wrap::before {
+                width: 92%;
+                height: 72%;
+                filter: blur(14px);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-image-wrap {
+                max-width: 32rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="overflow-x-hidden bg-slate-50 text-slate-800">
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 border-b border-blue-100 bg-white/95 shadow-sm backdrop-blur">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-graduation-cap text-2xl text-blue-700"></i>
-                <span class="text-2xl font-bold text-blue-900">Akademi Balatkop</span>
+        <div class="container mx-auto flex flex-wrap items-center justify-between gap-y-2 px-4 py-3 md:py-4">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-graduation-cap text-xl text-blue-700 md:text-2xl"></i>
+                <span class="text-xl font-bold leading-tight text-blue-900 sm:hidden">Akademi</span>
+                <span class="hidden text-2xl font-bold leading-tight text-blue-900 sm:inline">Akademi Balatkop</span>
             </div>
             <div class="hidden md:flex space-x-8">
                 <a href="#programs" class="text-slate-700 hover:text-blue-700 transition">Program</a>
                 <a href="#stats" class="text-slate-700 hover:text-blue-700 transition">Statistik</a>
                 <a href="#testimonials" class="text-slate-700 hover:text-blue-700 transition">Testimoni</a>
             </div>
-            <div class="flex space-x-4">
+            <div class="flex items-center gap-2 md:gap-4">
                 @auth
                     <a href="{{ route('dashboard') }}" class="rounded-lg bg-blue-50 px-4 py-2 text-blue-700 hover:bg-blue-100 transition">Dashboard</a>
                     <form method="POST" action="{{ route('logout') }}" class="inline">
@@ -83,25 +104,25 @@
                         <button type="submit" class="px-4 py-2 text-red-600 hover:text-red-700">Logout</button>
                     </form>
                 @else
-                    <a href="{{ route('login') }}" class="px-4 py-2 text-slate-700 hover:text-blue-700 transition">Masuk</a>
-                    <a href="{{ route('register') }}" class="rounded-lg bg-blue-700 px-4 py-2 text-white hover:bg-blue-800 transition">Daftar</a>
+                    <a href="{{ route('login') }}" class="px-2 py-2 text-sm text-slate-700 transition hover:text-blue-700 sm:px-3 md:px-4 md:text-base">Masuk</a>
+                    <a href="{{ route('register') }}" class="rounded-lg bg-blue-700 px-3 py-2 text-sm font-semibold text-white transition hover:bg-blue-800 sm:px-4 md:text-base">Daftar</a>
                 @endauth
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-gradient text-white py-14 md:py-0">
-        <div class="container mx-auto grid items-center gap-8 px-4 md:min-h-[560px] md:grid-cols-2 md:gap-10 md:px-6">
-            <div class="py-8 md:py-12">
-                <h1 class="mb-6 text-4xl font-bold md:text-5xl">Transformasi Pendidikan Digital</h1>
-                <p class="mb-8 text-xl text-blue-100/90">Platform e-learning profesional untuk pengembangan keterampilan jangka panjang. Belajar kapan saja, di mana saja dengan metode pembelajaran yang terstruktur.</p>
-                <div class="flex space-x-4">
+    <section class="hero-gradient overflow-hidden py-10 text-white md:py-0">
+        <div class="container mx-auto grid items-center gap-6 px-4 md:min-h-[560px] md:grid-cols-2 md:gap-10 md:px-6">
+            <div class="py-4 md:py-12">
+                <h1 class="mb-5 max-w-[14ch] text-4xl font-bold leading-tight sm:max-w-none sm:text-5xl md:mb-6 md:text-5xl">Transformasi Pendidikan Digital</h1>
+                <p class="mb-7 text-base leading-relaxed text-blue-100/90 sm:text-lg md:mb-8 md:text-xl">Platform e-learning profesional untuk pengembangan keterampilan jangka panjang. Belajar kapan saja, di mana saja dengan metode pembelajaran yang terstruktur.</p>
+                <div class="flex flex-wrap gap-3 md:gap-4">
                     @auth
                         <a href="{{ route('dashboard') }}" class="rounded-lg bg-white px-8 py-3 font-semibold text-blue-700 hover:bg-blue-50 transition">Buka Dashboard</a>
                     @else
-                        <a href="{{ route('register') }}" class="rounded-lg bg-white px-8 py-3 font-semibold text-blue-700 hover:bg-blue-50 transition">Daftar Sekarang</a>
-                        <a href="{{ route('login') }}" class="rounded-lg border border-white/30 bg-white/10 px-8 py-3 font-semibold text-white hover:bg-white/15 transition">Masuk</a>
+                        <a href="{{ route('register') }}" class="rounded-lg bg-white px-5 py-3 font-semibold text-blue-700 transition hover:bg-blue-50 md:px-8">Daftar Sekarang</a>
+                        <a href="{{ route('login') }}" class="rounded-lg border border-white/30 bg-white/10 px-5 py-3 font-semibold text-white transition hover:bg-white/15 md:px-8">Masuk</a>
                     @endauth
                 </div>
             </div>
@@ -111,9 +132,9 @@
                 <div class="absolute right-2 bottom-12 h-56 w-56 rounded-full bg-blue-300/14 blur-3xl"></div>
                 <div class="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/6 blur-2xl md:h-96 md:w-96"></div>
 
-                <div class="relative flex h-[22rem] flex-col items-center justify-center gap-5 px-4 md:h-[36rem] md:gap-8 md:px-8">
+                <div class="relative flex min-h-[15rem] flex-col items-center justify-end px-2 pt-4 md:h-[36rem] md:justify-center md:gap-8 md:px-8">
                     <div class="hero-image-wrap">
-                        <img src="/asset/aball.png" alt="Karakter Belajar" class="hero-image h-auto w-auto max-w-md md:max-w-lg">
+                        <img src="/asset/aball.png" alt="Karakter Belajar" class="hero-image h-auto w-full max-w-[15.5rem] sm:max-w-[22rem] md:max-w-lg">
                     </div>
                 </div>
             </div>
