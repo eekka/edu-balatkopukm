@@ -11,15 +11,33 @@
                 <div class="space-y-3 text-white">
                     <p class="text-xs font-semibold uppercase tracking-[0.32em] text-sky-200/80">Kelas Saya</p>
                     <h3 class="text-3xl font-bold">Daftar Kelas yang Diikuti</h3>
-                    <p class="max-w-2xl text-sm text-sky-100/90">Lihat semua kelas aktif Anda, cek mentor, status keikutsertaan, dan lanjutkan materi dengan nyaman.</p>
-                </div>
-                <div>
-                    <a href="" class="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-sky-700 transition hover:bg-slate-100">
-                        <flux:icon.plus />
-                    
-                    </a>
+                    <p class="max-w-2xl text-sm text-sky-100/90">Lihat semua kelas aktif Anda, cek mentor, status keikutsertaan, dan materi.</p>
                 </div>
             </div>
+            <div class="mt-8">
+                <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+                    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                        <div>
+                            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Join Kelas</p>
+                            <h2 class="mt-2 text-xl font-semibold text-slate-900">Masukkan Kode Kelas</h2>
+                            <p class="mt-1 text-sm text-slate-600">Gunakan kode kelas dari admin atau mentor untuk bergabung ke kelas aktif.</p>
+                        </div>
+    
+                        <form method="POST" action="{{ route('peserta.kelas.join') }}" class="flex-row w-full justify-center gap-2 sm:max-w-md sm:flex-row">
+                            @csrf
+                            <input name="kode_kelas" value="{{ old('kode_kelas') }}" placeholder="Contoh: AB12CD34" class="w-full mb-4 rounded-xl border-slate-300 bg-white text-slate-900 uppercase placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500" required>
+                            <button type="submit" class="rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800">Join</button>
+                        </form>
+                    </div>
+                    @error('kode_kelas')
+                        <p class="mt-3 text-sm text-rose-600">{{ $message }}</p>
+                    @enderror
+                    <!-- <a href="" class="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-sky-700 transition hover:bg-slate-100">
+                        <flux:icon.plus />               
+                    </a> -->
+                </div>
+            </div>
+
 
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @if($enrolledClasses->count() > 0)

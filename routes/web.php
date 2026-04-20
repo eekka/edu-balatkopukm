@@ -14,6 +14,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\Peserta\AnnouncementController as PesertaAnnouncementController;
 use App\Http\Controllers\Peserta\DashboardController as PesertaDashboardController;
 use App\Http\Controllers\Peserta\TestimonialController as PesertaTestimonialController;
+use App\Http\Controllers\Peserta\PresensiController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -22,7 +24,11 @@ Route::get('/', [PageController::class, 'landing'])->name('home');
 // Dashboard routes with role-based access
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        $user = auth()->user();
+        $user = Auth::user();
+
+        if (! $user) {
+            return redirect()->route('home');
+        }
 
         return match ($user->role) {
             'admin' => redirect()->route('admin.dashboard'),
@@ -100,5 +106,8 @@ Route::middleware(['auth', 'verified', 'role:peserta'])->prefix('peserta')->name
     Route::get('testimonials', [PesertaTestimonialController::class, 'index'])->name('testimonials.index');
     Route::post('testimonials', [PesertaTestimonialController::class, 'store'])->name('testimonials.store');
     Route::get('announcements', [PesertaAnnouncementController::class, 'index'])->name('announcements.index');
+    Route::get('presensi', [PresensiController::class, 'index'])->name('presensi.index');
+    Route::post('presensi', [PresensiController::class, 'store'])->name('presensi.store');
+    Route::post('kelas/presensi', [PesertaDashboardController::class, 'confirmAttendance'])->name('kelas.presensi');
 
 });
