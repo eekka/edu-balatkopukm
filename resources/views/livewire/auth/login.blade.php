@@ -10,7 +10,8 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Volt\Component;
 
-new #[Layout('components.layouts.auth.split')] class extends Component {
+new #[Layout('components.layouts.auth.split')] class extends Component
+{
     #[Validate('required|string|email')]
     public string $email = '';
 
@@ -84,7 +85,8 @@ new #[Layout('components.layouts.auth.split')] class extends Component {
     <x-auth-session-status class="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700" :status="session('status')" />
 
     <form wire:submit="login" class="space-y-5">
-        <flux:input
+        <flux:input class="text-black"
+            input:class="border! border-slate-200! text-slate-900! placeholder:text-slate-400"
             wire:model="email"
             label="{{ __('Email') }}"
             type="email"
@@ -97,6 +99,7 @@ new #[Layout('components.layouts.auth.split')] class extends Component {
 
         <div class="relative">
             <flux:input
+                input:class="border! border-slate-200! text-slate-900! placeholder:text-slate-400"
                 wire:model="password"
                 label="{{ __('Password') }}"
                 type="password"
@@ -105,25 +108,31 @@ new #[Layout('components.layouts.auth.split')] class extends Component {
                 autocomplete="current-password"
                 placeholder="Masukkan password"
             />
-
-            @if (Route::has('password.request'))
-                <x-text-link class="absolute right-0 top-0 text-xs text-sky-700 hover:text-sky-800" href="{{ route('password.request') }}">
-                    {{ __('Lupa password?') }}
-                </x-text-link>
-            @endif
+        </div>
+        
+        <div class="flex items-center justify-between">
+            <div class="flex">
+                <flux:checkbox wire:model="remember" class="text-black! border border-slate-400"/>
+                <p class="px-2 text-sm  leading-6 text-slate-600">
+                    Ingat Saya
+                </p>
+            </div>
+            <div class="flex ">
+                @if (Route::has('password.request'))
+                    <x-text-link class="text-sm text-sky-700! hover:text-sky-800! no-underline!" href="{{ route('password.request') }}">
+                        {{ __('Lupa password?') }}
+                    </x-text-link>
+                @endif
+            </div>
         </div>
 
-        <div class="flex items-center justify-between gap-3">
-            <flux:checkbox wire:model="remember" label="{{ __('Ingat saya') }}" />
-        </div>
-
-        <flux:button variant="primary" type="submit" class="w-full rounded-xl bg-sky-600 hover:bg-sky-700">
+        <flux:button variant="primary" type="submit" class="w-full rounded-xl bg-sky-600! hover:bg-sky-700! no-underline!">
             {{ __('Masuk') }}
         </flux:button>
     </form>
 
-    <div class="mt-6 border-t border-slate-200 pt-4 text-center text-sm text-slate-600">
+    <div class="mt-6 border-t border-slate-200 pt-4 text-center text-sm text-black">
         Belum punya akun?
-        <x-text-link href="{{ route('register') }}" class="font-semibold text-sky-700 hover:text-sky-800">Daftar sekarang</x-text-link>
+        <x-text-link href="{{ route('register') }}" class="font-semibold text-sky-700! hover:text-sky-800! no-underline!">Daftar sekarang</x-text-link>
     </div>
 </div>
