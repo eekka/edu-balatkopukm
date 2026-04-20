@@ -35,6 +35,31 @@
         .cta-gradient {
             background: linear-gradient(135deg, #123366 0%, #1d4e89 56%, #2668a6 100%);
         }
+
+        .hero-image-wrap {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-wrap::before {
+            content: '';
+            position: absolute;
+            width: 88%;
+            height: 78%;
+            border-radius: 9999px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.24) 44%, rgba(255, 255, 255, 0) 75%);
+            filter: blur(18px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.24));
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -87,7 +112,9 @@
                 <div class="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/6 blur-2xl md:h-96 md:w-96"></div>
 
                 <div class="relative flex h-[22rem] flex-col items-center justify-center gap-5 px-4 md:h-[36rem] md:gap-8 md:px-8">
-                    <img src="/asset/aball.png" alt="Karakter Belajar" class="w-auto h-auto max-w-md md:max-w-lg">
+                    <div class="hero-image-wrap">
+                        <img src="/asset/aball.png" alt="Karakter Belajar" class="hero-image h-auto w-auto max-w-md md:max-w-lg">
+                    </div>
                 </div>
             </div>
         </div>
