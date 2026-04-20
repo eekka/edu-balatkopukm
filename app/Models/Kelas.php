@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 class Kelas extends Model
@@ -29,6 +30,8 @@ class Kelas extends Model
         'nama',
         'kode_kelas',
         'deskripsi',
+        'jadwal_hari',
+        'jadwal_jam',
         'mentor_id',
         'mulai',
         'selesai',
@@ -50,6 +53,33 @@ class Kelas extends Model
     public function mentor(): BelongsTo
     {
         return $this->belongsTo(User::class, 'mentor_id');
+    }
+
+    public function getJadwalHariLabelAttribute(): ?string
+    {
+        if (! $this->jadwal_hari) {
+            return null;
+        }
+
+        return match ($this->jadwal_hari) {
+            'senin' => 'Senin',
+            'selasa' => 'Selasa',
+            'rabu' => 'Rabu',
+            'kamis' => 'Kamis',
+            'jumat' => 'Jumat',
+            'sabtu' => 'Sabtu',
+            'minggu' => 'Minggu',
+            default => Str::headline($this->jadwal_hari),
+        };
+    }
+
+    public function getJadwalJamLabelAttribute(): ?string
+    {
+        if (! $this->jadwal_jam) {
+            return null;
+        }
+
+        return Carbon::parse($this->jadwal_jam)->format('H:i');
     }
 
     public function materis(): HasMany

@@ -51,8 +51,8 @@
             width: 88%;
             height: 78%;
             border-radius: 9999px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.24) 44%, rgba(255, 255, 255, 0) 75%);
-            filter: blur(18px);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.58) 0%, rgba(255, 255, 255, 0.3) 44%, rgba(255, 255, 255, 0) 76%);
+            filter: blur(20px);
             z-index: 0;
             pointer-events: none;
         }
@@ -60,7 +60,20 @@
         .hero-image {
             position: relative;
             z-index: 1;
-            filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.24));
+            filter: drop-shadow(0 10px 22px rgba(255, 255, 255, 0.35));
+            animation: heroFloat 5.4s cubic-bezier(0.42, 0, 0.2, 1) infinite;
+            will-change: transform;
+        }
+
+        @keyframes heroFloat {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-7px);
+            }
         }
 
         @media (max-width: 640px) {

@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Peserta;
 use App\Http\Controllers\Controller;
 use App\Models\KelasEnrollment;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class PresensiController extends Controller
@@ -17,7 +17,7 @@ class PresensiController extends Controller
         /** @var User $user */
         $user = Auth::user();
         $pesertaId = $user->id;
-        
+
         $enrolledClasses = KelasEnrollment::where('peserta_id', $pesertaId)
             ->with('kelas')
             ->get();
@@ -39,7 +39,7 @@ class PresensiController extends Controller
             ->where('kelas_id', $request->kelas_id)
             ->first();
 
-        if (!$enrollment) {
+        if (! $enrollment) {
             return redirect()->back()->with('error', 'Anda tidak terdaftar di kelas ini.');
         }
 

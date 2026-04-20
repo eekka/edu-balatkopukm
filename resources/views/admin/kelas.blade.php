@@ -76,6 +76,31 @@
                 </label>
 
                 <label class="block">
+                    <span class="text-sm font-medium text-slate-700">Hari Jadwal</span>
+                    <select name="jadwal_hari" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
+                        <option value="">Pilih hari</option>
+                        @foreach ([
+                            'senin' => 'Senin',
+                            'selasa' => 'Selasa',
+                            'rabu' => 'Rabu',
+                            'kamis' => 'Kamis',
+                            'jumat' => 'Jumat',
+                            'sabtu' => 'Sabtu',
+                            'minggu' => 'Minggu',
+                        ] as $value => $label)
+                            <option value="{{ $value }}" @selected(old('jadwal_hari', $editingKelas?->jadwal_hari) === $value)>{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    <p class="mt-2 text-xs text-slate-500">Contoh: Kamis jika kelas dimulai setiap hari Kamis.</p>
+                </label>
+
+                <label class="block">
+                    <span class="text-sm font-medium text-slate-700">Jam Jadwal</span>
+                    <input type="time" name="jadwal_jam" value="{{ old('jadwal_jam', $editingKelas?->jadwal_jam ? \Illuminate\Support\Carbon::parse($editingKelas->jadwal_jam)->format('H:i') : null) }}" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none">
+                    <p class="mt-2 text-xs text-slate-500">Contoh: 09:00.</p>
+                </label>
+
+                <label class="block">
                     <span class="text-sm font-medium text-slate-700">Mentor</span>
                     <select name="mentor_id" class="mt-1 w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" required>
                         <option value="">Pilih mentor</option>
@@ -173,6 +198,11 @@
                             <h3 class="text-lg font-semibold text-slate-900">{{ $kelas->nama }}</h3>
                             <p class="text-sm text-slate-600">{{ $kelas->program?->nama }} · Mentor: {{ $kelas->mentor?->name }}</p>
                             <p class="mt-1 text-xs text-slate-500">Kode: <span class="font-semibold text-slate-700">{{ $kelas->kode_kelas }}</span> · {{ $kelas->enrollments->count() }} peserta / kapasitas {{ $kelas->kapasitas }} · Status {{ ucfirst($kelas->status) }}</p>
+                            @if ($kelas->jadwal_hari || $kelas->jadwal_jam)
+                                <p class="mt-2 inline-flex rounded-none border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                                    Jadwal: {{ ucfirst($kelas->jadwal_hari ?? '-') }} {{ $kelas->jadwal_jam ? \Illuminate\Support\Carbon::parse($kelas->jadwal_jam)->format('H:i') : '' }}
+                                </p>
+                            @endif
                         </div>
                         <div class="flex gap-2">
                             <a href="{{ route('admin.kelas.index', ['edit' => $kelas->id]) }}" class="rounded-lg border border-blue-200 px-3 py-1.5 text-sm font-semibold text-blue-700 hover:bg-blue-50">Edit</a>

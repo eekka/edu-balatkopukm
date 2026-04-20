@@ -56,6 +56,9 @@
                                 <div class="space-y-3 border-y border-slate-100 py-3 text-sm text-slate-700">
                                     <p><span class="font-semibold text-slate-900">Mentor:</span> {{ $enrollment->kelas->mentor->name }}</p>
                                     <p><span class="font-semibold text-slate-900">Status:</span> {{ ucfirst($enrollment->status) }}</p>
+                                    @if ($enrollment->kelas->jadwal_hari_label || $enrollment->kelas->jadwal_jam_label)
+                                        <p><span class="font-semibold text-slate-900">Jadwal:</span> {{ $enrollment->kelas->jadwal_hari_label ?? '-' }}{{ $enrollment->kelas->jadwal_jam_label ? ' · '.$enrollment->kelas->jadwal_jam_label : '' }}</p>
+                                    @endif
                                 </div>
                             </div>
 

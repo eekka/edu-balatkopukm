@@ -18,6 +18,8 @@ class StoreKelasRequest extends FormRequest
             'program_id' => ['required', 'exists:programs,id'],
             'nama' => ['required', 'string', 'max:255'],
             'deskripsi' => ['nullable', 'string'],
+            'jadwal_hari' => ['nullable', 'in:senin,selasa,rabu,kamis,jumat,sabtu,minggu'],
+            'jadwal_jam' => ['nullable', 'date_format:H:i'],
             'mentor_id' => ['required', Rule::exists('users', 'id')->where(fn ($query) => $query->where('role', 'mentor'))],
             'mulai' => ['nullable', 'date'],
             'selesai' => ['nullable', 'date', 'after_or_equal:mulai'],

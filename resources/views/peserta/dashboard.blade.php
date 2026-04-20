@@ -138,6 +138,9 @@
                                         <h3 class="text-lg font-semibold text-slate-900">{{ $enrollment->kelas->nama }}</h3>
                                         <p class="mt-1 text-sm text-slate-600">Program: {{ $enrollment->kelas->program->nama }}</p>
                                         <p class="mt-1 text-sm text-slate-600">Mentor: {{ $enrollment->kelas->mentor->name }}</p>
+                                        @if ($enrollment->kelas->jadwal_hari_label || $enrollment->kelas->jadwal_jam_label)
+                                            <p class="mt-1 text-sm text-slate-600">Jadwal: {{ $enrollment->kelas->jadwal_hari_label ?? '-' }}{{ $enrollment->kelas->jadwal_jam_label ? ' · '.$enrollment->kelas->jadwal_jam_label : '' }}</p>
+                                        @endif
                                         <div class="mt-3 flex flex-wrap items-center gap-3">
                                             <span class="inline-flex rounded-full px-3 py-1 text-xs font-semibold {{ $enrollment->status === 'aktif' ? 'bg-emerald-100 text-emerald-700' : ($enrollment->status === 'selesai' ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-600') }}">
                                                 {{ ucfirst($enrollment->status) }}

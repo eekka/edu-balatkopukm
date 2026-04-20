@@ -30,6 +30,16 @@
                     <p class="text-xs uppercase tracking-[0.32em] text-sky-700">Jumlah Materi</p>
                     <p class="mt-3 text-xl font-semibold text-slate-900">{{ $kelas->materis->count() ?? 0 }}</p>
                 </article>
+
+                <article class="rounded-none border border-slate-200 bg-sky-50/90 p-6 shadow-sm sm:col-span-2 xl:col-span-3">
+                    <p class="text-xs uppercase tracking-[0.32em] text-sky-700">Jadwal Kelas</p>
+                    <p class="mt-3 text-xl font-semibold text-slate-900">
+                        {{ $kelas->jadwal_hari_label ? $kelas->jadwal_hari_label : 'Jadwal belum ditentukan' }}
+                        @if ($kelas->jadwal_jam_label)
+                            <span class="text-slate-600">· {{ $kelas->jadwal_jam_label }}</span>
+                        @endif
+                    </p>
+                </article>
             </section>
 
             <section class="grid gap-4 lg:grid-cols-2">

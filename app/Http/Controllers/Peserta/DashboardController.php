@@ -82,7 +82,7 @@ class DashboardController extends Controller
     public function jadwal(): View
     {
         $enrolledClasses = KelasEnrollment::where('peserta_id', auth()->id())
-            ->with('kelas')
+            ->with('kelas.mentor', 'kelas.program')
             ->get();
 
         return view('peserta.jadwal', compact('enrolledClasses'));
