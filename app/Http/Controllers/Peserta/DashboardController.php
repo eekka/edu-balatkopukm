@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Announcement;
 use App\Models\Kelas;
 use App\Models\KelasEnrollment;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -17,25 +19,98 @@ class DashboardController extends Controller
     {
         $pesertaId = auth()->id();
 
+        $enrolledClasses = KelasEnrollment::where('peserta_id', $pesertaId)
+            ->with('kelas.mentor', 'kelas.program')
+            ->get();
+
+        $recentAnnouncements = Announcement::with('creator')
+            ->visibleTo(auth()->user())
+            ->latest()
+            ->limit(4)
+            ->get();
+
+        $calendarDate = now();
+
         return view('peserta.dashboard', [
-            'enrolledClasses' => KelasEnrollment::where('peserta_id', $pesertaId)
-                ->with('kelas.mentor')
-                ->get(),
-            'totalClasses' => KelasEnrollment::where('peserta_id', $pesertaId)->count(),
-            'activeClasses' => KelasEnrollment::where('peserta_id', $pesertaId)
-                ->where('status', 'aktif')
-                ->with('kelas')
-                ->count(),
-            'completedClasses' => KelasEnrollment::where('peserta_id', $pesertaId)
-                ->where('status', 'selesai')
-                ->with('kelas')
-                ->count(),
-            'recentAnnouncements' => Announcement::with('creator')
-                ->visibleTo(auth()->user())
-                ->latest()
-                ->limit(4)
-                ->get(),
+            'enrolledClasses' => $enrolledClasses,
+            'totalClasses' => $enrolledClasses->count(),
+            'activeClasses' => $enrolledClasses->where('status', 'aktif')->count(),
+            'completedClasses' => $enrolledClasses->where('status', 'selesai')->count(),
+            'recentAnnouncements' => $recentAnnouncements,
+            'timelineItems' => $this->buildTimelineItems($recentAnnouncements),
+            'calendarMonthLabel' => $calendarDate->translatedFormat('F Y'),
+            'calendarWeeks' => $this->buildCalendarWeeks($calendarDate, $enrolledClasses),
+            'calendarPreviousMonthLabel' => $calendarDate->copy()->subMonth()->translatedFormat('F'),
+            'calendarNextMonthLabel' => $calendarDate->copy()->addMonth()->translatedFormat('F'),
         ]);
+    }
+
+    private function buildTimelineItems(Collection $recentAnnouncements): Collection
+    {
+        return $recentAnnouncements->map(function (Announcement $announcement): array {
+            return [
+                'type' => 'Pengumuman',
+                'title' => $announcement->judul,
+                'description' => Str::limit(strip_tags((string) $announcement->isi), 95),
+                'date' => $announcement->created_at?->format('d M Y H:i') ?? '-',
+                'target' => ucfirst($announcement->target),
+            ];
+        });
+    }
+
+    private function buildCalendarWeeks(Carbon $month, Collection $enrolledClasses): array
+    {
+        $startOfMonth = $month->copy()->startOfMonth();
+        $firstDayOffset = $startOfMonth->dayOfWeekIso - 1;
+        $daysInMonth = $startOfMonth->daysInMonth;
+
+        $scheduleDayMap = [
+            'senin' => 1,
+            'selasa' => 2,
+            'rabu' => 3,
+            'kamis' => 4,
+            'jumat' => 5,
+            'sabtu' => 6,
+            'minggu' => 7,
+        ];
+
+        $scheduledDayNumbers = $enrolledClasses
+            ->where('status', 'aktif')
+            ->pluck('kelas.jadwal_hari')
+            ->filter()
+            ->map(fn (?string $day): ?int => $day ? ($scheduleDayMap[strtolower($day)] ?? null) : null)
+            ->filter()
+            ->unique()
+            ->values()
+            ->all();
+
+        $totalSlots = (int) ceil(($firstDayOffset + $daysInMonth) / 7) * 7;
+        $weeks = [];
+        $week = [];
+        $currentDay = 1;
+
+        for ($slot = 0; $slot < $totalSlots; $slot++) {
+            if ($slot < $firstDayOffset || $currentDay > $daysInMonth) {
+                $week[] = null;
+            } else {
+                $date = $startOfMonth->copy()->day($currentDay);
+
+                $week[] = [
+                    'day' => $currentDay,
+                    'isToday' => $date->isToday(),
+                    'hasClass' => in_array($date->dayOfWeekIso, $scheduledDayNumbers, true),
+                ];
+
+                $currentDay++;
+            }
+
+            if (count($week) === 7) {
+                $weeks[] = $week;
+                $week = [];
+            }
+        }
+
+        return $weeks;
     }
 
     public function indexKelas(): View

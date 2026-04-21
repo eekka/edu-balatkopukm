@@ -55,6 +55,8 @@ class DashboardRoutingTest extends TestCase
         $response = $this->actingAs($user)->get('/peserta/dashboard');
         $response->assertStatus(200);
         $response->assertViewIs('peserta.dashboard');
+        $response->assertSeeText('Timeline');
+        $response->assertSeeText('Calendar');
     }
 
     public function test_role_middleware_prevents_unauthorized_access(): void
