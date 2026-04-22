@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\MAGANG\edu-balatkopukm\phpunit.xml" tests="55" assertions="175" errors="0" failures="3" skipped="0" time="75.276049">
+    <testsuite name="Unit" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.002698">
+      <testsuite name="Tests\Unit\ExampleTest" file="C:\MAGANG\edu-balatkopukm\tests\Unit\ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.002698">
+        <testcase name="test_that_true_is_true" file="C:\MAGANG\edu-balatkopukm\tests\Unit\ExampleTest.php" line="12" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" assertions="1" time="0.002698"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="54" assertions="174" errors="0" failures="3" skipped="0" time="75.273351">
+      <testsuite name="Tests\Feature\AdminManagementTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\AdminManagementTest.php" tests="9" assertions="34" errors="0" failures="0" skipped="0" time="7.135371">
+        <testcase name="test_admin_can_open_management_pages" file="C:\MAGANG\edu-balatkopukm\tests\Feature\AdminManagementTest.php" line="18" class="Tests\Feature\AdminManagementTest" classname="Tests.Feature.AdminManagementTest" assertions="6" time="6.075254"/>
+        <testcase name="test_mentor_can_open_announcement_page_and_create_announcement" file="C:\MAGANG\edu-balatkopukm\tests\Feature\AdminManagementTest.php" line="50" class="Tests\Feature\AdminManagementTest" classname="Tests.Feature.AdminManagementTest" assertions="4" time="0.863174"/>
+        <testcase name="test_admin_can_create_program_and_announcement" file="C:\MAGANG\edu-balatkopukm\tests\Feature\AdminManagementTest.php" line="76" class="Tests\Feature\AdminManagementTest" classname="Tests.Feature.AdminManagementTest" assertions="4" time="0.045792"/>
+        <testcase name="test_admin_can_create_announcement_with_image_and_specific_target_users" file="C:\MAGANG\edu-balatkopukm\tests\Feature\AdminManagementTest.php" line="108" class="Tests\Feature\AdminManagementTest" classname="Tests.Feature.AdminManagementTest" assertions="4" time="0.044150"/>
+        <testcase name="test_peserta_can_create_testimonial" file="C:\MAGANG\edu-balatkopukm\tests\Feature\AdminManagementTest.php" line="142" class="Tests\Feature\AdminManagementTest" classname="Tests.Feature.AdminManagementTest" assertions="4" time="0.022985"/>
+        <testcase name="test_admin_can_update_and_delete_testimonial" file="C:\MAGANG\edu-balatkopukm\tests\Feature\AdminManagementTest.php" line="167" class="Tests\Feature\AdminManagementTest" classname="Tests.Feature.AdminManagementTest" assertions="4" time="0.020337"/>
+        <testcase name="test_admin_can_create_and_reset_user_password" file="C:\MAGANG\edu-balatkopukm\tests\Feature\AdminManagementTest.php" line="206" class="Tests\Feature\AdminManagementTest" classname="Tests.Feature.AdminManagementTest" assertions="6" time="0.030136"/>
+        <testcase name="test_non_admin_cannot_access_admin_pages" file="C:\MAGANG\edu-balatkopukm\tests\Feature\AdminManagementTest.php" line="242" class="Tests\Feature\AdminManagementTest" classname="Tests.Feature.AdminManagementTest" assertions="1" time="0.019328"/>
+        <testcase name="test_non_admin_cannot_access_admin_testimonials_page" file="C:\MAGANG\edu-balatkopukm\tests\Feature\AdminManagementTest.php" line="254" class="Tests\Feature\AdminManagementTest" classname="Tests.Feature.AdminManagementTest" assertions="1" time="0.014215"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\AuthenticationTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\AuthenticationTest.php" tests="4" assertions="9" errors="0" failures="0" skipped="0" time="34.481117">
+        <testcase name="test_login_screen_can_be_rendered" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\AuthenticationTest.php" line="14" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" assertions="1" time="0.036804"/>
+        <testcase name="test_users_can_authenticate_using_the_login_screen" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\AuthenticationTest.php" line="21" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" assertions="4" time="18.963937"/>
+        <testcase name="test_users_can_not_authenticate_with_invalid_password" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\AuthenticationTest.php" line="37" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" assertions="1" time="15.456793"/>
+        <testcase name="test_users_can_logout" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\AuthenticationTest.php" line="49" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" assertions="3" time="0.023583"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\EmailVerificationTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\EmailVerificationTest.php" tests="3" assertions="6" errors="0" failures="0" skipped="0" time="0.206725">
+        <testcase name="test_email_verification_screen_can_be_rendered" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\EmailVerificationTest.php" line="16" class="Tests\Feature\Auth\EmailVerificationTest" classname="Tests.Feature.Auth.EmailVerificationTest" assertions="1" time="0.075227"/>
+        <testcase name="test_email_can_be_verified" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\EmailVerificationTest.php" line="25" class="Tests\Feature\Auth\EmailVerificationTest" classname="Tests.Feature.Auth.EmailVerificationTest" assertions="4" time="0.027082"/>
+        <testcase name="test_email_is_not_verified_with_invalid_hash" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\EmailVerificationTest.php" line="45" class="Tests\Feature\Auth\EmailVerificationTest" classname="Tests.Feature.Auth.EmailVerificationTest" assertions="1" time="0.104416"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\PasswordConfirmationTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\PasswordConfirmationTest.php" tests="3" assertions="7" errors="0" failures="0" skipped="0" time="1.407447">
+        <testcase name="test_confirm_password_screen_can_be_rendered" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\PasswordConfirmationTest.php" line="14" class="Tests\Feature\Auth\PasswordConfirmationTest" classname="Tests.Feature.Auth.PasswordConfirmationTest" assertions="1" time="1.092815"/>
+        <testcase name="test_password_can_be_confirmed" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\PasswordConfirmationTest.php" line="23" class="Tests\Feature\Auth\PasswordConfirmationTest" classname="Tests.Feature.Auth.PasswordConfirmationTest" assertions="3" time="0.065693"/>
+        <testcase name="test_password_is_not_confirmed_with_invalid_password" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\PasswordConfirmationTest.php" line="38" class="Tests\Feature\Auth\PasswordConfirmationTest" classname="Tests.Feature.Auth.PasswordConfirmationTest" assertions="3" time="0.248939"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\PasswordResetTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\PasswordResetTest.php" tests="4" assertions="8" errors="0" failures="0" skipped="0" time="3.052589">
+        <testcase name="test_reset_password_link_screen_can_be_rendered" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\PasswordResetTest.php" line="16" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" assertions="1" time="1.115377"/>
+        <testcase name="test_reset_password_link_can_be_requested" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\PasswordResetTest.php" line="23" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" assertions="1" time="0.254785"/>
+        <testcase name="test_reset_password_screen_can_be_rendered" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\PasswordResetTest.php" line="36" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" assertions="2" time="1.383737"/>
+        <testcase name="test_password_can_be_reset_with_valid_token" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\PasswordResetTest.php" line="55" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" assertions="4" time="0.298690"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\RegistrationTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\RegistrationTest.php" tests="2" assertions="5" errors="0" failures="0" skipped="0" time="1.741091">
+        <testcase name="test_registration_screen_can_be_rendered" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\RegistrationTest.php" line="13" class="Tests\Feature\Auth\RegistrationTest" classname="Tests.Feature.Auth.RegistrationTest" assertions="1" time="1.672750"/>
+        <testcase name="test_new_users_can_register" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Auth\RegistrationTest.php" line="20" class="Tests\Feature\Auth\RegistrationTest" classname="Tests.Feature.Auth.RegistrationTest" assertions="4" time="0.068341"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\DashboardRoutingTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardRoutingTest.php" tests="6" assertions="24" errors="0" failures="0" skipped="0" time="11.933912">
+        <testcase name="test_landing_page_loads" file="C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardRoutingTest.php" line="13" class="Tests\Feature\DashboardRoutingTest" classname="Tests.Feature.DashboardRoutingTest" assertions="2" time="0.430122"/>
+        <testcase name="test_admin_dashboard_access" file="C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardRoutingTest.php" line="21" class="Tests\Feature\DashboardRoutingTest" classname="Tests.Feature.DashboardRoutingTest" assertions="7" time="9.220981"/>
+        <testcase name="test_mentor_dashboard_access" file="C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardRoutingTest.php" line="37" class="Tests\Feature\DashboardRoutingTest" classname="Tests.Feature.DashboardRoutingTest" assertions="6" time="1.299804"/>
+        <testcase name="test_peserta_dashboard_access" file="C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardRoutingTest.php" line="52" class="Tests\Feature\DashboardRoutingTest" classname="Tests.Feature.DashboardRoutingTest" assertions="6" time="0.956219"/>
+        <testcase name="test_role_middleware_prevents_unauthorized_access" file="C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardRoutingTest.php" line="67" class="Tests\Feature\DashboardRoutingTest" classname="Tests.Feature.DashboardRoutingTest" assertions="1" time="0.014876"/>
+        <testcase name="test_unauthorized_user_cannot_access_dashboard" file="C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardRoutingTest.php" line="76" class="Tests\Feature\DashboardRoutingTest" classname="Tests.Feature.DashboardRoutingTest" assertions="2" time="0.011910"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\DashboardTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardTest.php" tests="2" assertions="3" errors="0" failures="1" skipped="0" time="0.037573">
+        <testcase name="test_guests_are_redirected_to_the_login_page" file="C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardTest.php" line="13" class="Tests\Feature\DashboardTest" classname="Tests.Feature.DashboardTest" assertions="2" time="0.017344"/>
+        <testcase name="test_authenticated_users_can_visit_the_dashboard" file="C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardTest.php" line="19" class="Tests\Feature\DashboardTest" classname="Tests.Feature.DashboardTest" assertions="1" time="0.020230">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\DashboardTest::test_authenticated_users_can_visit_the_dashboard&#13;
+Expected response status code [200] but received 302.
+Failed asserting that 302 is identical to 200.
+&#13;
+C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Testing\TestResponseAssert.php:45
+C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:175
+C:\MAGANG\edu-balatkopukm\tests\Feature\DashboardTest.php:25</failure>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\ExampleTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.014199">
+        <testcase name="test_returns_a_successful_response" file="C:\MAGANG\edu-balatkopukm\tests\Feature\ExampleTest.php" line="12" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" assertions="1" time="0.014199"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\KelasManagementTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" tests="11" assertions="47" errors="0" failures="1" skipped="0" time="4.236145">
+        <testcase name="test_mentor_can_create_kelas_and_admin_can_edit_and_delete_it" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="20" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="7" time="0.026144"/>
+        <testcase name="test_admin_can_manually_replace_mentor_and_participants_when_editing_kelas" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="80" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="5" time="0.022321"/>
+        <testcase name="test_admin_can_create_kelas_with_recurring_schedule" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="171" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="4" time="0.020733"/>
+        <testcase name="test_peserta_can_see_kelas_schedule_in_dashboard_and_schedule_page" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="207" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="2" time="0.040817">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\KelasManagementTest::test_peserta_can_see_kelas_schedule_in_dashboard_and_schedule_page&#13;
+Failed asserting that '&lt;!DOCTYPE html&gt;\n
+&lt;html lang="en" class="dark"&gt;\n
+    &lt;head&gt;\n
+        &lt;meta charset="utf-8" /&gt;\n
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;\n
+\n
+&lt;title&gt;Edukasi&lt;/title&gt;\n
+\n
+&lt;link rel="preconnect" href="https://fonts.bunny.net"&gt;\n
+&lt;link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700|instrument-sans:400,500,600" rel="stylesheet" /&gt;\n
+\n
+&lt;script type="module" src="http://[::1]:5173/@vite/client" data-navigate-track="reload"&gt;&lt;/script&gt;&lt;link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" data-navigate-track="reload" /&gt;&lt;script type="module" src="http://[::1]:5173/resources/js/app.js" data-navigate-track="reload"&gt;&lt;/script&gt;&lt;style&gt;\n
+    :root.dark {\n
+        color-scheme: dark;\n
+    }\n
+&lt;/style&gt;\n
+&lt;script&gt;\n
+    window.Flux = {\n
+        applyAppearance (appearance) {\n
+            let applyDark = () =&gt; document.documentElement.classList.add('dark')\n
+            let applyLight = () =&gt; document.documentElement.classList.remove('dark')\n
+\n
+            if (appearance === 'system') {\n
+                let media = window.matchMedia('(prefers-color-scheme: dark)')\n
+\n
+                window.localStorage.removeItem('flux.appearance')\n
+\n
+                media.matches ? applyDark() : applyLight()\n
+            } else if (appearance === 'dark') {\n
+                window.localStorage.setItem('flux.appearance', 'dark')\n
+\n
+                applyDark()\n
+            } else if (appearance === 'light') {\n
+                window.localStorage.setItem('flux.appearance', 'light')\n
+\n
+                applyLight()\n
+            }\n
+        }\n
+    }\n
+\n
+    window.Flux.applyAppearance(window.localStorage.getItem('flux.appearance') || 'system')\n
+&lt;/script&gt;\n
+    &lt;!-- Livewire Styles --&gt;&lt;style &gt;[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.list-item][wire\:loading\.list-item], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}&lt;/style&gt;\n
+&lt;/head&gt;\n
+    &lt;body class="min-h-screen bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100"&gt;\n
+        &lt;ui-sidebar-toggle class="z-20 fixed inset-0 bg-black/10 hidden data-flux-sidebar-on-mobile:not-data-flux-sidebar-collapsed-mobile:block" data-flux-sidebar-backdrop&gt;&lt;/ui-sidebar-toggle&gt;\n
+\n
+&lt;ui-sidebar\n
+    class="[grid-area:sidebar] z-1 flex flex-col gap-4 [:where(&amp;amp;)]:w-64 p-4 data-flux-sidebar-collapsed-desktop:w-14 data-flux-sidebar-collapsed-desktop:px-2 data-flux-sidebar-collapsed-desktop:cursor-e-resize rtl:data-flux-sidebar-collapsed-desktop:cursor-w-resize max-lg:data-flux-sidebar-cloak:hidden data-flux-sidebar-on-mobile:data-flux-sidebar-collapsed-mobile:-translate-x-full data-flux-sidebar-on-mobile:data-flux-sidebar-collapsed-mobile:rtl:translate-x-full z-20! data-flux-sidebar-on-mobile:start-0! data-flux-sidebar-on-mobile:fixed! data-flux-sidebar-on-mobile:top-0! data-flux-sidebar-on-mobile:min-h-dvh! data-flux-sidebar-on-mobile:max-h-dvh! max-h-dvh overflow-y-auto overscroll-contain w-[18rem] sm:w-80 border-r border-blue-950/20 bg-gradient-to-b from-blue-950 via-blue-900 to-sky-900 text-white" x-init="$el.classList.add(&amp;#039;transition-transform&amp;#039;)"\n
+     collapsible="mobile"      stashable      sticky     x-data\n
+    data-flux-sidebar-cloak\n
+    data-flux-sidebar\n
+&gt;\n
+    &lt;button type="button" class="relative items-center font-medium justify-center gap-2 whitespace-nowrap disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none justify-center h-10 text-sm rounded-lg w-10 inline-flex  bg-transparent hover:bg-zinc-800/5 dark:hover:bg-white/15 text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white      shrink-0 lg:hidden" data-flux-button="data-flux-button" x-data="" x-on:click="$dispatch('flux-sidebar-toggle')" aria-label="Toggle sidebar" data-flux-sidebar-toggle="data-flux-sidebar-toggle"&gt;\n
+        &lt;svg class="shrink-0 [:where(&amp;amp;)]:size-5" data-flux-icon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon"&gt;\n
+  &lt;path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/&gt;\n
+&lt;/svg&gt;\n
+    &lt;/button&gt;\n
+\n
+            \n
+            &lt;a href="http://edukasi.local/dashboard" class="flex items-center gap-3 px-5 py-4" wire:navigate&gt;\n
+                &lt;span class="flex size-12 items-center justify-center rounded-none bg-white/15 text-lg font-black tracking-tight ring-1 ring-white/15"&gt;\n
+                    L3\n
+                &lt;/span&gt;\n
+\n
+                &lt;span class="grid min-w-0 leading-tight"&gt;\n
+                    &lt;span class="text-xl font-black tracking-tight sm:text-2xl"&gt;Akademi &lt;br&gt;\n
+                        &lt;sup class="text-sky-200"&gt;Balatkop&lt;/sup&gt;&lt;/span&gt;\n
+                    &lt;span class="text-[0.62rem] uppercase tracking-[0.18em] text-blue-200/80 sm:text-[0.7rem] sm:tracking-[0.24em]"&gt;Peserta Learning Panel&lt;/span&gt;\n
+                &lt;/span&gt;\n
+            &lt;/a&gt;\n
+\n
+            &lt;nav class="flex flex-col overflow-visible min-h-auto mt-4 px-3" data-flux-navlist&gt;\n
+    &lt;div class="block space-y-[2px] grid"&gt;\n
+    &lt;div class="px-1 py-2"&gt;\n
+        &lt;div class="text-xs leading-none text-zinc-400"&gt;Platform&lt;/div&gt;\n
+    &lt;/div&gt;\n
+\n
+    &lt;div&gt;\n
+        &lt;a href="http://edukasi.local/dashboard" wire:current.ignore="" class="h-10 lg:h-8 relative flex items-center gap-3 rounded-lg  py-0 text-start w-full px-3 my-px text-zinc-500 dark:text-white/80 data-current:text-(--color-accent-content) hover:data-current:text-(--color-accent-content) data-current:bg-white dark:data-current:bg-white/[7%] data-current:border data-current:border-zinc-200 dark:data-current:border-transparent hover:text-zinc-800 dark:hover:text-white dark:hover:bg-white/[7%] hover:bg-zinc-800/5  border border-transparent text-sm" data-flux-navlist-item="data-flux-navlist-item" wire:navigate=""&gt;\n
+        &lt;div class="relative"&gt;\n
+                            &lt;svg class="shrink-0 [:where(&amp;amp;)]:size-6 size-4!" data-flux-icon xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"&gt;\n
+  &lt;path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/&gt;\n
+&lt;/svg&gt;\n
+\n
+                    \n
+                    &lt;/div&gt;\n
+    \n
+            &lt;div class="flex-1 text-sm font-medium leading-none whitespace-nowrap [[data-nav-footer]_&amp;]:hidden [[data-nav-sidebar]_[data-nav-footer]_&amp;]:block" data-content&gt;Dashboard&lt;/div&gt;\n
+    &lt;/a&gt;\n
+    &lt;/div&gt;\n
+&lt;/div&gt;\n
+\n
+\n
+                                    &lt;div class="block space-y-[2px] mt-4 grid"&gt;\n
+    &lt;div class="px-1 py-2"&gt;\n
+        &lt;div class="text-xs leading-none text-zinc-400"&gt;Fitur Peserta&lt;/div&gt;\n
+    &lt;/div&gt;\n
+\n
+    &lt;div&gt;\n
+        &lt;a href="http://edukasi.local/peserta/kelas#kelas-saya" wire:current.ignore="" class="h-10 lg:h-8 relative flex items-center gap-3 rounded-lg  py-0 text-start w-full px-3 my-px text-zinc-500 dark:text-white/80 data-current:text-(--color-accent-content) hover:data-current:text-(--color-accent-content) data-current:bg-white dark:data-current:bg-white/[7%] data-current:border data-current:border-zinc-200 dark:data-current:border-transparent hover:text-zinc-800 dark:hover:text-white dark:hover:bg-white/[7%] hover:bg-zinc-800/5  border border-transparent text-sm" data-flux-navlist-item="data-flux-navlist-item" wire:navigate=""&gt;\n
+        &lt;div class="relative"&gt;\n
+                            &lt;svg class="shrink-0 [:where(&amp;amp;)]:size-6 size-4!" data-flux-icon xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"&gt;\n
+  &lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/&gt;\n
+&lt;/svg&gt;\n
+\n
+                    \n
+                    &lt;/div&gt;\n
+    \n
+            &lt;div class="flex-1 text-sm font-medium leading-none whitespace-nowrap [[data-nav-footer]_&amp;]:hidden [[data-nav-sidebar]_[data-nav-footer]_&amp;]:block" data-content&gt;Kelas&lt;/div&gt;\n
+    &lt;/a&gt;\n
+                        &lt;a href="http://edukasi.local/peserta/announcements#pengumuman" wire:current.ignore="" class="h-10 lg:h-8 relative flex items-center gap-3 rounded-lg  py-0 text-start w-full px-3 my-px text-zinc-500 dark:text-white/80 data-current:text-(--color-accent-content) hover:data-current:text-(--color-accent-content) data-current:bg-white dark:data-current:bg-white/[7%] data-current:border data-current:border-zinc-200 dark:data-current:border-transparent hover:text-zinc-800 dark:hover:text-white dark:hover:bg-white/[7%] hover:bg-zinc-800/5  border border-transparent text-sm" data-flux-navlist-item="data-flux-navlist-item" wire:navigate=""&gt;\n
+        &lt;div class="relative"&gt;\n
+                            &lt;svg class="shrink-0 [:where(&amp;amp;)]:size-6 size-4!" data-flux-icon xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"&gt;\n
+  &lt;path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 0 8.835-2.535m0 0A23.74 23.74 0 0 0 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46"/&gt;\n
+&lt;/svg&gt;\n
+\n
+                    \n
+                    &lt;/div&gt;\n
+    \n
+            &lt;div class="flex-1 text-sm font-medium leading-none whitespace-nowrap [[data-nav-footer]_&amp;]:hidden [[data-nav-sidebar]_[data-nav-footer]_&amp;]:block" data-content&gt;Pengumuman&lt;/div&gt;\n
+    &lt;/a&gt;\n
+                        &lt;a href="http://edukasi.local/peserta/testimonials" wire:current.ignore="" class="h-10 lg:h-8 relative flex items-center gap-3 rounded-lg  py-0 text-start w-full px-3 my-px text-zinc-500 dark:text-white/80 data-current:text-(--color-accent-content) hover:data-current:text-(--color-accent-content) data-current:bg-white dark:data-current:bg-white/[7%] data-current:border data-current:border-zinc-200 dark:data-current:border-transparent hover:text-zinc-800 dark:hover:text-white dark:hover:bg-white/[7%] hover:bg-zinc-800/5  border border-transparent text-sm" data-flux-navlist-item="data-flux-navlist-item" wire:navigate=""&gt;\n
+        &lt;div class="relative"&gt;\n
+                            &lt;svg class="shrink-0 [:where(&amp;amp;)]:size-6 size-4!" data-flux-icon xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"&gt;\n
+  &lt;path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/&gt;\n
+&lt;/svg&gt;\n
+\n
+                    \n
+                    &lt;/div&gt;\n
+    \n
+            &lt;div class="flex-1 text-sm font-medium leading-none whitespace-nowrap [[data-nav-footer]_&amp;]:hidden [[data-nav-sidebar]_[data-nav-footer]_&amp;]:block" data-content&gt;Testimoni&lt;/div&gt;\n
+    &lt;/a&gt;\n
+    &lt;/div&gt;\n
+&lt;/div&gt;\n
+\n
+                \n
+                &lt;div class="block space-y-[2px] mt-4 grid"&gt;\n
+    &lt;div class="px-1 py-2"&gt;\n
+        &lt;div class="text-xs leading-none text-zinc-400"&gt;Akun&lt;/div&gt;\n
+    &lt;/div&gt;\n
+\n
+    &lt;div&gt;\n
+        &lt;a href="http://edukasi.local/settings/profile" class="h-10 lg:h-8 relative flex items-center gap-3 rounded-lg  py-0 text-start w-full px-3 my-px text-zinc-500 dark:text-white/80 data-current:text-(--color-accent-content) hover:data-current:text-(--color-accent-content) data-current:bg-white dark:data-current:bg-white/[7%] data-current:border data-current:border-zinc-200 dark:data-current:border-transparent hover:text-zinc-800 dark:hover:text-white dark:hover:bg-white/[7%] hover:bg-zinc-800/5  border border-transparent text-sm" data-flux-navlist-item="data-flux-navlist-item" wire:navigate=""&gt;\n
+        &lt;div class="relative"&gt;\n
+                            &lt;svg class="shrink-0 [:where(&amp;amp;)]:size-6 size-4!" data-flux-icon xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"&gt;\n
+  &lt;path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0 0 15 0m-15 0a7.5 7.5 0 1 1 15 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077 1.41-.513m14.095-5.13 1.41-.513M5.106 17.785l1.15-.964m11.49-9.642 1.149-.964M7.501 19.795l.75-1.3m7.5-12.99.75-1.3m-6.063 16.658.26-1.477m2.605-14.772.26-1.477m0 17.726-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205 12 12m6.894 5.785-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495"/&gt;\n
+&lt;/svg&gt;\n
+\n
+                    \n
+                    &lt;/div&gt;\n
+    \n
+            &lt;div class="flex-1 text-sm font-medium leading-none whitespace-nowrap [[data-nav-footer]_&amp;]:hidden [[data-nav-sidebar]_[data-nav-footer]_&amp;]:block" data-content&gt;Pengaturan&lt;/div&gt;\n
+    &lt;/a&gt;\n
+    &lt;/div&gt;\n
+&lt;/div&gt;\n
+&lt;/nav&gt;\n
+\n
+            &lt;div class="flex-1" data-flux-spacer&gt;&lt;/div&gt;\n
+\n
+            &lt;div class="px-4 pb-5"&gt;\n
+                &lt;div class="rounded-none bg-white/10 p-4 ring-1 ring-white/10"&gt;\n
+                    &lt;div class="flex items-center gap-3"&gt;\n
+                        &lt;span class="flex size-11 shrink-0 items-center justify-center rounded-none bg-white/15 text-sm font-bold text-white ring-1 ring-white/15"&gt;\n
+                            JG\n
+                        &lt;/span&gt;\n
+\n
+                        &lt;div class="min-w-0"&gt;\n
+                            &lt;p class="truncate text-sm font-semibold text-white"&gt;Joy Grimes&lt;/p&gt;\n
+                            &lt;p class="truncate text-xs text-blue-200/80"&gt;Peserta&lt;/p&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+\n
+                    &lt;form method="POST" action="http://edukasi.local/logout" class="mt-4"&gt;\n
+                        &lt;input type="hidden" name="_token" value="hRXc4oEnR2nhSX3cFxuICUMN4dSN48rOqF7se8q6" autocomplete="off"&gt;                        &lt;button\n
+                            type="submit"\n
+                            class="flex w-full items-center justify-center rounded-none bg-white px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-sky-50"\n
+                        &gt;\n
+                            Keluar\n
+                        &lt;/button&gt;\n
+                    &lt;/form&gt;\n
+                &lt;/div&gt;\n
+            &lt;/div&gt;\n
+&lt;/ui-sidebar&gt;\n
+\n
+        &lt;header class="[grid-area:header] z-10 min-h-14 flex items-center px-6 lg:px-8 border-b border-white/60 bg-white/85 backdrop-blur lg:hidden dark:border-slate-800 dark:bg-slate-950/85" data-flux-header&gt;\n
+            &lt;button type="button" class="relative items-center font-medium justify-center gap-2 whitespace-nowrap disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none justify-center h-10 text-sm rounded-lg w-10 inline-flex -ms-2.5 bg-transparent hover:bg-zinc-800/5 dark:hover:bg-white/15 text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white      shrink-0 lg:hidden" data-flux-button="data-flux-button" x-data="" x-on:click="$dispatch('flux-sidebar-toggle')" aria-label="Toggle sidebar" data-flux-sidebar-toggle="data-flux-sidebar-toggle"&gt;\n
+        &lt;svg class="shrink-0 [:where(&amp;amp;)]:size-5" data-flux-icon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon"&gt;\n
+  &lt;path fill-rule="evenodd" d="M2 6.75A.75.75 0 0 1 2.75 6h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 6.75Zm0 6.5a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"/&gt;\n
+&lt;/svg&gt;\n
+    &lt;/button&gt;\n
+\n
+            &lt;div class="ml-3 flex min-w-0 flex-col"&gt;\n
+                &lt;span class="truncate text-sm font-semibold text-slate-900 dark:text-white"&gt;Akademi Balatkop&lt;/span&gt;\n
+                &lt;span class="truncate text-xs text-slate-500 dark:text-slate-400"&gt;Peserta Learning Panel&lt;/span&gt;\n
+            &lt;/div&gt;\n
+\n
+            &lt;div class="flex-1" data-flux-spacer&gt;&lt;/div&gt;\n
+\n
+            &lt;div class="flex items-center gap-2"&gt;\n
+                &lt;span class="flex size-9 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white"&gt;\n
+                    JG\n
+                &lt;/span&gt;\n
+            &lt;/div&gt;\n
+    &lt;/header&gt;\n
+\n
+        &lt;div class="[grid-area:main] p-6 lg:p-8 [[data-flux-container]_&amp;amp;]:px-0  !p-0 !lg:p-0 min-h-screen bg-slate-50 dark:bg-slate-950" data-flux-main&gt;\n
+    &lt;div class="min-h-full bg-slate-100"&gt;\n
+        &lt;div class="space-y-6 p-4 sm:p-6 lg:p-8"&gt;\n
+            &lt;section class="relative overflow-hidden rounded-none border border-blue-900 bg-gradient-to-r from-blue-950 via-blue-900 to-blue-800 px-6 py-8 text-white sm:px-8"&gt;\n
+                &lt;div class="absolute -right-20 -top-20 h-52 w-52 rotate-12 rounded-none bg-white/10"&gt;&lt;/div&gt;\n
+                &lt;div class="absolute right-28 top-4 h-40 w-40 -rotate-12 rounded-none bg-white/5"&gt;&lt;/div&gt;\n
+                &lt;div class="absolute left-1/2 top-3 h-24 w-44 -translate-x-1/2 rotate-6 rounded-none bg-white/10"&gt;&lt;/div&gt;\n
+\n
+                &lt;div class="relative flex flex-col gap-5 md:flex-row md:items-end md:justify-between"&gt;\n
+                    &lt;div&gt;\n
+                        &lt;p class="text-sm font-semibold text-blue-200"&gt;Dashboard&lt;/p&gt;\n
+                        &lt;h1 class="mt-1 text-3xl font-extrabold tracking-tight"&gt;Dashboard&lt;/h1&gt;\n
+                    &lt;/div&gt;\n
+\n
+                    &lt;div class="grid w-full gap-3 text-right sm:w-auto sm:grid-cols-3"&gt;\n
+                        &lt;div class="rounded-none bg-white/10 px-4 py-3 backdrop-blur-sm"&gt;\n
+                            &lt;p class="text-xs uppercase tracking-[0.2em] text-blue-100"&gt;Terdaftar&lt;/p&gt;\n
+                            &lt;p class="mt-1 text-2xl font-bold"&gt;1&lt;/p&gt;\n
+                        &lt;/div&gt;\n
+                        &lt;div class="rounded-none bg-white/10 px-4 py-3 backdrop-blur-sm"&gt;\n
+                            &lt;p class="text-xs uppercase tracking-[0.2em] text-blue-100"&gt;Aktif&lt;/p&gt;\n
+                            &lt;p class="mt-1 text-2xl font-bold"&gt;1&lt;/p&gt;\n
+                        &lt;/div&gt;\n
+                        &lt;div class="rounded-none bg-white/10 px-4 py-3 backdrop-blur-sm"&gt;\n
+                            &lt;p class="text-xs uppercase tracking-[0.2em] text-blue-100"&gt;Selesai&lt;/p&gt;\n
+                            &lt;p class="mt-1 text-2xl font-bold"&gt;0&lt;/p&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                &lt;/div&gt;\n
+            &lt;/section&gt;\n
+\n
+            &lt;section class="rounded-none border border-slate-200 bg-white p-5 shadow-sm sm:p-6" id="timeline"&gt;\n
+                &lt;div class="mb-5 flex items-center justify-between"&gt;\n
+                    &lt;h2 class="text-2xl font-semibold text-slate-800"&gt;Timeline&lt;/h2&gt;\n
+                &lt;/div&gt;\n
+\n
+                &lt;div class="grid gap-3 md:grid-cols-[auto_auto_1fr] md:items-center"&gt;\n
+                    &lt;select class="rounded-none border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700" aria-label="Rentang waktu timeline"&gt;\n
+                        &lt;option&gt;Next 7 days&lt;/option&gt;\n
+                        &lt;option&gt;Today&lt;/option&gt;\n
+                        &lt;option&gt;This month&lt;/option&gt;\n
+                    &lt;/select&gt;\n
+\n
+                    &lt;select class="rounded-none border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700" aria-label="Urutkan timeline"&gt;\n
+                        &lt;option&gt;Sort by dates&lt;/option&gt;\n
+                        &lt;option&gt;Sort by type&lt;/option&gt;\n
+                    &lt;/select&gt;\n
+\n
+                    &lt;input\n
+                        type="search"\n
+                        id="timeline-search"\n
+                        class="rounded-none border border-slate-300 px-3 py-2 text-sm text-slate-700"\n
+                        placeholder="Search by activity type or name"\n
+                    &gt;\n
+                &lt;/div&gt;\n
+\n
+                &lt;div class="mt-6"&gt;\n
+                                            &lt;div class="flex flex-col items-center justify-center gap-2 py-10 text-center text-slate-400"&gt;\n
+                            &lt;div class="flex h-12 w-12 items-center justify-center rounded-none bg-slate-100 text-xl font-bold"&gt;TL&lt;/div&gt;\n
+                            &lt;p class="text-sm font-semibold"&gt;No activities require action&lt;/p&gt;\n
+                        &lt;/div&gt;\n
+                                    &lt;/div&gt;\n
+            &lt;/section&gt;\n
+\n
+            &lt;section class="rounded-none border border-slate-200 bg-white p-5 shadow-sm sm:p-6" id="calendar"&gt;\n
+                &lt;div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"&gt;\n
+                    &lt;h2 class="text-2xl font-semibold text-slate-800"&gt;Calendar&lt;/h2&gt;\n
+                    &lt;a href="http://edukasi.local/peserta/jadwal" class="inline-flex items-center justify-center rounded-none bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"&gt;\n
+                        New event\n
+                    &lt;/a&gt;\n
+                &lt;/div&gt;\n
+\n
+                &lt;div class="mb-4"&gt;\n
+                    &lt;select class="w-full max-w-xs rounded-none border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700" aria-label="Filter kelas kalender"&gt;\n
+                        &lt;option&gt;All courses&lt;/option&gt;\n
+                    &lt;/select&gt;\n
+                &lt;/div&gt;\n
+\n
+                &lt;div class="mb-3 flex items-center justify-between text-sm text-slate-500"&gt;\n
+                    &lt;span&gt;&amp;lsaquo; March&lt;/span&gt;\n
+                    &lt;h3 class="text-2xl font-semibold text-slate-800"&gt;April 2026&lt;/h3&gt;\n
+                    &lt;span&gt;May &amp;rsaquo;&lt;/span&gt;\n
+                &lt;/div&gt;\n
+\n
+                &lt;div class="overflow-x-auto"&gt;\n
+                    &lt;table class="w-full min-w-[700px] border-separate border-spacing-0 text-center text-sm"&gt;\n
+                        &lt;thead&gt;\n
+                            &lt;tr class="text-slate-700"&gt;\n
+                                &lt;th class="border-b border-slate-200 px-2 py-2"&gt;Mon&lt;/th&gt;\n
+                                &lt;th class="border-b border-slate-200 px-2 py-2"&gt;Tue&lt;/th&gt;\n
+                                &lt;th class="border-b border-slate-200 px-2 py-2"&gt;Wed&lt;/th&gt;\n
+                                &lt;th class="border-b border-slate-200 px-2 py-2"&gt;Thu&lt;/th&gt;\n
+                                &lt;th class="border-b border-slate-200 px-2 py-2"&gt;Fri&lt;/th&gt;\n
+                                &lt;th class="border-b border-slate-200 px-2 py-2"&gt;Sat&lt;/th&gt;\n
+                                &lt;th class="border-b border-slate-200 px-2 py-2"&gt;Sun&lt;/th&gt;\n
+                            &lt;/tr&gt;\n
+                        &lt;/thead&gt;\n
+                        &lt;tbody&gt;\n
+                                                            &lt;tr&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        1\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        2\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                    &lt;div class="mx-auto mt-1 h-1.5 w-1.5 rounded-none bg-blue-500"&gt;&lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        3\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        4\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        5\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                    &lt;/tr&gt;\n
+                                                            &lt;tr&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        6\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        7\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        8\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        9\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                    &lt;div class="mx-auto mt-1 h-1.5 w-1.5 rounded-none bg-blue-500"&gt;&lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        10\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        11\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        12\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                    &lt;/tr&gt;\n
+                                                            &lt;tr&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        13\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        14\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        15\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        16\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                    &lt;div class="mx-auto mt-1 h-1.5 w-1.5 rounded-none bg-blue-500"&gt;&lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        17\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        18\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        19\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                    &lt;/tr&gt;\n
+                                                            &lt;tr&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        20\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold bg-blue-600 text-white"&gt;\n
+                                                        21\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        22\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        23\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                    &lt;div class="mx-auto mt-1 h-1.5 w-1.5 rounded-none bg-blue-500"&gt;&lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        24\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        25\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        26\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                    &lt;/tr&gt;\n
+                                                            &lt;tr&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        27\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        28\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        29\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                            &lt;div class="mx-auto mt-2 flex w-fit items-center justify-center"&gt;\n
+                                                    &lt;span class="inline-flex h-7 w-7 items-center justify-center rounded-none text-sm font-semibold text-slate-600"&gt;\n
+                                                        30\n
+                                                    &lt;/span&gt;\n
+                                                &lt;/div&gt;\n
+                                                                                                    &lt;div class="mx-auto mt-1 h-1.5 w-1.5 rounded-none bg-blue-500"&gt;&lt;/div&gt;\n
+                                                                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                    &lt;/td&gt;\n
+                                                                            &lt;td class="h-16 border-b border-r border-slate-100 align-top"&gt;\n
+                                                                                    &lt;/td&gt;\n
+                                                                    &lt;/tr&gt;\n
+                                                    &lt;/tbody&gt;\n
+                    &lt;/table&gt;\n
+                &lt;/div&gt;\n
+\n
+                &lt;div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-600"&gt;\n
+                    &lt;span class="inline-flex items-center gap-1 rounded-none bg-blue-50 px-3 py-1"&gt;&lt;span class="h-2 w-2 rounded-none bg-blue-600"&gt;&lt;/span&gt; Hari ini&lt;/span&gt;\n
+                    &lt;span class="inline-flex items-center gap-1 rounded-none bg-slate-100 px-3 py-1"&gt;&lt;span class="h-2 w-2 rounded-none bg-blue-500"&gt;&lt;/span&gt; Jadwal kelas aktif&lt;/span&gt;\n
+                &lt;/div&gt;\n
+            &lt;/section&gt;\n
+\n
+            &lt;section class="grid gap-4 lg:grid-cols-4"&gt;\n
+                &lt;a href="http://edukasi.local/peserta/presensi" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"&gt;\n
+                    Konfirmasi Kehadiran\n
+                &lt;/a&gt;\n
+                &lt;a href="http://edukasi.local/peserta/kelas" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"&gt;\n
+                    Cari Kelas Baru\n
+                &lt;/a&gt;\n
+                &lt;a href="http://edukasi.local/peserta/progress" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"&gt;\n
+                    Progress Belajar\n
+                &lt;/a&gt;\n
+                &lt;a href="http://edukasi.local/peserta/announcements" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"&gt;\n
+                    Semua Pengumuman\n
+                &lt;/a&gt;\n
+            &lt;/section&gt;\n
+        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+\n
+    &lt;script&gt;\n
+        document.addEventListener('DOMContentLoaded', function () {\n
+            const searchInput = document.getElementById('timeline-search');\n
+            const items = Array.from(document.querySelectorAll('[data-timeline-item]'));\n
+            const emptySearch = document.getElementById('timeline-empty-search');\n
+\n
+            if (!searchInput || items.length === 0 || !emptySearch) {\n
+                return;\n
+            }\n
+\n
+            searchInput.addEventListener('input', function () {\n
+                const query = searchInput.value.trim().toLowerCase();\n
+                let visibleCount = 0;\n
+\n
+                items.forEach(function (item) {\n
+                    const text = item.textContent.toLowerCase();\n
+                    const isVisible = text.includes(query);\n
+                    item.classList.toggle('hidden', !isVisible);\n
+\n
+                    if (isVisible) {\n
+                        visibleCount++;\n
+                    }\n
+                });\n
+\n
+                emptySearch.classList.toggle('hidden', visibleCount &gt; 0);\n
+            });\n
+        });\n
+    &lt;/script&gt;\n
+&lt;/div&gt;\n
+\n
+        &lt;script src="http://edukasi.local/flux/flux.js?id=27098d51" data-navigate-once&gt;&lt;/script&gt;\n
+    &lt;!-- Livewire Scripts --&gt;\n
+&lt;script src="http://edukasi.local/livewire-59d3f7e7/livewire.js?id=698c71c1"   data-csrf="hRXc4oEnR2nhSX3cFxuICUMN4dSN48rOqF7se8q6" data-module-url="http://edukasi.local/livewire-59d3f7e7" data-update-uri="http://edukasi.local/livewire-59d3f7e7/update" data-navigate-once="true"&gt;&lt;/script&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+' [ASCII](length: 53349) contains "Kamis" [ASCII](length: 5).
+&#13;
+C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Testing\TestResponseAssert.php:45
+C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:710
+C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php:243</failure>
+        </testcase>
+        <testcase name="test_peserta_can_filter_schedule_by_day" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="259" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="4" time="0.953371"/>
+        <testcase name="test_mentor_can_view_kelas_index_page" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="320" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="2" time="0.056553"/>
+        <testcase name="test_mentor_can_view_create_kelas_page" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="333" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="2" time="1.168650"/>
+        <testcase name="test_mentor_can_view_kelas_show_page" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="346" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="3" time="0.777249"/>
+        <testcase name="test_mentor_can_add_materi_tugas_quiz_and_diskusi_and_peserta_can_access_them" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="373" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="13" time="1.134916"/>
+        <testcase name="test_peserta_can_join_kelas_using_valid_code" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="470" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="2" time="0.020837"/>
+        <testcase name="test_peserta_cannot_join_kelas_using_invalid_code" file="C:\MAGANG\edu-balatkopukm\tests\Feature\KelasManagementTest.php" line="507" class="Tests\Feature\KelasManagementTest" classname="Tests.Feature.KelasManagementTest" assertions="3" time="0.014554"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\PesertaAnnouncementTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\PesertaAnnouncementTest.php" tests="2" assertions="9" errors="0" failures="0" skipped="0" time="0.621974">
+        <testcase name="test_peserta_can_view_announcements_page" file="C:\MAGANG\edu-balatkopukm\tests\Feature\PesertaAnnouncementTest.php" line="14" class="Tests\Feature\PesertaAnnouncementTest" classname="Tests.Feature.PesertaAnnouncementTest" assertions="5" time="0.578179"/>
+        <testcase name="test_only_selected_peserta_can_access_targeted_announcement" file="C:\MAGANG\edu-balatkopukm\tests\Feature\PesertaAnnouncementTest.php" line="54" class="Tests\Feature\PesertaAnnouncementTest" classname="Tests.Feature.PesertaAnnouncementTest" assertions="4" time="0.043796"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Settings\PasswordUpdateTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\PasswordUpdateTest.php" tests="2" assertions="5" errors="0" failures="0" skipped="0" time="4.012015">
+        <testcase name="test_password_can_be_updated" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\PasswordUpdateTest.php" line="15" class="Tests\Feature\Settings\PasswordUpdateTest" classname="Tests.Feature.Settings.PasswordUpdateTest" assertions="2" time="3.937237"/>
+        <testcase name="test_correct_password_must_be_provided_to_update_password" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\PasswordUpdateTest.php" line="34" class="Tests\Feature\Settings\PasswordUpdateTest" classname="Tests.Feature.Settings.PasswordUpdateTest" assertions="3" time="0.074778"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Settings\ProfileUpdateTest" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\ProfileUpdateTest.php" tests="5" assertions="16" errors="0" failures="1" skipped="0" time="6.393192">
+        <testcase name="test_profile_page_is_displayed" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\ProfileUpdateTest.php" line="14" class="Tests\Feature\Settings\ProfileUpdateTest" classname="Tests.Feature.Settings.ProfileUpdateTest" assertions="1" time="6.143150">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\Settings\ProfileUpdateTest::test_profile_page_is_displayed&#13;
+Expected response status code [200] but received 500.
+Failed asserting that 500 is identical to 200.&#13;
+&#13;
+The following exception occurred during the last request:
+
+InvalidArgumentException: No hint path defined for [layouts]. in C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\FileViewFinder.php:111
+Stack trace:
+#0 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\FileViewFinder.php(89): Illuminate\View\FileViewFinder-&gt;parseNamespaceSegments('layouts::app')
+#1 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\FileViewFinder.php(75): Illuminate\View\FileViewFinder-&gt;findNamespacedView('layouts::app')
+#2 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\Factory.php(150): Illuminate\View\FileViewFinder-&gt;find('layouts::app')
+#3 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\Concerns\ManagesComponents.php(103): Illuminate\View\Factory-&gt;make('layouts::app', Array)
+#4 C:\MAGANG\edu-balatkopukm\storage\framework\views\513953dbd9cb68f3a8b3d41c1d3eaf7d.php(17): Illuminate\View\Factory-&gt;renderComponent()
+#5 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php(123): require('C:\\MAGANG\\edu-b...')
+#6 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#7 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\Engines\PhpEngine.php(57): Illuminate\Filesystem\Filesystem-&gt;getRequire('C:\\MAGANG\\edu-b...', Array)
+#8 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Mechanisms\ExtendBlade\ExtendedCompilerEngine.php(22): Illuminate\View\Engines\PhpEngine-&gt;evaluatePath('C:\\MAGANG\\edu-b...', Array)
+#9 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\Engines\CompilerEngine.php(76): Livewire\Mechanisms\ExtendBlade\ExtendedCompilerEngine-&gt;evaluatePath('C:\\MAGANG\\edu-b...', Array)
+#10 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Mechanisms\ExtendBlade\ExtendedCompilerEngine.php(10): Illuminate\View\Engines\CompilerEngine-&gt;get('C:\\MAGANG\\edu-b...', Array)
+#11 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\View.php(208): Livewire\Mechanisms\ExtendBlade\ExtendedCompilerEngine-&gt;get('C:\\MAGANG\\edu-b...', Array)
+#12 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\View.php(191): Illuminate\View\View-&gt;getContents()
+#13 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\View.php(160): Illuminate\View\View-&gt;renderContents()
+#14 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\Compilers\BladeCompiler.php(353): Illuminate\View\View-&gt;render()
+#15 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php(363): Illuminate\View\Compilers\BladeCompiler::render('    &lt;?php $layo...', Array)
+#16 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Features\SupportPageComponents\SupportPageComponents.php(162): Illuminate\Support\Facades\Facade::__callStatic('render', Array)
+#17 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Features\SupportPageComponents\HandlesPageComponents.php(26): Livewire\Features\SupportPageComponents\SupportPageComponents::renderContentsIntoLayout('&lt;section wire:s...', Object(Livewire\Features\SupportPageComponents\PageComponentConfig))
+#18 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php(36): Livewire\Component-&gt;__invoke()
+#19 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Container\Util.php(43): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#20 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php(96): Illuminate\Container\Util::unwrapIfClosure(Object(Closure))
+#21 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php(35): Illuminate\Container\BoundMethod::callBoundMethod(Object(Illuminate\Foundation\Application), Array, Object(Closure))
+#22 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Container\Container.php(799): Illuminate\Container\BoundMethod::call(Object(Illuminate\Foundation\Application), Array, Array, NULL)
+#23 C:\MAGANG\edu-balatkopukm\vendor\livewire\volt\src\VoltManager.php(37): Illuminate\Container\Container-&gt;call(Array)
+#24 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\CallableDispatcher.php(39): Livewire\Volt\VoltManager-&gt;Livewire\Volt\{closure}()
+#25 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Route.php(243): Illuminate\Routing\CallableDispatcher-&gt;dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#26 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Route.php(214): Illuminate\Routing\Route-&gt;runCallable()
+#27 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Router.php(822): Illuminate\Routing\Route-&gt;run()
+#28 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Routing\Router-&gt;Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#29 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Auth\Middleware\EnsureEmailIsVerified.php(41): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Auth\Middleware\EnsureEmailIsVerified-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Auth\Middleware\Authenticate.php(63): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Auth\Middleware\Authenticate-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#35 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken.php(87): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#36 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\Middleware\ShareErrorsFromSession.php(48): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#38 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\View\Middleware\ShareErrorsFromSession-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#39 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(120): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#40 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(63): Illuminate\Session\Middleware\StartSession-&gt;handleStatefulRequest(Object(Illuminate\Http\Request), Object(Illuminate\Session\Store), Object(Closure))
+#41 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Session\Middleware\StartSession-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse.php(36): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#43 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#44 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(74): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#45 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Cookie\Middleware\EncryptCookies-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#46 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#47 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Router.php(821): Illuminate\Pipeline\Pipeline-&gt;then(Object(Closure))
+#48 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router-&gt;runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#49 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router-&gt;runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#50 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router-&gt;dispatchToRoute(Object(Illuminate\Http\Request))
+#51 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router-&gt;dispatch(Object(Illuminate\Http\Request))
+#52 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel-&gt;Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#53 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Features\SupportDisablingBackButtonCache\DisableBackButtonCacheMiddleware.php(19): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#54 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Livewire\Features\SupportDisablingBackButtonCache\DisableBackButtonCacheMiddleware-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#55 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#56 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#57 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#58 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#59 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#60 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#61 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#62 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#63 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#64 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#65 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(61): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#66 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#67 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#68 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#69 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#70 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#71 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#72 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#73 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#74 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline-&gt;then(Object(Closure))
+#75 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel-&gt;sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#76 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel-&gt;handle(Object(Illuminate\Http\Request))
+#77 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(368): Illuminate\Foundation\Testing\TestCase-&gt;call('GET', '/settings/profi...', Array, Array, Array, Array)
+#78 C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\ProfileUpdateTest.php(18): Illuminate\Foundation\Testing\TestCase-&gt;get('/settings/profi...')
+#79 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Settings\ProfileUpdateTest-&gt;test_profile_page_is_displayed()
+#80 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase-&gt;runTest()
+#81 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase-&gt;runBare()
+#82 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner-&gt;run(Object(Tests\Feature\Settings\ProfileUpdateTest))
+#83 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase-&gt;run()
+#84 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite-&gt;run()
+#85 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite-&gt;run()
+#86 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite-&gt;run()
+#87 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner-&gt;run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#88 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application-&gt;run(Array)
+#89 {main}
+
+Next Illuminate\View\ViewException: No hint path defined for [layouts]. (View: C:\MAGANG\edu-balatkopukm\storage\framework\views\4943bc92ebba41e8b0e508149542e0ad.blade.php) in C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\FileViewFinder.php:111
+Stack trace:
+#0 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Mechanisms\ExtendBlade\ExtendedCompilerEngine.php(58): Illuminate\View\Engines\CompilerEngine-&gt;handleViewException(Object(InvalidArgumentException), 1)
+#1 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\Engines\PhpEngine.php(59): Livewire\Mechanisms\ExtendBlade\ExtendedCompilerEngine-&gt;handleViewException(Object(InvalidArgumentException), 1)
+#2 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Mechanisms\ExtendBlade\ExtendedCompilerEngine.php(22): Illuminate\View\Engines\PhpEngine-&gt;evaluatePath('C:\\MAGANG\\edu-b...', Array)
+#3 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\Engines\CompilerEngine.php(76): Livewire\Mechanisms\ExtendBlade\ExtendedCompilerEngine-&gt;evaluatePath('C:\\MAGANG\\edu-b...', Array)
+#4 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Mechanisms\ExtendBlade\ExtendedCompilerEngine.php(10): Illuminate\View\Engines\CompilerEngine-&gt;get('C:\\MAGANG\\edu-b...', Array)
+#5 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\View.php(208): Livewire\Mechanisms\ExtendBlade\ExtendedCompilerEngine-&gt;get('C:\\MAGANG\\edu-b...', Array)
+#6 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\View.php(191): Illuminate\View\View-&gt;getContents()
+#7 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\View.php(160): Illuminate\View\View-&gt;renderContents()
+#8 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\Compilers\BladeCompiler.php(353): Illuminate\View\View-&gt;render()
+#9 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php(363): Illuminate\View\Compilers\BladeCompiler::render('    &lt;?php $layo...', Array)
+#10 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Features\SupportPageComponents\SupportPageComponents.php(162): Illuminate\Support\Facades\Facade::__callStatic('render', Array)
+#11 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Features\SupportPageComponents\HandlesPageComponents.php(26): Livewire\Features\SupportPageComponents\SupportPageComponents::renderContentsIntoLayout('&lt;section wire:s...', Object(Livewire\Features\SupportPageComponents\PageComponentConfig))
+#12 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php(36): Livewire\Component-&gt;__invoke()
+#13 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Container\Util.php(43): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#14 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php(96): Illuminate\Container\Util::unwrapIfClosure(Object(Closure))
+#15 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php(35): Illuminate\Container\BoundMethod::callBoundMethod(Object(Illuminate\Foundation\Application), Array, Object(Closure))
+#16 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Container\Container.php(799): Illuminate\Container\BoundMethod::call(Object(Illuminate\Foundation\Application), Array, Array, NULL)
+#17 C:\MAGANG\edu-balatkopukm\vendor\livewire\volt\src\VoltManager.php(37): Illuminate\Container\Container-&gt;call(Array)
+#18 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\CallableDispatcher.php(39): Livewire\Volt\VoltManager-&gt;Livewire\Volt\{closure}()
+#19 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Route.php(243): Illuminate\Routing\CallableDispatcher-&gt;dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#20 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Route.php(214): Illuminate\Routing\Route-&gt;runCallable()
+#21 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Router.php(822): Illuminate\Routing\Route-&gt;run()
+#22 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Routing\Router-&gt;Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#23 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Auth\Middleware\EnsureEmailIsVerified.php(41): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Auth\Middleware\EnsureEmailIsVerified-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Auth\Middleware\Authenticate.php(63): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Auth\Middleware\Authenticate-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken.php(87): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\View\Middleware\ShareErrorsFromSession.php(48): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\View\Middleware\ShareErrorsFromSession-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(120): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(63): Illuminate\Session\Middleware\StartSession-&gt;handleStatefulRequest(Object(Illuminate\Http\Request), Object(Illuminate\Session\Store), Object(Closure))
+#35 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Session\Middleware\StartSession-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#36 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse.php(36): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#37 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(74): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#39 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Cookie\Middleware\EncryptCookies-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#41 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Router.php(821): Illuminate\Pipeline\Pipeline-&gt;then(Object(Closure))
+#42 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router-&gt;runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#43 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router-&gt;runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#44 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router-&gt;dispatchToRoute(Object(Illuminate\Http\Request))
+#45 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router-&gt;dispatch(Object(Illuminate\Http\Request))
+#46 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel-&gt;Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#47 C:\MAGANG\edu-balatkopukm\vendor\livewire\livewire\src\Features\SupportDisablingBackButtonCache\DisableBackButtonCacheMiddleware.php(19): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#48 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Livewire\Features\SupportDisablingBackButtonCache\DisableBackButtonCacheMiddleware-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#50 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#51 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#52 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#53 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#54 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#55 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#56 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#57 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#58 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#59 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(61): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#60 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#61 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#62 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#63 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#64 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#65 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#66 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#67 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#68 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline-&gt;then(Object(Closure))
+#69 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel-&gt;sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#70 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel-&gt;handle(Object(Illuminate\Http\Request))
+#71 C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(368): Illuminate\Foundation\Testing\TestCase-&gt;call('GET', '/settings/profi...', Array, Array, Array, Array)
+#72 C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\ProfileUpdateTest.php(18): Illuminate\Foundation\Testing\TestCase-&gt;get('/settings/profi...')
+#73 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Settings\ProfileUpdateTest-&gt;test_profile_page_is_displayed()
+#74 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase-&gt;runTest()
+#75 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase-&gt;runBare()
+#76 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner-&gt;run(Object(Tests\Feature\Settings\ProfileUpdateTest))
+#77 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase-&gt;run()
+#78 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite-&gt;run()
+#79 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite-&gt;run()
+#80 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite-&gt;run()
+#81 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner-&gt;run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#82 C:\MAGANG\edu-balatkopukm\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application-&gt;run(Array)
+#83 {main}
+
+----------------------------------------------------------------------------------
+
+No hint path defined for [layouts]. (View: C:\MAGANG\edu-balatkopukm\storage\framework\views\4943bc92ebba41e8b0e508149542e0ad.blade.php)
+&#13;
+C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Testing\TestResponseAssert.php:45
+C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:175
+C:\MAGANG\edu-balatkopukm\vendor\laravel\framework\src\Illuminate\Testing\Concerns\AssertsStatusCodes.php:16
+C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\ProfileUpdateTest.php:18</failure>
+        </testcase>
+        <testcase name="test_profile_information_can_be_updated" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\ProfileUpdateTest.php" line="21" class="Tests\Feature\Settings\ProfileUpdateTest" classname="Tests.Feature.Settings.ProfileUpdateTest" assertions="4" time="0.071700"/>
+        <testcase name="test_email_verification_status_is_unchanged_when_email_address_is_unchanged" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\ProfileUpdateTest.php" line="41" class="Tests\Feature\Settings\ProfileUpdateTest" classname="Tests.Feature.Settings.ProfileUpdateTest" assertions="2" time="0.082668"/>
+        <testcase name="test_user_can_delete_their_account" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\ProfileUpdateTest.php" line="57" class="Tests\Feature\Settings\ProfileUpdateTest" classname="Tests.Feature.Settings.ProfileUpdateTest" assertions="5" time="0.040346"/>
+        <testcase name="test_correct_password_must_be_provided_to_delete_account" file="C:\MAGANG\edu-balatkopukm\tests\Feature\Settings\ProfileUpdateTest.php" line="75" class="Tests\Feature\Settings\ProfileUpdateTest" classname="Tests.Feature.Settings.ProfileUpdateTest" assertions="4" time="0.055328"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

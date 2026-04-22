@@ -87,6 +87,10 @@ Route::middleware(['auth', 'verified', 'role:mentor'])->prefix('mentor')->name('
     Route::get('kelas/create', [MentorKelasController::class, 'create'])->name('kelas.create');
     Route::get('kelas/{kelas}', [MentorKelasController::class, 'show'])->name('kelas.show');
     Route::post('kelas', [MentorKelasController::class, 'store'])->name('kelas.store');
+    Route::post('kelas/{kelas}/materi', [MentorKelasController::class, 'storeMateri'])->name('kelas.materi.store');
+    Route::post('kelas/{kelas}/tugas', [MentorKelasController::class, 'storeTugas'])->name('kelas.tugas.store');
+    Route::post('kelas/{kelas}/quiz', [MentorKelasController::class, 'storeQuiz'])->name('kelas.quiz.store');
+    Route::post('kelas/{kelas}/diskusi', [MentorKelasController::class, 'storeDiskusi'])->name('kelas.diskusi.store');
 
     Route::get('announcements', [MentorAnnouncementController::class, 'index'])->name('announcements.index');
     Route::post('announcements', [MentorAnnouncementController::class, 'store'])->name('announcements.store');
@@ -100,6 +104,7 @@ Route::middleware(['auth', 'verified', 'role:peserta'])->prefix('peserta')->name
     Route::get('kelas', [PesertaDashboardController::class, 'indexKelas'])->name('kelas.index');
     Route::post('kelas/join', [PesertaDashboardController::class, 'joinByCode'])->name('kelas.join');
     Route::get('kelas/{kelas}', [PesertaDashboardController::class, 'showKelas'])->name('kelas.show');
+    Route::post('kelas/{kelas}/tugas/{tugas}/submit', [PesertaDashboardController::class, 'submitTugas'])->name('kelas.tugas.submit');
     Route::get('jadwal', [PesertaDashboardController::class, 'jadwal'])->name('jadwal');
     Route::get('sertifikat', [PesertaDashboardController::class, 'sertifikat'])->name('sertifikat');
     Route::get('progress', [PesertaDashboardController::class, 'progress'])->name('progress');

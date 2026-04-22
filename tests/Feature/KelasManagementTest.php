@@ -4,10 +4,16 @@ namespace Tests\Feature;
 
 use App\Models\Kelas;
 use App\Models\KelasEnrollment;
+use App\Models\Materi;
 use App\Models\Program;
+use App\Models\Quiz;
+use App\Models\Tugas;
+use App\Models\TugasSubmission;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class KelasManagementTest extends TestCase
@@ -237,8 +243,8 @@ class KelasManagementTest extends TestCase
         $this->actingAs($peserta)
             ->get(route('peserta.dashboard'))
             ->assertOk()
-            ->assertSee('Kamis')
-            ->assertSee('09:00');
+            ->assertSee('Timeline')
+            ->assertSee('Calendar');
 
         $this->actingAs($peserta)
             ->get(route('peserta.jadwal'))
@@ -249,8 +255,76 @@ class KelasManagementTest extends TestCase
         $this->actingAs($peserta)
             ->get(route('peserta.kelas.show', $kelas))
             ->assertOk()
+            ->assertSee('Jadwal')
             ->assertSee('Kamis')
             ->assertSee('09:00');
+    }
+
+    public function test_peserta_can_submit_tugas_and_see_submission_status(): void
+    {
+        Storage::fake('public');
+
+        $peserta = User::factory()->create([
+            'role' => 'peserta',
+            'email_verified_at' => now(),
+        ]);
+        $mentor = User::factory()->create([
+            'role' => 'mentor',
+            'email_verified_at' => now(),
+        ]);
+        $program = Program::create([
+            'nama' => 'Program Desain',
+            'deskripsi' => 'Program desain dasar.',
+        ]);
+        $kelas = Kelas::create([
+            'program_id' => $program->id,
+            'nama' => 'Desain Dasar',
+            'deskripsi' => 'Kelas desain dasar mingguan.',
+            'mentor_id' => $mentor->id,
+            'kapasitas' => 20,
+            'peserta_terdaftar' => 1,
+            'status' => 'aktif',
+        ]);
+
+        KelasEnrollment::create([
+            'peserta_id' => $peserta->id,
+            'kelas_id' => $kelas->id,
+            'terdaftar_pada' => now(),
+            'status' => 'aktif',
+        ]);
+
+        $tugas = Tugas::create([
+            'kelas_id' => $kelas->id,
+            'judul' => 'Tugas Portofolio',
+            'deskripsi' => 'Kumpulkan hasil kerja dalam format PDF.',
+            'deadline' => now()->addDays(5),
+            'nilai_maksimal' => 100,
+            'status' => 'aktif',
+        ]);
+
+        $file = UploadedFile::fake()->create('jawaban.pdf', 120, 'application/pdf');
+
+        $this->actingAs($peserta)
+            ->post(route('peserta.kelas.tugas.submit', [$kelas, $tugas]), [
+                'file' => $file,
+                'komentar' => 'Silakan diperiksa, mentor.',
+            ])
+            ->assertSessionHas('status');
+
+        $submission = TugasSubmission::firstOrFail();
+
+        Storage::disk('public')->assertExists($submission->file);
+
+        $this->assertDatabaseHas('tugas_submissions', [
+            'tugas_id' => $tugas->id,
+            'peserta_id' => $peserta->id,
+        ]);
+
+        $this->actingAs($peserta)
+            ->get(route('peserta.kelas.show', $kelas))
+            ->assertOk()
+            ->assertSee('Status Pengumpulan')
+            ->assertSee('Sudah dikumpulkan');
     }
 
     public function test_peserta_can_filter_schedule_by_day(): void
@@ -365,6 +439,116 @@ class KelasManagementTest extends TestCase
             ->assertStatus(200)
             ->assertSee('Detail Kelas')
             ->assertSee('Kelas Public Speaking');
+    }
+
+    public function test_mentor_can_add_materi_tugas_quiz_and_diskusi_and_peserta_can_access_them(): void
+    {
+        Storage::fake('public');
+
+        $mentor = User::factory()->create([
+            'role' => 'mentor',
+            'email_verified_at' => now(),
+        ]);
+        $peserta = User::factory()->create([
+            'role' => 'peserta',
+            'email_verified_at' => now(),
+        ]);
+        $program = Program::create([
+            'nama' => 'Program Manajemen',
+            'deskripsi' => 'Program manajemen kelas.',
+        ]);
+        $kelas = Kelas::create([
+            'program_id' => $program->id,
+            'nama' => 'Kelas Konten Mentor',
+            'deskripsi' => 'Kelas untuk uji konten mentor.',
+            'mentor_id' => $mentor->id,
+            'kapasitas' => 30,
+            'peserta_terdaftar' => 1,
+            'status' => 'aktif',
+        ]);
+
+        KelasEnrollment::create([
+            'peserta_id' => $peserta->id,
+            'kelas_id' => $kelas->id,
+            'terdaftar_pada' => now(),
+            'status' => 'aktif',
+        ]);
+
+        $pptFile = UploadedFile::fake()->create('slide-materi.pptx', 1024, 'application/vnd.openxmlformats-officedocument.presentationml.presentation');
+
+        $this->actingAs($mentor)
+            ->post(route('mentor.kelas.materi.store', $kelas), [
+                'judul' => 'Materi Pengantar',
+                'isi' => 'Konten materi pengantar kelas.',
+                'pertemuan' => 1,
+                'tipe' => 'ppt',
+                'url' => null,
+                'file' => $pptFile,
+            ])
+            ->assertSessionHas('status');
+
+        $this->actingAs($mentor)
+            ->post(route('mentor.kelas.tugas.store', $kelas), [
+                'judul' => 'Tugas Minggu 1',
+                'deskripsi' => 'Kerjakan studi kasus dasar.',
+                'deadline' => now()->addDays(7)->format('Y-m-d H:i:s'),
+                'nilai_maksimal' => 100,
+                'status' => 'aktif',
+            ])
+            ->assertSessionHas('status');
+
+        $this->actingAs($mentor)
+            ->post(route('mentor.kelas.quiz.store', $kelas), [
+                'judul' => 'Quiz Dasar',
+                'deskripsi' => 'Quiz pemahaman awal.',
+                'waktu_pengerjaan' => 45,
+                'nilai_maksimal' => 100,
+                'mulai' => now()->format('Y-m-d H:i:s'),
+                'selesai' => now()->addDays(2)->format('Y-m-d H:i:s'),
+                'status' => 'aktif',
+            ])
+            ->assertSessionHas('status');
+
+        $this->actingAs($mentor)
+            ->post(route('mentor.kelas.diskusi.store', $kelas), [
+                'topik' => 'Strategi Komunikasi',
+                'isi' => 'Bagikan pendapat Anda tentang strategi komunikasi efektif.',
+                'pertemuan' => 1,
+            ])
+            ->assertSessionHas('status');
+
+        $this->assertDatabaseHas((new Materi)->getTable(), [
+            'kelas_id' => $kelas->id,
+            'judul' => 'Materi Pengantar',
+        ]);
+
+        $materi = Materi::where('kelas_id', $kelas->id)->where('judul', 'Materi Pengantar')->firstOrFail();
+        Storage::disk('public')->assertExists($materi->file);
+
+        $this->assertDatabaseHas((new Tugas)->getTable(), [
+            'kelas_id' => $kelas->id,
+            'judul' => 'Tugas Minggu 1',
+        ]);
+        $this->assertDatabaseHas((new Quiz)->getTable(), [
+            'kelas_id' => $kelas->id,
+            'judul' => 'Quiz Dasar',
+        ]);
+        $this->assertDatabaseHas((new Materi)->getTable(), [
+            'kelas_id' => $kelas->id,
+            'judul' => 'Diskusi: Strategi Komunikasi',
+        ]);
+
+        $this->actingAs($peserta)
+            ->get(route('peserta.kelas.show', $kelas))
+            ->assertOk()
+            ->assertSee('Materi Pengantar')
+            ->assertSee('Materi Pembelajaran')
+            ->assertSee('Diskusi Kelas')
+            ->assertSee('Pengumpulan Tugas')
+            ->assertSee('Buka File')
+            ->assertSee('Tugas Minggu 1')
+            ->assertSee('Quiz Dasar')
+            ->assertSee('Strategi Komunikasi');
     }
 
     public function test_peserta_can_join_kelas_using_valid_code(): void
