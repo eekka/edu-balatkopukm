@@ -4,7 +4,7 @@
             {{ __('Kelas Saya') }}
         </h2>
     </x-slot>
-
+    
     <div class="h-full bg-slate-50 py-8 sm:py-10">
         <div class="mx-auto max-w-7xl space-y-6 px-4 sm:px-6 lg:px-8">
             <section class="overflow-hidden rounded-none border border-sky-700 bg-gradient-to-r from-sky-700 to-sky-600 px-6 py-7 text-white shadow-lg shadow-sky-300/20 sm:px-8">
@@ -20,9 +20,9 @@
                     {{ session('status') }}
                 </div>
             @endif
-
+            <!-- Join Kelas -->
             <section class="rounded-none border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-                <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+                <div class="flex flex-col gap-5 items-center lg:flex-row lg:justify-between">
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Join Kelas</p>
                         <h2 class="mt-2 text-2xl font-semibold text-slate-900">Masukkan Kode Kelas</h2>
@@ -43,29 +43,63 @@
                 @enderror
             </section>
 
-            <section class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <!-- Akses Cepat -->
+            <section class="grid gap-4 lg:grid-cols-4">
+                <a href="{{ route('peserta.presensi.index') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                    Konfirmasi Kehadiran
+                </a>
+                <a href="{{ route('peserta.kelas.index') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                    Cari Kelas Baru
+                </a>
+                <a href="{{ route('peserta.progress') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                    Progress Belajar
+                </a>
+                <a href="{{ route('peserta.announcements.index') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                    Semua Pengumuman
+                </a>
+            </section>
+
+            <!-- Kelas yang Diikuti -->
+            <section class="grid grid-cols-1 gap-6 items-stretch md:grid-cols-2 xl:grid-cols-3 auto-rows-fr">
                 @if ($enrolledClasses->count() > 0)
                     @foreach ($enrolledClasses as $enrollment)
-                        <article class="flex h-full flex-col rounded-none border border-slate-200 bg-white p-6 shadow-sm">
-                            <div class="flex-1 space-y-4">
-                                <div class="space-y-2">
-                                    <h4 class="text-2xl font-semibold leading-tight text-slate-900">{{ $enrollment->kelas->nama }}</h4>
-                                    <p class="min-h-[48px] text-sm leading-6 text-slate-600">{{ $enrollment->kelas->deskripsi }}</p>
-                                </div>
+                    <article class="flex h-full flex-col rounded-none border border-slate-200 bg-white p-4 shadow-sm">
+                        <div class="flex flex-1 flex-col">
+                            
+                            <div class="mb-4">
+                                <h4 class="text-2xl font-semibold leading-tight text-slate-900 line-clamp-2 min-h-[4rem]">
+                                    {{ $enrollment->kelas->nama }}
+                                </h4>
+                                <p class="mt-2 text-sm leading-6 text-slate-600 line-clamp-3 min-h-[4.5rem]">
+                                    {{ $enrollment->kelas->deskripsi }}
+                                </p>
+                            </div>
 
-                                <div class="space-y-3 border-y border-slate-100 py-3 text-sm text-slate-700">
-                                    <p><span class="font-semibold text-slate-900">Mentor:</span> {{ $enrollment->kelas->mentor->name }}</p>
-                                    <p><span class="font-semibold text-slate-900">Status:</span> {{ ucfirst($enrollment->status) }}</p>
+                            <div class="space-y-3 border-y border-slate-100 py-4 text-sm text-slate-700">
+                                <p class="flex justify-between">
+                                    <span class="font-semibold text-slate-900">Mentor:</span> 
+                                    <span class="text-right">{{ $enrollment->kelas->mentor->name }}</span>
+                                </p>
+                                <p class="flex justify-between">
+                                    <span class="font-semibold text-slate-900">Status:</span> 
+                                    <span>{{ ucfirst($enrollment->status) }}</span>
+                                </p>
+                                
+                                <div class="min-h-[1.25rem]">
                                     @if ($enrollment->kelas->jadwal_hari_label || $enrollment->kelas->jadwal_jam_label)
-                                        <p><span class="font-semibold text-slate-900">Jadwal:</span> {{ $enrollment->kelas->jadwal_hari_label ?? '-' }}{{ $enrollment->kelas->jadwal_jam_label ? ' · '.$enrollment->kelas->jadwal_jam_label : '' }}</p>
+                                        <p class="flex justify-between">
+                                            <span class="font-semibold text-slate-900">Jadwal:</span> 
+                                            <span class="text-right text-xs">{{ $enrollment->kelas->jadwal_hari_label ?? '-' }}{{ $enrollment->kelas->jadwal_jam_label ? ' · '.$enrollment->kelas->jadwal_jam_label : '' }}</span>
+                                        </p>
                                     @endif
                                 </div>
                             </div>
+                        </div>
 
-                            <a href="{{ route('peserta.kelas.show', $enrollment->kelas) }}" class="mt-5 inline-flex items-center justify-center rounded-none bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-700">
-                                Lihat Kelas
-                            </a>
-                        </article>
+                        <a href="{{ route('peserta.kelas.show', $enrollment->kelas) }}" class="mt-5 inline-flex items-center justify-center rounded-none bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-700">
+                            Lihat Kelas
+                        </a>
+                    </article>
                     @endforeach
                 @else
                     <div class="rounded-none border border-slate-200 bg-white p-8 text-center shadow-sm md:col-span-2 xl:col-span-3">

@@ -8,17 +8,17 @@
     <div class="py-12 bg-slate-50 h-full">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if(session('success'))
-                <div class="mb-4 rounded-2xl bg-green-100 p-4 text-green-800">
+                <div class="mb-4 rounded-none bg-green-100 p-4 text-green-800">
                     {{ session('success') }}
                 </div>
             @endif
             @if(session('error'))
-                <div class="mb-4 rounded-2xl bg-red-100 p-4 text-red-800">
+                <div class="mb-4 rounded-none bg-red-100 p-4 text-red-800">
                     {{ session('error') }}
                 </div>
             @endif
 
-            <div class="flex justify-between items-center overflow-hidden rounded-[32px] bg-gradient-to-r from-sky-700 to-sky-600 p-8 shadow-xl shadow-sky-400/20">
+            <div class="flex justify-between items-center overflow-hidden rounded-none bg-gradient-to-r from-sky-700 to-sky-600 p-8 shadow-xl shadow-sky-400/20">
                 <div class="space-y-3 text-white">
                     <p class="text-xs font-semibold uppercase tracking-[0.32em] text-sky-200/80">Presensi</p>
                     <h3 class="text-3xl font-bold">Lakukan Presensi dengan Selfie</h3>
@@ -28,7 +28,7 @@
 
             <!-- Daftar Kelas -->
             <div class="mt-8">
-                <div class="rounded-[28px] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-300/20">
+                <div class="border border-slate-200 bg-white p-8 shadow-lg shadow-slate-300/20">
                     <div class="space-y-6">
                         <div>
                             <h4 class="text-xl font-semibold text-slate-900">Pilih Kelas untuk Presensi</h4>
@@ -36,29 +36,30 @@
                         </div>
 
                         @if($enrolledClasses->count() > 0)
-                            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
                                 @foreach($enrolledClasses as $enrollment)
-                                    <div class="rounded-2xl border {{ $enrollment->sudah_absen ? 'border-green-200 bg-green-50' : 'border-slate-200 bg-white' }} p-6 shadow-sm">
-                                        <div class="flex items-start justify-between">
-                                            <div class="flex-1">
-                                                <h5 class="font-semibold text-slate-900">{{ $enrollment->kelas->nama }}</h5>
-                                                <p class="mt-1 text-sm text-slate-600">{{ $enrollment->kelas->deskripsi }}</p>
-                                                <p class="mt-2 text-xs text-slate-500">Mentor: {{ $enrollment->kelas->mentor->name }}</p>
+                                    <div class="flex h-full flex-col rounded-none border {{ $enrollment->sudah_absen ? 'border-green-200 bg-green-50' : 'border-slate-200 bg-white' }} p-6 shadow-sm">
+                                        <div class="flex-1 space-y-3">
+                                            <div>
+                                                <h5 class="text-lg font-semibold text-slate-900">{{ $enrollment->kelas->nama }}</h5>
+                                                <p class="mt-2 text-sm text-slate-600">{{ $enrollment->kelas->deskripsi }}</p>
                                             </div>
-                                            <div class="ml-4">
+
+                                            <div class="flex items-center justify-between border-t border-slate-100 pt-3">
+                                                <p class="text-xs text-slate-500">Mentor: {{ $enrollment->kelas->mentor->name }}</p>
                                                 @if($enrollment->sudah_absen)
-                                                    <span class="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+                                                    <span class="inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-semibold text-green-700">
                                                         <svg class="mr-1 h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
                                                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                                         </svg>
-                                                        Sudah Presensi
+                                                        Sudah
                                                     </span>
                                                 @else
-                                                    <span class="inline-flex items-center rounded-full bg-yellow-100 px-3 py-1 text-xs font-semibold text-yellow-700">
+                                                    <span class="inline-flex items-center rounded-full bg-yellow-100 px-2 py-1 text-xs font-semibold text-yellow-700">
                                                         <svg class="mr-1 h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
                                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
                                                         </svg>
-                                                        Belum Presensi
+                                                        Belum
                                                     </span>
                                                 @endif
                                             </div>
@@ -68,7 +69,7 @@
                                             <button type="button"
                                                     data-class-id="{{ $enrollment->kelas->id }}"
                                                     data-class-name="{{ $enrollment->kelas->nama }}"
-                                                    class="btn-select-class mt-4 w-full inline-flex items-center justify-center rounded-2xl bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-700">
+                                                    class="btn-select-class mt-4 inline-flex w-full items-center justify-center rounded-none bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-700">
                                                 Lakukan Presensi
                                             </button>
                                         @endif
