@@ -36,4 +36,9 @@ class Tugas extends Model
     {
         return $this->hasMany(Nilai::class, 'jenis', 'id');
     }
+
+    public function submissions(): HasMany
+    {
+        return $this->hasMany(TugasSubmission::class);
+    }
 }

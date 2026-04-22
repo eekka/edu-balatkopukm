@@ -29,6 +29,9 @@ class DashboardRoutingTest extends TestCase
         $response = $this->actingAs($user)->get('/admin/dashboard');
         $response->assertStatus(200);
         $response->assertViewIs('admin.dashboard');
+        $response->assertSeeText('Timeline');
+        $response->assertSeeText('Calendar');
+        $response->assertDontSeeText('Pengguna Baru');
     }
 
     public function test_mentor_dashboard_access(): void
@@ -42,6 +45,8 @@ class DashboardRoutingTest extends TestCase
         $response = $this->actingAs($user)->get('/mentor/dashboard');
         $response->assertStatus(200);
         $response->assertViewIs('mentor.dashboard');
+        $response->assertSeeText('Timeline');
+        $response->assertSeeText('Calendar');
     }
 
     public function test_peserta_dashboard_access(): void

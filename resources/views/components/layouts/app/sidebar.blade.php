@@ -26,16 +26,10 @@
                     'description' => 'Akses fitur disesuaikan dengan peran akun Anda.',
                     'chips' => ['Dashboard'],
                 ];
-
-                $roleLabels = [
-                    'admin' => 'Admin',
-                    'mentor' => 'Mentor',
-                    'peserta' => 'Peserta',
-                ];
             @endphp
 
             <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-5 py-4" wire:navigate>
-                <span class="flex size-12 items-center justify-center rounded-2xl bg-white/15 text-lg font-black tracking-tight ring-1 ring-white/15">
+                <span class="flex size-12 items-center justify-center rounded-none bg-white/15 text-lg font-black tracking-tight ring-1 ring-white/15">
                     L3
                 </span>
 
@@ -79,11 +73,14 @@
                         <flux:navlist.item icon="book-open" :href="route('mentor.kelas.index')" :current="request()->routeIs('mentor.kelas.index')" class="text-sm" wire:navigate>
                             Kelas
                         </flux:navlist.item>
-                        <flux:navlist.item icon="clipboard-document-list" :href="route('mentor.dashboard').'#akses-cepat'" :current="request()->routeIs('mentor.dashboard')" class="text-sm" wire:navigate>
-                            Materi, Tugas, Nilai
-                        </flux:navlist.item>
                         <flux:navlist.item icon="megaphone" :href="route('mentor.announcements.index').'#pengumuman'" :current="request()->routeIs('mentor.announcements.index')" class="text-sm" wire:navigate>
                             Pengumuman
+                        </flux:navlist.item>
+                    </flux:navlist.group>
+
+                    <flux:navlist.group heading="Akses Cepat" class="mt-4 grid">
+                        <flux:navlist.item icon="clipboard-document-list" :href="route('mentor.dashboard').'#akses-cepat'" class="text-sm" wire:navigate>
+                            Materi, Tugas, Nilai
                         </flux:navlist.item>
                     </flux:navlist.group>
                 @elseif (auth()->user()->role === 'peserta')
@@ -110,9 +107,9 @@
             <flux:spacer />
 
             <div class="px-4 pb-5">
-                <div class="rounded-3xl bg-white/10 p-4 ring-1 ring-white/10">
+                <div class="rounded-none bg-white/10 p-4 ring-1 ring-white/10">
                     <div class="flex items-center gap-3">
-                        <span class="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-sm font-bold text-white ring-1 ring-white/15">
+                        <span class="flex size-11 shrink-0 items-center justify-center rounded-none bg-white/15 text-sm font-bold text-white ring-1 ring-white/15">
                             {{ auth()->user()->initials() }}
                         </span>
 
@@ -126,7 +123,7 @@
                         @csrf
                         <button
                             type="submit"
-                            class="flex w-full items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-sky-50"
+                            class="flex w-full items-center justify-center rounded-none bg-white px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-sky-50"
                         >
                             Keluar
                         </button>
