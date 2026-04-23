@@ -86,6 +86,22 @@
                 </div>
             </section>
 
+            <!-- Akses Cepat -->
+            <section class="grid gap-4 lg:grid-cols-4">
+                <a href="{{ route('peserta.presensi.index') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                    Konfirmasi Kehadiran
+                </a>
+                <a href="{{ route('peserta.kelas.index') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                    Cari Kelas Baru
+                </a>
+                <a href="{{ route('peserta.progress') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                    Progress Belajar
+                </a>
+                <a href="{{ route('peserta.announcements.index') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                    Semua Pengumuman
+                </a>
+            </section>
+
             <section class="rounded-none border border-slate-200 bg-white p-5 shadow-sm sm:p-6" id="calendar">
                 <div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <h2 class="text-2xl font-semibold text-slate-800">Calendar</h2>
@@ -148,20 +164,7 @@
                 </div>
             </section>
 
-            <section class="grid gap-4 lg:grid-cols-4">
-                <a href="{{ route('peserta.presensi.index') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
-                    Konfirmasi Kehadiran
-                </a>
-                <a href="{{ route('peserta.kelas.index') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
-                    Cari Kelas Baru
-                </a>
-                <a href="{{ route('peserta.progress') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
-                    Progress Belajar
-                </a>
-                <a href="{{ route('peserta.announcements.index') }}" class="rounded-none border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
-                    Semua Pengumuman
-                </a>
-            </section>
+
         </div>
     </div>
 
