@@ -34,7 +34,7 @@
                     <img src="/asset/aball.png" alt="Karakter Belajar" class="w-auto h-auto max-w-sm md:max-w-md">
                 </div>
                 <div class="relative z-10 mt-6 items-center">
-                    <h2 class="text-4xl font-semibold text-center">Bangun kapasitas tim lewat pelatihan yang terstruktur.</h2>
+                    <h2 class="text-4xl font-semibold text-center">Bangun UKM lewat pelatihan yang terstruktur.</h2>
                 </div>
 
             </aside>
