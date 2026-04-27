@@ -311,19 +311,17 @@
                 <div>
                     <h4 class="text-white font-bold mb-4">Kontak</h4>
                     <ul class="space-y-2">
-                        <li>Email: info@akademi.test</li>
-                        <li>Phone: +62 812-3456-789</li>
-                        <li>Jakarta, Indonesia</li>
+                        <li>Email: balatkopukm.jateng@gmail.com</li>
+                        <li>Phone: +62 822-2004-0501</li>
+                        <li>Semarang, Jawa Tengah, Indonesia</li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-4">Media Sosial</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-xl hover:text-white transition"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-xl hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-xl hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-xl hover:text-white transition"><i class="fab fa-linkedin"></i></a>
-                    </div>
+                        <a href="https://www.instagram.com/balatkopukmjateng?igsh=MW1sNWpqNTdndHNmaA==" class="text-xl hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                        <a href="https://x.com/balatkopukmjtg?s=21" class="text-xl hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/balatkopukmjateng?igsh=MW1sNWpqNTdndHNmaA==" class="text-xl hover:text-white transition"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="border-t border-blue-900/80 pt-8 text-center text-blue-200/60">
